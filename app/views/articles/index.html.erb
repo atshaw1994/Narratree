@@ -9,11 +9,17 @@
 </div>
 
 <div class="article-list">
-    <ul>
+    <h2>Articles</h2>
+    <ul class="articles">
     <% @articles.each do |article| %>
-        <li>
-        <%= link_to article.title, article %>
-        </li>
+        <div class="card">
+            <li>
+                <%= link_to article.title, article %>
+            </li>
+            <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                <span class="material-symbols-outlined delete-btn">delete</span>
+            <% end %>
+        </div>
     <% end %>
     </ul>
 </div>
