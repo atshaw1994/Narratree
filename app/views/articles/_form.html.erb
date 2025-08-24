@@ -1,21 +1,23 @@
-<%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+<div class="form">
+  <%= form_with model: article do |form| %>
+    <div class="form-title-section">
+      <%= form.label :title, class: "form-title-label" %><br>
+      <%= form.text_field :title, class: "form-title-textfield" %>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+    <div class="form-body-section">
+      <%= form.label :body, class: "form-body-label" %><br>
+      <%= form.text_area :body, class: "form-body-textarea" %><br>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="form-submit-section">
+      <%= form.submit class: "form-submit-button" %>
+    </div>
+  <% end %>
+</div>
