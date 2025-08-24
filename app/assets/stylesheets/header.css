@@ -5,13 +5,70 @@
     justify-content: space-between;
     background-color: #1f92fd;
     padding: 1rem 0;
-    border-bottom: 1px solid #eee;
+    margin: 16px;
+    border-radius: 16px;
+    border-bottom: 1px solid black;
+    box-shadow: 1 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .page-title {
   text-align: center;
-  color: #333; /* A dark gray color */
+  color: rgba(255, 255, 255, 0.8);
   font-family: sans-serif;
   margin-top: 2rem;
   font-size: 2.5rem;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  margin: -24px 0px 0px 0px;
+}
+
+.header-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.header-links a {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.header-links a:hover {
+    text-decoration: none;
+}
+
+.article-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 64px;
+}
+
+.article-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li {
+    margin: 1rem 0;
+}
+
+.article-list a {
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: rgba(31, 146, 253, 0.8);
+}
+
+.article-list a:hover {
+    text-decoration: underline;
 }
