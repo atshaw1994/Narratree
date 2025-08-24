@@ -1,0 +1,15 @@
+
+<div class="header">
+    <h1 class="page-title">atshaw1994's BlogSite</h1>
+    <h2>Articles</h2>
+</div>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
