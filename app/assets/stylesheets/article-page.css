@@ -1,0 +1,57 @@
+.article-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-btn-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 8px 16px;
+}
+
+.article-btn {
+    display: flex;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    color: black;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 6px;
+    margin-right: 4px;
+}
+
+.edit-icon:hover {
+    color: blue
+}
+
+.comment-icon:hover {
+    color: blue
+}
+
+.delete-icon:hover {
+    color: red
+}
+
+.article-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments-section h2 {
+    align-self: center;
+    justify-self: center;
+}

@@ -37,8 +37,9 @@
 }
 
 .form-submit-section {
-    margin: 16px;
-    margin-top: 0px;
+    margin: 0px 24px 16px 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .form-submit-button {
