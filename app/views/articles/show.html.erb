@@ -1,26 +1,17 @@
-<div class="article-title">
-  <h1><%= @article.title %></h1>
-  <p><em>Written by <%= @article.author.presence || 'Unknown' %></em></p>
-</div>
-
-<div class="article-body">
-  <p><%= @article.body %></p>
-</div>
-
 <div class="article-btn-container">
-  <%= link_to edit_article_path(@article), class: "article-btn" do %>
+  <%= link_to edit_article_path(@article), class: "article-btn", title: "Edit Article" do %>
     <span class="material-symbols-outlined edit-icon">
       edit
     </span>
   <% end %>
 
-  <button type="button" class="article-btn" id="toggle-comments-btn">
+  <button type="button" class="article-btn" id="toggle-comments-btn" title="Toggle Comments">
     <span class="material-symbols-outlined comment-icon">
       message
     </span>
   </button>
 
-  <%= link_to article_path(@article), class: "article-btn", data: {
+  <%= link_to article_path(@article), class: "article-btn", title: "Delete Article", data: {
     turbo_method: :delete,
     turbo_confirm: "Are you sure?"
   } do %>
@@ -28,6 +19,15 @@
       delete
     </span>
   <% end %>
+</div>
+
+<div class="article-title">
+  <h1><%= @article.title %></h1>
+  <p><em>Written by <%= @article.author.presence || 'Unknown' %></em></p>
+</div>
+
+<div class="article-body">
+  <p><%= @article.body %></p>
 </div>
 
 <div class="comments-section" id="comments-section" style="display:none;">

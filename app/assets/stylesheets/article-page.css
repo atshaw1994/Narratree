@@ -8,8 +8,8 @@
 .article-btn {
     appearance: none;
     -webkit-appearance: none;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
+    background: transparent;
+    border: 0px solid #ccc;
     border-radius: 100%;
     width: 48px;
     height: 48px;
@@ -23,6 +23,11 @@
     cursor: pointer;
     display: flex;
     outline: none;
+}
+
+.article-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid #ccc;
 }
 
 .article-btn:focus {
@@ -44,21 +49,6 @@
     justify-content: center;
     align-content: center;
     padding: 8px 16px;
-}
-
-.article-btn {
-    display: flex;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 100%;
-    width: 32px;
-    height: 32px;
-    color: black;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 6px;
-    margin-right: 4px;
 }
 
 .edit-icon:hover {
