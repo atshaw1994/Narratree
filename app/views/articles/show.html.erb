@@ -35,8 +35,8 @@
   <%= render "comments/form", article: @article %>
   <%= render @article.comments %>
 </div>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
+<%= javascript_tag do %>
+  document.addEventListener("turbo:load", function() {
     var btn = document.getElementById("toggle-comments-btn");
     var section = document.getElementById("comments-section");
     if (btn && section) {
@@ -49,6 +49,6 @@
       });
     }
   });
-</script>
+<% end %>
 
 
