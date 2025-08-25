@@ -14,14 +14,23 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.article-title {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
 .card a {
   grid-column: 1 / 2;
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
   font-size: 1.25rem;
   font-weight: bold;
-  text-decoration: none;
   align-self: center;
+}
+
+.card-link {
+    display: block;
+    text-decoration: none;
 }
 
 .card a:last-child {
