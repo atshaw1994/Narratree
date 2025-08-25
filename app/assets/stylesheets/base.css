@@ -1,46 +1,57 @@
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #1f92fd;
-    padding: 1rem 0;
-    margin: 16px;
-    border-radius: 16px;
-    border-bottom: 1px solid black;
-    box-shadow: 1 4px 6px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: auto 4px 1fr auto;
+  background-color: #1f92fd;
+  border-radius: 16px 16px 0 0;
+  border: 1px solid black;
+  box-shadow: 1 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
 }
 
 .page-title {
-  text-align: center;
+  grid-column: 1 / 2;
   color: rgba(255, 255, 255, 0.8);
   font-family: sans-serif;
-  margin-top: 2rem;
+  margin: 8px 0 8px 24px;
   font-size: 2.5rem;
 }
 
 .page-subtitle {
-  text-align: center;
+  grid-column: 3 / 4;
   color: rgba(255, 255, 255, 0.5);
   font-family: sans-serif;
   font-size: 1.25rem;
-  margin: -24px 0px 0px 0px;
+  margin-left: 16px;
 }
 
 .header-links {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+  grid-column: 4 / 5;
+  margin: 0 16px 0 0;
+  justify-self: end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .header-links a {
-  border: 1px solid rgba(255, 255, 255, 0.0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 0px solid rgba(255, 255, 255, 0.0);
   color: rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
-  padding: 8px 16px;
   text-decoration: none;
-  margin: 0 1rem;
+  border-radius: 50%;
+  margin-left: 8px;
+  margin-right: 0;
+  transition: background 0.15s, border 0.15s;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 1.5rem;
 }
 
 .header-links a:hover {
