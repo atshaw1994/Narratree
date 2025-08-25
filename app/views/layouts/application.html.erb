@@ -28,7 +28,12 @@
       <h1 class="page-title">atshaw1994's BlogSite</h1>
       <p class="page-subtitle">A place to share knowledge and ideas</p>
       <div class="header-links">
-        <%= link_to "Home", root_path %>
+        <%= link_to root_path do %>
+          <span class="material-symbols-outlined">home</span>
+        <% end %>
+        <%= link_to about_path do %>
+          <span class="material-symbols-outlined">info</span>
+        <% end %>
       </div>
     </div>
     <%= yield %>
