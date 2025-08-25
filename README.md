@@ -1,6 +1,6 @@
 # Odin Blog
 
-![Screenshot](screenshot.png)
+![Screenshot](Screenshot.png)
 
 ## Description
 
