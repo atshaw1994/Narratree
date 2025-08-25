@@ -43,6 +43,16 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    opacity: 0;
+}
+
+.article-card-delete-icon:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.card:hover .article-card-delete {
+    opacity: 1;
 }
 
 .card:hover {
@@ -72,30 +82,6 @@
   grid-column: 3 / 4;
   justify-self: end;
   align-self: center;
-}
-
-.delete-btn {
-    background-color: transparent;
-    border: none;
-    border-radius: 100%;
-    padding: 8px;
-    text-decoration: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    font-size: 2rem;
-    color: #b00;
-    transition: color 0.2s;
-}
-
-.delete-btn:hover {
-    color: red;
-}
-
-.card:hover .delete-btn {
-    opacity: 1;
 }
 
 .card-post {
