@@ -1,6 +1,6 @@
 <div class="article-title">
   <h1><%= @article.title %></h1>
-  <p><em>Written by author</em></p>
+  <p><em>Written by <%= @article.author.presence || 'Unknown' %></em></p>
 </div>
 
 <div class="article-body">
