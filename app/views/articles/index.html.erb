@@ -9,16 +9,19 @@
             <% end %>
         </li>
         <% @articles.each do |article| %>
-            <li class="article-item">
-                <%= link_to article_path(article) do %>
-                    <div class="card">
-                        <h3 class="article-title"><%= article.title %></h3>
+                <li class="article-item">
+                    <div class="card article-card-grid">
+                        <div class="article-card-main">
+                            <h3 class="article-title"><%= article.title %></h3>
+                            <div class="article-author">by <%= article.author || 'Unknown' %></div>
+                        </div>
+                        <div class="article-card-delete">
+                            <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                <span class="material-symbols-outlined delete-btn">delete</span>
+                            <% end %>
+                        </div>
                     </div>
-                <% end %>
-                <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                    <span class="material-symbols-outlined delete-btn">delete</span>
-                <% end %>
-            </li>
+                </li>
         <% end %>
     </ul>
 </div>
