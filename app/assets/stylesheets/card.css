@@ -20,12 +20,12 @@
 }
 
 .card a {
-  grid-column: 1 / 2;
-  color: rgba(0, 0, 0, 0.8);
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: bold;
-  align-self: center;
+    grid-column: 1 / 2;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    align-self: center;
 }
 
 .card-link {
@@ -58,4 +58,16 @@
 
 .card:hover .delete-btn {
     opacity: 1;
+}
+
+.card-post {
+    display: block;
+    text-align: center;
+}
+
+.card-post a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 16px;
 }

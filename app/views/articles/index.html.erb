@@ -1,18 +1,24 @@
-
 <div class="article-list">
-  <h2>Articles</h2>
-  <ul class="articles">
-  <% @articles.each do |article| %>
-    <li class="article-item"> <%= link_to article_path(article) do %>
-        <div class="card">
-          <h3 class="article-title"><%= article.title %></h3>
-        </div>
-      <% end %>
-      
-      <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-        <span class="material-symbols-outlined delete-btn">delete</span>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
+    <h2>Articles</h2>
+    <ul class="articles">
+        <li class="article-item">
+            <%= link_to new_article_path do %>
+                <div class="card card-post">
+                    <h3 class="article-title">Post...</h3>
+                </div>
+            <% end %>
+        </li>
+        <% @articles.each do |article| %>
+            <li class="article-item">
+                <%= link_to article_path(article) do %>
+                    <div class="card">
+                        <h3 class="article-title"><%= article.title %></h3>
+                    </div>
+                <% end %>
+                <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                    <span class="material-symbols-outlined delete-btn">delete</span>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
 </div>
