@@ -14,11 +14,11 @@
     </span>
   <% end %>
 
-  <%= link_to edit_article_path(@article), class: "article-btn" do %>
+  <button type="button" class="article-btn" id="toggle-comments-btn">
     <span class="material-symbols-outlined comment-icon">
       message
     </span>
-  <% end %>
+  </button>
 
   <%= link_to article_path(@article), class: "article-btn", data: {
     turbo_method: :delete,
@@ -30,10 +30,25 @@
   <% end %>
 </div>
 
-<div class="comments-section">
+<div class="comments-section" id="comments-section" style="display:none;">
   <h2>Comments</h2>
   <%= render "comments/form", article: @article %>
   <%= render @article.comments %>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("toggle-comments-btn");
+    var section = document.getElementById("comments-section");
+    if (btn && section) {
+      btn.addEventListener("click", function() {
+        if (section.style.display === "none") {
+          section.style.display = "";
+        } else {
+          section.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
 
 
