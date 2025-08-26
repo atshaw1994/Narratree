@@ -9,15 +9,3 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-.main-body {
-  background-color: #dfe5ee; /* A light gray background color */
-  border: 1px solid black;
-  border-radius: 17px 17px 0 0;
-  height: 98vh;
-}
-
-.main-content {
-  background-color: white;
-  height: calc(100vh - 85px);
-  margin-top: -32px;
-}
