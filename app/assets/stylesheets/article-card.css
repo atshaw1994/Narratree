@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    opacity: 1; /* DEBUG: change this to 0 at deploy */
+    opacity: 0;
 }
 
 .article-card-delete-icon:hover {
