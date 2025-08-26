@@ -23,7 +23,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="main-background">
+  <body class="main-body">
     <div class="header">
       <h1 class="page-title">atshaw1994's BlogSite</h1>
       <p class="page-subtitle">A place to share knowledge and ideas</p>
@@ -36,6 +36,8 @@
         <% end %>
       </div>
     </div>
-    <%= yield %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
   </body>
 </html>

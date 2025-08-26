@@ -1,29 +1,31 @@
-<div class="article-list">
-    <div class="article-list-top">
-        <div class="article-list-title">
-            <h2>Articles</h2>
+<div class="homepage">
+    <div class="article-list">
+        <div class="article-list-top">
+            <div class="article-list-title">
+                <h2>Articles</h2>
+            </div>
+            <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
+                <span class="material-symbols-outlined">post_add</span>
+            <% end %>
         </div>
-        <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
-            <span class="material-symbols-outlined">post_add</span>
-        <% end %>
-    </div>
-    <ul class="articles">
-        <% @articles.each do |article| %>
-                <li class="article-item">
-                    <div class="card article-card-grid">
-                        <%= link_to article_path(article), class: "article-card-link" do %>
-                          <div class="article-card-main">
-                              <h3 class="article-title"><%= article.title %></h3>
-                              <div class="article-author">by <%= article.author || 'Unknown' %></div>
-                          </div>
-                        <% end %>
-                        <div class="article-card-delete">
-                            <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                <span class="material-symbols-outlined article-card-delete-icon">delete</span>
+        <ul class="articles">
+            <% @articles.each do |article| %>
+                    <li class="article-item">
+                        <div class="card article-card-grid">
+                            <%= link_to article_path(article), class: "article-card-link" do %>
+                              <div class="article-card-main">
+                                  <h3 class="article-title"><%= article.title %></h3>
+                                  <div class="article-author">by <%= article.author || 'Unknown' %></div>
+                              </div>
                             <% end %>
+                            <div class="article-card-delete">
+                                <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                    <span class="material-symbols-outlined article-card-delete-icon">delete</span>
+                                <% end %>
+                            </div>
                         </div>
-                    </div>
-                </li>
-        <% end %>
-    </ul>
+                    </li>
+            <% end %>
+        </ul>
+    </div>
 </div>
