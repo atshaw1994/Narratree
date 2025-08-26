@@ -1,42 +1,39 @@
-.article-btn, .article-btn:visited, .article-btn:active {
-    box-sizing: border-box;
-    font-size: 1rem;
-    min-width: 48px;
-    min-height: 48px;
-    line-height: 1;
-}
 .article-btn {
-    appearance: none;
-    -webkit-appearance: none;
-    background: transparent;
-    border: 0px solid #ccc;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0,0,0,0.1);
     border-radius: 100%;
-    width: 48px;
-    height: 48px;
-    color: black;
-    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px 6px;
-    margin-right: 4px;
-    font: inherit;
+    margin: 0 6px;
     cursor: pointer;
-    display: flex;
-    outline: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    padding: 0;
+    text-decoration: none;
+    transition: background 0.1s;
+}
+
+.article-btn .material-symbols-outlined {
+    font-size: 28px;
+    color: #222;
+    transition: color 0.1s;
 }
 
 .article-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid #ccc;
+    background: white;
 }
 
-.article-btn:focus {
-    outline: 2px solid #1f92fd;
+.article-btn .edit-icon:hover,
+.article-btn .comment-icon:hover {
+    color: #1f92fd;
 }
 
-.article-btn::-moz-focus-inner {
-    border: 0;
+.article-btn .delete-icon:hover {
+    color: tomato;
 }
+
 .article-title {
     display: flex;
     flex-direction: column;
@@ -68,6 +65,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 64px;
 }
 
 .comments-section h2 {

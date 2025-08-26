@@ -1,13 +1,13 @@
 <div class="article-list">
-    <h2>Articles</h2>
+    <div class="article-list-top">
+        <div class="article-list-title">
+            <h2>Articles</h2>
+        </div>
+        <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
+            <span class="material-symbols-outlined">post_add</span>
+        <% end %>
+    </div>
     <ul class="articles">
-        <li class="article-item">
-            <%= link_to new_article_path do %>
-                <div class="card card-post">
-                    <h3 class="article-title">Post...</h3>
-                </div>
-            <% end %>
-        </li>
         <% @articles.each do |article| %>
                 <li class="article-item">
                     <div class="card article-card-grid">

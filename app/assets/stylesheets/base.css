@@ -2,7 +2,11 @@
 .header {
   display: grid;
   grid-template-columns: auto 4px 1fr auto;
-  background-color: #1f92fd;
+  background: linear-gradient(
+        to top left, 
+        rgb(65, 151, 255), 
+        rgb(139, 191, 254)
+    );
   border-radius: 16px 16px 0 0;
   border: 1px solid black;
   box-shadow: 1 4px 6px rgba(0, 0, 0, 0.1);
@@ -63,4 +67,3 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
   text-decoration: none;
 }
-

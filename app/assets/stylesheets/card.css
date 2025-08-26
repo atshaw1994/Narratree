@@ -1,10 +1,11 @@
+
 .card {
     background: linear-gradient(
         to bottom right, 
         rgba(255, 255, 255, 0.2), 
         rgba(0, 0, 0, 0.1)
     );
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     padding: 16px;
@@ -35,16 +36,4 @@
   grid-column: 3 / 4;
   justify-self: end;
   align-self: center;
-}
-
-.card-post {
-    display: block;
-    text-align: center;
-}
-
-.card-post a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    padding: 16px;
 }
