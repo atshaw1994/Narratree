@@ -7,12 +7,15 @@
   </div>
   <div class="comment-card-btns">
     <% if current_user %>
-      <!-- Like button (Coming soon) 
-        <%= button_to "#", class: "comment-card-btn" do %>
-            <span class="like-count">1</span>
-            <span class="material-symbols-outlined like-btn-icon">thumb_up</span>
-        <% end %>
-      -->
+    <!-- Like button does not have functionality yet -->
+      <%= button_to "#", class: "comment-card-btn" do %>
+          <span class="like-count"></span> <!-- Like count -->
+          <span class="material-symbols-outlined like-btn-icon">thumb_up</span>
+      <% end %>
+      <!-- Share button does not have functionality yet -->
+      <%= button_to "#", class: "comment-card-btn" do %>
+          <span class="material-symbols-outlined like-btn-icon">share</span>
+      <% end %>
       <% if comment.user == current_user%>
         <%= button_to [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "comment-card-btn" do %>
           <span class="material-symbols-outlined delete-btn-icon">delete</span>
