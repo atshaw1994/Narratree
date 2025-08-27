@@ -25,8 +25,8 @@
 
   <body>
     <%= render 'layouts/header' %>
-      <%= yield %>
-      <div id="login-modal" class="modal">
+    <%= yield %>
+    <div id="login-modal" class="modal">
       <div class="modal-content">
           <div class="login-form">
               <div class="login-form-top">
@@ -38,14 +38,13 @@
               <%= render 'shared/login_form' %>
           </div>
       </div>
-  </div>
+    </div>
       <script>
+        // These functions are now in the global scope
         const modal = document.getElementById('login-modal');
 
         function showModal(event) {
-          // Prevent the default link behavior
           event.preventDefault(); 
-          const modal = document.getElementById('login-modal');
           modal.style.display = 'block';
         }
 
@@ -53,11 +52,23 @@
           modal.style.display = 'none';
         }
 
+        // This event listener will be attached to the window once
         window.onclick = function(event) {
           if (event.target == modal) {
             hideModal();
           }
         }
-    </script>
+      
+        // This event listener runs every time a page is loaded by Turbo
+        document.addEventListener("turbo:load", function() {
+          const commentsBtn = document.getElementById('toggle-comments-btn');
+          if (commentsBtn) {
+            commentsBtn.addEventListener('click', function() {
+              const commentsSection = document.getElementById('comments-section');
+              commentsSection.classList.toggle('hidden');
+            });
+          }
+        });
+      </script>
   </body>
 </html>
