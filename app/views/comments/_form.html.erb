@@ -1,12 +1,7 @@
 <div class="comment-form">
-  <%= form_with model: [ article, article.comments.build ] do |form| %>
-    <div class="form-title-section">
-      <%= form.label :commenter, class: "comment-title-label" %><br>
-      <%= form.text_field :commenter, class: "comment-title-textfield" %>
-    </div>
+  <%= form_with model: [ article, article.comments.build ] do |form| %> 
     <div class="comment-body-section">
-  <%= form.label :body, class: "comment-body-label" %><br>
-  <%= form.text_area :body, class: "comment-body-textarea" %>
+      <%= form.text_area :body, class: "comment-body-textarea" %>
     </div>
     <div class="form-submit-section">
       <%= form.submit "Post", class: "form-submit-button" %>

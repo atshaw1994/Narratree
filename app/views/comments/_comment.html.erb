@@ -1,14 +1,14 @@
 
 <div class="comment-card">
   <div class="comment-card-data">
-    <p class="comment-author">By: <%= comment.commenter %></p>
+    <p class="comment-author">By: <%= comment.user&.username %></p>
     <p class="comment-body"><%= comment.body %></p>
   </div>
   <div class="comment-card-btns">
-    <%= button_to [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "comment-card-delete-btn" do %>
-      <span class="material-symbols-outlined comment-card-delete-btn-icon">
-        delete
-      </span>
+    <% if comment.user == current_user %>
+      <%= button_to [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "comment-card-delete-btn" do %>
+        <span class="material-symbols-outlined comment-card-delete-btn-icon">delete</span>
+      <% end %>
     <% end %>
   </div>
 </div>
