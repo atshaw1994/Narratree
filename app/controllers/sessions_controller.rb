@@ -1,7 +1,8 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
   def new
-    # Renders the login form
+    # Define @user here so the form helper has an object to work with
+    @user = User.new
   end
 
   def create
