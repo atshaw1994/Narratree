@@ -4,8 +4,10 @@
             <div class="article-list-title">
                 <h2>Articles</h2>
             </div>
-            <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
-                <span class="material-symbols-outlined">post_add</span>
+            <% if current_user %>
+                <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
+                    <span class="material-symbols-outlined">post_add</span>
+                <% end %>
             <% end %>
         </div>
         <ul class="articles">
