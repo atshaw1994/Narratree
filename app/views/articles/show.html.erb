@@ -6,6 +6,16 @@
   </button>
   
   <% if current_user %>
+    <!-- Like button does not have functionality yet -->
+    <%= button_to "#", class: "article-btn", title: "Like Article" do %>
+        <span class="material-symbols-outlined edit-icon">thumb_up</span>
+    <% end %>
+    <!-- Share button does not have functionality yet -->
+    <%= button_to "#", class: "article-btn", title: "Share Article" do %>
+        <span class="material-symbols-outlined edit-icon">share</span>
+    <% end %>
+
+    <!-- Only allow editing/deleting if user is the original author -->
     <% if @article.user == current_user %>
       <%= link_to edit_article_path(@article), class: "article-btn", title: "Edit Article" do %>
         <span class="material-symbols-outlined edit-icon">edit</span>
