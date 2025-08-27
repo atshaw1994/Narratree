@@ -1,0 +1,18 @@
+<div class="login-form-body">
+    <%= form_with(url: login_path, local: true) do |form| %>
+        <div class="login-form-group">
+            <%= form.label :email %>
+            <%= form.email_field :email, required: true %>
+        </div>
+        <div class="login-form-group">
+            <%= form.label :password %>
+            <%= form.password_field :password, required: true %>
+        </div>
+        <div class="login-form-group">
+            <%= form.submit "Log In", class: "btn-login" %>
+        </div>
+        <div class="login-form-group">
+            <%= link_to "Sign Up", signup_path, class: "btn-signup", onclick: "hideModal(); return true;" %>
+        </div>
+    <% end %>
+</div>

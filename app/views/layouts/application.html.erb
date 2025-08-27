@@ -23,17 +23,41 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <div class="header">
-      <h1 class="page-title">atshaw1994's BlogSite</h1>
-      <p class="page-subtitle">A place to share knowledge and ideas</p>
-      <div class="header-links">
-        <%= link_to root_path do %>
-          <span class="material-symbols-outlined">home</span>
-        <% end %>
-        <%= link_to about_path do %>
-          <span class="material-symbols-outlined">info</span>
-        <% end %>
+  <body>
+    <%= render 'layouts/header' %>
+      <%= yield %>
+      <div id="login-modal" class="modal">
+      <div class="modal-content">
+          <div class="login-form">
+              <div class="login-form-top">
+                  <div class="login-form-title">
+                      <h2>Log In</h2>
+                  </div>
+                  <span class="close-button" onclick="hideModal()">&times;</span>
+              </div>
+              <%= render 'shared/login_form' %>
+          </div>
       </div>
-    </div>
-    <%= yield %>
+  </div>
+      <script>
+        const modal = document.getElementById('login-modal');
+
+        function showModal(event) {
+          // Prevent the default link behavior
+          event.preventDefault(); 
+          const modal = document.getElementById('login-modal');
+          modal.style.display = 'block';
+        }
+
+        function hideModal() {
+          modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            hideModal();
+          }
+        }
+    </script>
+  </body>
 </html>

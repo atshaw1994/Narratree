@@ -13,6 +13,12 @@
   margin-bottom: 32px;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adds space between the text and the icon */
+}
+
 .page-title {
   grid-column: 1 / 2;
   color: rgba(255, 255, 255, 0.8);
