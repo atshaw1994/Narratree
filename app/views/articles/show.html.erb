@@ -1,23 +1,26 @@
 <div class="article-btn-container">
-  <%= link_to edit_article_path(@article), class: "article-btn", title: "Edit Article" do %>
-    <span class="material-symbols-outlined edit-icon">
-      edit
-    </span>
-  <% end %>
-
   <button type="button" class="article-btn" id="toggle-comments-btn" title="Toggle Comments">
     <span class="material-symbols-outlined comment-icon">
       message
     </span>
   </button>
-
-  <%= link_to article_path(@article), class: "article-btn", title: "Delete Article", data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } do %>
-    <span class="material-symbols-outlined delete-icon">
-      delete
-    </span>
+  
+  <% if current_user %>
+    <% if @article.user == current_user %>
+      <%= link_to edit_article_path(@article), class: "article-btn", title: "Edit Article" do %>
+        <span class="material-symbols-outlined edit-icon">
+          edit
+        </span>
+      <% end %>
+      <%= link_to article_path(@article), class: "article-btn", title: "Delete Article", data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } do %>
+        <span class="material-symbols-outlined delete-icon">
+          delete
+        </span>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 
