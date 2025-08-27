@@ -1,5 +1,5 @@
 <div class="comment-form">
-  <%= form_with model: [ article, article.comments.build ] do |form| %> 
+  <%= form_with model: [ article, comment ] do |form| %>
     <div class="comment-body-section">
       <%= form.text_area :body, class: "comment-body-textarea" %>
     </div>

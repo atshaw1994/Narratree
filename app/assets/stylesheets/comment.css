@@ -61,11 +61,13 @@
 }
 
 .comment-card-btns {
+    display: flex;
+    flex-direction: row;
     grid-column: 2 / 3;
     grid-row: 1 / 3;
 }
 
-.comment-card-delete-btn {
+.comment-card-btn {
     background-color: transparent;
     color:rgba(0, 0, 0, 0.6);
     border: none;
@@ -74,14 +76,21 @@
     height: 48px;
 }
 
-.comment-card-delete-btn:hover {
-    color:red;
+.comment-card-btn:hover {
     cursor: pointer;
     transform: translate(-1px, -1px);
 }
 
-.comment-card-delete-btn-icon {
+.comment-card-btn-icon {
     font-size: 24px;
+}
+
+.comment-card-btn:hover .like-btn-icon {
+    color:blue;
+}
+
+.comment-card-btn:hover .delete-btn-icon {
+    color:red;
 }
 
 .comment-author {
@@ -95,4 +104,11 @@
     font-size: 1rem;
     line-height: 1.5;
     color: #333;
+}
+
+.like-count {
+    font-size: 0.9rem;
+    align-self: center;
+    justify-self: center;
+    color: #555;
 }
