@@ -21,8 +21,10 @@
                               </div>
                             <% end %>
                             <div class="article-card-delete">
-                                <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                    <span class="material-symbols-outlined article-card-delete-icon">delete</span>
+                                <% if current_user %>
+                                    <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                        <span class="material-symbols-outlined article-card-delete-icon">delete</span>
+                                    <% end %>
                                 <% end %>
                             </div>
                         </div>
