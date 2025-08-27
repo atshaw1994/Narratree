@@ -1,12 +1,5 @@
 <div class="form">
   <%= form_with model: article do |form| %>
-    <div class="form-author-section">
-      <%= form.label :author, class: "form-author-label" %><br>
-      <%= form.text_field :author, class: "form-author-textfield" %>
-      <% article.errors.full_messages_for(:author).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
 
     <div class="form-title-section">
       <%= form.label :title, class: "form-title-label" %><br>
