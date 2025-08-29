@@ -22,8 +22,9 @@
                             <% end %>
                             <div class="article-card-delete">
                                 <% if current_user %>
-                                    <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                        <span class="material-symbols-rounded article-card-delete-icon">delete</span>
+                                    <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
+                                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                        <span class="material-symbols-rounded">delete</span>
                                     <% end %>
                                 <% end %>
                             </div>

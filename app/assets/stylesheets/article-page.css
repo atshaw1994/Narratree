@@ -1,39 +1,3 @@
-.article-btn {
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 6px;
-    cursor: pointer;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    padding: 0;
-    text-decoration: none;
-    transition: background 0.1s;
-}
-
-.article-btn .material-symbols-rounded {
-    font-size: 28px;
-    color: #222;
-    transition: color 0.1s;
-}
-
-.article-btn:hover {
-    background: white;
-}
-
-.article-btn .edit-icon:hover,
-.article-btn .comment-icon:hover {
-    color: #1f92fd;
-}
-
-.article-btn .delete-icon:hover {
-    color: tomato;
-}
-
 .article-title {
     display: flex;
     flex-direction: column;
@@ -48,16 +12,9 @@
     padding: 8px 16px;
 }
 
-.edit-icon:hover {
-    color: blue
-}
-
-.comment-icon:hover {
-    color: blue
-}
-
-.delete-icon:hover {
-    color: red
+/* Override the hover effect for the delete button */
+.delete-btn:hover .material-symbols-rounded{
+    color: red;
 }
 
 .article-body {

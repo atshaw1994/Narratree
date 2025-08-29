@@ -9,7 +9,7 @@
             <%= form.password_field :password, required: true %>
         </div>
         <div class="login-form-group">
-            <%= form.submit "Log In", class: "btn-login" %>
+            <%= form.submit "Log In", class: "btn-login", onclick: "hideModal(); return true;" %>
         </div>
         <div class="login-form-group">
             <%= link_to "Sign Up", signup_path, class: "btn-signup", onclick: "hideModal(); return true;" %>

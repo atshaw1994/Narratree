@@ -9,3 +9,38 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.user-interaction-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 6px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    padding: 0;
+    text-decoration: none;
+    transition: background 0.1s;
+}
+
+.user-interaction-btn .material-symbols-rounded {
+    font-size: 1.4rem;
+    color: #222;
+    transition: color 0.1s;
+}
+
+.user-interaction-btn:hover .material-symbols-rounded {
+    color: blue;
+}
+
+.user-interaction-btn:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.user-interaction-btn:active {
+  background-color: #d0d0d0;
+}

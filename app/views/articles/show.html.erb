@@ -1,30 +1,26 @@
 <div class="article-btn-container">
-  <button type="button" class="article-btn" id="toggle-comments-btn" title="Toggle Comments">
-    <span class="material-symbols-rounded comment-icon">
-      message
-    </span>
+  <button type="button" class="user-interaction-btn" id="toggle-comments-btn" title="Toggle Comments">
+    <span class="material-symbols-rounded">message</span>
   </button>
   
   <% if current_user %>
     <!-- Like button does not have functionality yet -->
-    <%= button_to "#", class: "article-btn", title: "Like Article" do %>
-        <span class="material-symbols-rounded edit-icon">thumb_up</span>
+    <%= button_to "#", class: "user-interaction-btn", title: "Like Article" do %>
+        <span class="material-symbols-rounded">thumb_up</span>
     <% end %>
     <!-- Share button does not have functionality yet -->
-    <%= button_to "#", class: "article-btn", title: "Share Article" do %>
-        <span class="material-symbols-rounded edit-icon">share</span>
+    <%= button_to "#", class: "user-interaction-btn", title: "Share Article" do %>
+        <span class="material-symbols-rounded">share</span>
     <% end %>
 
     <!-- Only allow editing/deleting if user is the original author -->
     <% if @article.user == current_user %>
-      <%= link_to edit_article_path(@article), class: "article-btn", title: "Edit Article" do %>
-        <span class="material-symbols-rounded edit-icon">edit</span>
+      <%= link_to edit_article_path(@article), class: "user-interaction-btn", title: "Edit Article" do %>
+        <span class="material-symbols-rounded">edit</span>
       <% end %>
-      <%= link_to article_path(@article), class: "article-btn", title: "Delete Article", data: {
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-      } do %>
-        <span class="material-symbols-rounded delete-icon">delete</span>
+      <%= link_to article_path(@article), class: "user-interaction-btn delete-btn", title: "Delete Article", data: {
+        turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <span class="material-symbols-rounded">delete</span>
       <% end %>
     <% end %>
   <% end %>
