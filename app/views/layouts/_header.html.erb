@@ -3,19 +3,19 @@
   <p class="page-subtitle">A place to share knowledge and ideas</p>
   <div class="header-links">
     <%= link_to root_path do %>
-        <span class="material-symbols-outlined">home</span>
+        <span class="material-symbols-rounded">home</span>
     <% end %>
     <%= link_to about_path do %>
-        <span class="material-symbols-outlined">info</span>
+        <span class="material-symbols-rounded">info</span>
     <% end %>
     <% if current_user %>
       <%= link_to logout_path, data: { turbo_method: :delete } do %>
-        <span class="material-symbols-outlined">logout</span>
+        <span class="material-symbols-rounded">logout</span>
       <% end %>
       <span><%= current_user.username %></span>
     <% else %>
       <%= link_to "#", onclick: "showModal(event); return false;" do %>
-        <span class="material-symbols-outlined">account_circle</span>
+        <span class="material-symbols-rounded">account_circle</span>
       <% end %>
       <span><em>Not Signed In</em></span>
     <% end %>

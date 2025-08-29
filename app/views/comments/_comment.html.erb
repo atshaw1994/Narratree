@@ -10,15 +10,15 @@
     <!-- Like button does not have functionality yet -->
       <%= button_to "#", class: "comment-card-btn" do %>
           <span class="like-count"></span> <!-- Like count -->
-          <span class="material-symbols-outlined like-btn-icon">thumb_up</span>
+          <span class="material-symbols-rounded like-btn-icon">thumb_up</span>
       <% end %>
       <!-- Share button does not have functionality yet -->
       <%= button_to "#", class: "comment-card-btn" do %>
-          <span class="material-symbols-outlined like-btn-icon">share</span>
+          <span class="material-symbols-rounded like-btn-icon">share</span>
       <% end %>
       <% if comment.user == current_user%>
         <%= button_to [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "comment-card-btn" do %>
-          <span class="material-symbols-outlined delete-btn-icon">delete</span>
+          <span class="material-symbols-rounded delete-btn-icon">delete</span>
         <% end %>
       <% end %>
     <% end %>

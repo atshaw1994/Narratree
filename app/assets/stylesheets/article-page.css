@@ -15,7 +15,7 @@
     transition: background 0.1s;
 }
 
-.article-btn .material-symbols-outlined {
+.article-btn .material-symbols-rounded {
     font-size: 28px;
     color: #222;
     transition: color 0.1s;

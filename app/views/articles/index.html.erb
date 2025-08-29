@@ -6,7 +6,7 @@
             </div>
             <% if current_user %>
                 <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
-                    <span class="material-symbols-outlined">post_add</span>
+                    <span class="material-symbols-rounded">post_add</span>
                 <% end %>
             <% end %>
         </div>
@@ -23,7 +23,7 @@
                             <div class="article-card-delete">
                                 <% if current_user %>
                                     <%= link_to article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                        <span class="material-symbols-outlined article-card-delete-icon">delete</span>
+                                        <span class="material-symbols-rounded article-card-delete-icon">delete</span>
                                     <% end %>
                                 <% end %>
                             </div>
