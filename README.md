@@ -1,10 +1,10 @@
-# Odin Blog
+# Narratree
 
 ![Screenshot](Screenshot.png)
 
 ## Description
 
-Odin Blog is a simple blogging platform built with Ruby on Rails. Users can create articles and leave comments. This project is part of The Odin Project curriculum.
+Narratree is a simple blogging platform built with Ruby on Rails. Users can create articles and leave comments. This project is part of The Odin Project curriculum.
 
 ## Features
 
