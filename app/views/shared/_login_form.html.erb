@@ -1,18 +1,19 @@
 <div class="login-form-body">
-    <%= form_with(url: login_path, local: true) do |form| %>
+    <%= form_with url: login_path, data: { turbo: false }, novalidate: true do |form| %>
         <div class="login-form-group">
             <%= form.label :email %>
             <%= form.email_field :email, required: true %>
+            <span id="email-error" style="color: red; display: none;"></span>
         </div>
         <div class="login-form-group">
             <%= form.label :password %>
             <%= form.password_field :password, required: true %>
         </div>
         <div class="login-form-group">
-            <%= form.submit "Log In", class: "btn-login", onclick: "hideModal(); return true;" %>
+            <%= form.submit "Log In", class: "btn-login" %>
         </div>
         <div class="login-form-group">
-            <%= link_to "Sign Up", signup_path, class: "btn-signup", onclick: "hideModal(); return true;" %>
+            <%= link_to "Sign Up", signup_path, class: "btn-signup", data: { "modal-target": "login-modal" } %>
         </div>
     <% end %>
 </div>
