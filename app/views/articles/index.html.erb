@@ -29,7 +29,7 @@
                                     <div class="article-card-author">by <em><%= article.user.username %></em></div>
                                 </div>
                             <% end %>
-                            <% if current_user %>
+                            <% if current_user == article.user %>
                                 <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
                                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
                                     <span class="material-symbols-rounded">delete</span>

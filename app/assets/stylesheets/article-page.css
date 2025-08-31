@@ -28,7 +28,7 @@
 }
 
 /* Override the hover effect for the delete button */
-.delete-btn:hover .material-symbols-rounded{
+.delete-btn:hover .material-symbols-rounded {
     color: red;
 }
 
