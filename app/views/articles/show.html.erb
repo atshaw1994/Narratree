@@ -28,9 +28,13 @@
     <% end %>
   </div>
   
-  <div class="article-title">
-    <h1><%= @article.title %></h1>
-    <p><em>Written by <%= @article.user&.username || 'Unknown' %></em></p>
+  <div id="article-top">
+    <h1 class="article-page-title">
+      <%= @article.title %>
+    </h1>
+    <p class="article-author">
+      <em>by <%= @article.user&.username %> on <%= @article.created_at.strftime("%B %d, %Y") %></em>
+    </p>
   </div>
   
   <div class="article-body">
