@@ -51,4 +51,8 @@
   background-color: #d0d0d0;
 }
 
-
+.user-interaction-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
