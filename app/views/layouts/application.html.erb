@@ -16,7 +16,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= yield %>
+    <div class="body-content"><%= yield %></div>
     <div id="login-modal" class="modal">
       <div class="modal-content">
           <div class="login-form">
@@ -30,54 +30,54 @@
           </div>
       </div>
     </div>
-      <script>
-        // These functions are now in the global scope
-        const modal = document.getElementById('login-modal');
+    <script>
+      // These functions are now in the global scope
+      const modal = document.getElementById('login-modal');
 
-        function showModal(event) {
-          event.preventDefault(); 
-          modal.style.display = 'block';
-        }
+      function showModal(event) {
+        event.preventDefault(); 
+        modal.style.display = 'block';
+      }
 
-        function hideModal() {
-          modal.style.display = 'none';
-        }
+      function hideModal() {
+        modal.style.display = 'none';
+      }
 
-        // Attach event listeners after the DOM has fully loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            // Listener for the Sign Up link to show the modal
-            const signupLink = document.querySelector('[data-modal-target="login-modal"]');
-            if (signupLink) {
-                signupLink.addEventListener('click', showModal);
-            }
-            
-            // Listener for the close button
-            const closeBtn = document.querySelector('.close-button');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', hideModal);
-            }
+      // Attach event listeners after the DOM has fully loaded
+      document.addEventListener("DOMContentLoaded", () => {
+          // Listener for the Sign Up link to show the modal
+          const signupLink = document.querySelector('[data-modal-target="login-modal"]');
+          if (signupLink) {
+              signupLink.addEventListener('click', showModal);
+          }
+          
+          // Listener for the close button
+          const closeBtn = document.querySelector('.close-button');
+          if (closeBtn) {
+              closeBtn.addEventListener('click', hideModal);
+          }
 
-            // Listener for clicks outside the modal
-            window.addEventListener('click', function(event) {
-                if (event.target == modal) {
-                    hideModal();
-                }
+          // Listener for clicks outside the modal
+          window.addEventListener('click', function(event) {
+              if (event.target == modal) {
+                  hideModal();
+              }
+          });
+
+          // You can also add validation logic here.
+          const form = document.getElementById('your-form-id'); // Add an ID to your form
+          if (form) {
+            form.addEventListener('submit', (event) => {
+              // Your validation logic goes here.
+              // If validation fails, use event.preventDefault() and display an error message.
             });
+          }
 
-            // You can also add validation logic here.
-            const form = document.getElementById('your-form-id'); // Add an ID to your form
-            if (form) {
-              form.addEventListener('submit', (event) => {
-                // Your validation logic goes here.
-                // If validation fails, use event.preventDefault() and display an error message.
-              });
-            }
-
-            // This event listener will handle Turbo page loads
-            document.addEventListener("turbo:load", function() {
-                // Your Turbo logic
-            });
-        });
-      </script>
+          // This event listener will handle Turbo page loads
+          document.addEventListener("turbo:load", function() {
+              // Your Turbo logic
+          });
+      });
+    </script>
   </body>
 </html>

@@ -10,6 +10,12 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+.body-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .user-interaction-btn {
     background: rgba(0, 0, 0, 0.03);
     border: 1px solid rgba(0,0,0,0.1);
@@ -44,3 +50,5 @@
 .user-interaction-btn:active {
   background-color: #d0d0d0;
 }
+
+

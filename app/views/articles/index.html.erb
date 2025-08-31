@@ -1,36 +1,46 @@
 <div class="homepage">
-    <div class="article-list">
-        <div class="article-list-top">
-            <div class="article-list-title">
-                <h2>Articles</h2>
-            </div>
+    <div id="saved-articles" class="section-container">
+        <div class="section-container-header">
+            <h2>Saved</h2>
+        </div>
+        <div class="section-container-body">
+            <ul>
+                <li class="card">Example Article 1 by <em>Author1</em></li>
+                <li class="card">Example Article 2 by <em>Author2</em></li>
+                <li class="card">Example Article 3 by <em>Author3</em></li>
+            </ul>
+        </div>
+    </div>
+    <div id="article-list" class="section-container">
+        <div class="section-container-header">
             <% if current_user %>
                 <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
                     <span class="material-symbols-rounded">post_add</span>
                 <% end %>
             <% end %>
+            <h2>Articles</h2>
         </div>
-        <ul class="articles">
-            <% @articles.each do |article| %>
-                    <li class="article-item">
+        <div class="section-container-body">
+            <ul>
+                <% @articles.each do |article| %>
+                    <li>
                         <div class="card article-card-grid">
                             <%= link_to article_path(article), class: "article-card-link" do %>
-                              <div class="article-card-main">
-                                  <h3 class="article-title"><%= article.title %></h3>
-                                  <div class="article-author">by <em><%= article.user.username || 'Unknown' %></em></div>
-                              </div>
+                                <div class="article-card-main">
+                                    <h3 class="article-title"><%= article.title %></h3>
+                                    <div class="article-author">by <em><%= article.user.username || 'Unknown' %></em></div>
+                                </div>
                             <% end %>
-                            <div class="article-card-delete">
-                                <% if current_user %>
-                                    <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
-                                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                        <span class="material-symbols-rounded">delete</span>
-                                    <% end %>
+                            <% if current_user %>
+                                <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
+                                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                    <span class="material-symbols-rounded">delete</span>
                                 <% end %>
-                            </div>
+                            <% end %>
                         </div>
                     </li>
-            <% end %>
-        </ul>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>

@@ -1,67 +1,25 @@
 .homepage {
-    margin: 0 auto;
-    max-width: 800px;
-    padding-top: 32px;
-}
-
-.article-list {
-    background-color: rgba(31, 146, 253, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-.article-list-top {
     display: flex;
-    padding: 12px 0;
-    background: linear-gradient(
-        to top left, 
-        rgb(65, 151, 255), 
-        rgb(139, 191, 254)
-    );
-    border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 16px;
 }
 
-.article-list-title {
-    flex: 1; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+#saved-articles {
+    margin-right: auto;
+    max-width: 15vw;
+    min-width: 15vw;
 }
 
-.article-list-title h2 {
-    margin: 0;
-    color: white;
-}
-
-.article-list ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-.article-list h2 {
-    text-align: center;
-    justify-self: center;
-    font-size: 2rem;
-    padding-top: 12px;
-}
-
-.articles {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding-top: 14px;
-    padding-bottom: 16px;
+#article-list {
+    width: 100%;
+    margin-left: 32px;
 }
 
 .new-article-button {
-    width: 40px;
-    height: 40px;
     text-decoration: none;
-    margin-right: 12px;
+    margin-right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
