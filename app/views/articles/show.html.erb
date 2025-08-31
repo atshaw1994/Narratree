@@ -1,10 +1,6 @@
 <% content_for(:title, "Narratree - #{ @article.title }") %>
 <div class="article-page">
   <div class="article-btn-container">
-    <button type="button" class="user-interaction-btn" title="Save Article">
-      <span class="material-symbols-rounded">favorite</span>
-    </button>
-  
     <% if current_user %>
       <!-- Like button does not have functionality yet -->
       <%= button_to "#", class: "user-interaction-btn", title: "Like Article" do %>
@@ -32,7 +28,7 @@
     <h1 class="article-page-title">
       <%= @article.title %>
     </h1>
-    <p class="article-author">
+    <p class="article-page-author">
       <em>by <%= @article.user&.username %> on <%= @article.created_at.strftime("%B %d, %Y") %></em>
     </p>
   </div>
@@ -41,7 +37,7 @@
     <p><%= @article.body %></p>
   </div>
   
-  <div class="comments-section" id="comments-section" >
+  <div class="comments-section" id="comments-section">
     <%= render "comments/form", article: @article, comment: @comment %>
     <%= render @article.comments.select(&:body) %>
   </div>

@@ -1,13 +1,11 @@
 <div class="homepage">
     <div id="saved-articles" class="section-container">
         <div class="section-container-header">
-            <h2>Saved</h2>
+            <h2>Saved Articles</h2>
         </div>
         <div class="section-container-body">
             <ul>
-                <li class="card">Example Article 1 by <em>Author1</em></li>
-                <li class="card">Example Article 2 by <em>Author2</em></li>
-                <li class="card">Example Article 3 by <em>Author3</em></li>
+                
             </ul>
         </div>
     </div>
@@ -18,7 +16,7 @@
                     <span class="material-symbols-rounded">post_add</span>
                 <% end %>
             <% end %>
-            <h2>Articles</h2>
+            <h2>Global Articles</h2>
         </div>
         <div class="section-container-body">
             <ul>
@@ -28,7 +26,7 @@
                             <%= link_to article_path(article), class: "article-card-link" do %>
                                 <div class="article-card-main">
                                     <h3 class="article-title"><%= article.title %></h3>
-                                    <div class="article-author">by <em><%= article.user.username || 'Unknown' %></em></div>
+                                    <div class="article-author">by <em><%= article.user.username %></em></div>
                                 </div>
                             <% end %>
                             <% if current_user %>
