@@ -2,6 +2,15 @@
 <div class="article-page">
   <div class="article-btn-container">
     <% if current_user %>
+      <% if current_user.saved_articles.include?(@article.id.to_s) %>
+        <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
+          <span class="material-symbols-rounded">bookmark_remove</span>
+        <% end %>
+      <% else %>
+        <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
+          <span class="material-symbols-rounded">bookmark_add</span>
+        <% end %>
+      <% end %>
       <%= button_to "#", class: "user-interaction-btn", title: "Like Article" do %>
         <span class="material-symbols-rounded">thumb_up</span>
       <% end %>
@@ -13,7 +22,7 @@
         <%= link_to edit_article_path(@article), class: "user-interaction-btn", title: "Edit Article" do %>
           <span class="material-symbols-rounded">edit</span>
         <% end %>
-        <%= link_to article_path(@article), class: "user-interaction-btn delete-btn", title: "Delete Article", data: {
+        <%= link_to article_path(@article), class: "user-interaction-btn article-delete-btn", title: "Delete Article", data: {
           turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
           <span class="material-symbols-rounded">delete</span>
         <% end %>

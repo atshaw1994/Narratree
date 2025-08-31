@@ -1,6 +1,33 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
+    if current_user && current_user.saved_articles.present?
+      saved_article_ids = current_user.saved_articles.map(&:to_i)
+      @saved_articles = Article.where(id: saved_article_ids)
+    end
+  end
+
+  def toggle_save
+    @article = Article.find(params[:id])
+    if current_user
+      if current_user.saved_articles.include?(@article.id.to_s)
+        # Unsave the article
+        current_user.saved_articles.delete(@article.id.to_s)
+        notice_message = "Article was successfully unsaved."
+      else
+        # Save the article
+        current_user.saved_articles << @article.id.to_s
+        notice_message = "Article was successfully saved."
+      end
+
+      if current_user.save
+        redirect_to @article, notice: notice_message
+      else
+        redirect_to @article, alert: "Failed to update article status."
+      end
+    else
+      redirect_to @article, alert: "You must be logged in to save or unsave articles."
+    end
   end
 
   def show

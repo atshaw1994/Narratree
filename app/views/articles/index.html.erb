@@ -1,14 +1,18 @@
 <div class="homepage">
-    <div id="saved-articles" class="section-container">
-        <div class="section-container-header">
-            <h2>Saved Articles</h2>
+    <% if current_user && @saved_articles.present? %>
+        <div id="saved-articles" class="section-container">
+            <div class="section-container-header">
+                <h2>Saved Articles</h2>
+            </div>
+            <div class="section-container-body">
+                <ul>
+                    <% @saved_articles.each do |article| %>
+                        <li class="card"><%= link_to article.title, article_path(article) %></li>
+                    <% end %>
+                </ul>
+            </div>
         </div>
-        <div class="section-container-body">
-            <ul>
-                
-            </ul>
-        </div>
-    </div>
+    <% end %>
     <div id="article-list" class="section-container">
         <div class="section-container-header">
             <% if current_user %>

@@ -27,8 +27,14 @@
     padding: 8px 16px;
 }
 
+.article-delete-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+}
+
 /* Override the hover effect for the delete button */
-.delete-btn:hover .material-symbols-rounded {
+.article-delete-btn:hover .material-symbols-rounded {
     color: red;
 }
 

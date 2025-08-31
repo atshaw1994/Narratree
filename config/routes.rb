@@ -12,5 +12,8 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+    member do
+      post "toggle_save"
+    end
   end
 end
