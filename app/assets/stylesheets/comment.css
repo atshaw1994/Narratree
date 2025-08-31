@@ -80,6 +80,10 @@
     color: #333;
 }
 
+.delete-comment-btn:hover .material-symbols-rounded {
+    color: red;
+}
+
 .like-count {
     font-size: 0.9rem;
     align-self: center;
