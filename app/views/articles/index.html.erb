@@ -1,18 +1,20 @@
 <div class="homepage">
-    <% if current_user && @saved_articles.present? %>
-        <div id="saved-articles" class="section-container">
-            <div class="section-container-header">
-                <h2>Saved Articles</h2>
-            </div>
-            <div class="section-container-body">
+    <div id="saved-articles" class="section-container">
+        <div class="section-container-header">
+            <h2>Saved Articles</h2>
+        </div>
+        <div class="section-container-body">
+            <% if current_user && @saved_articles.present? %>
                 <ul>
                     <% @saved_articles.each do |article| %>
                         <li class="card"><%= link_to article.title, article_path(article) %></li>
                     <% end %>
                 </ul>
-            </div>
+            <% else %>
+                <p>Please <%= link_to "log in", "#", onclick: "showModal(event); return false;" %> to see saved articles.</p>
+            <% end %>
         </div>
-    <% end %>
+    </div>
     <div id="article-list" class="section-container">
         <div class="section-container-header">
             <% if current_user %>
