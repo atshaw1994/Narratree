@@ -2,16 +2,13 @@
 <div class="article-page">
   <div class="article-btn-container">
     <% if current_user %>
-      <!-- Like button does not have functionality yet -->
       <%= button_to "#", class: "user-interaction-btn", title: "Like Article" do %>
-          <span class="material-symbols-rounded">thumb_up</span>
+        <span class="material-symbols-rounded">thumb_up</span>
       <% end %>
-      <!-- Share button does not have functionality yet -->
       <%= button_to "#", class: "user-interaction-btn", title: "Share Article" do %>
-          <span class="material-symbols-rounded">share</span>
+        <span class="material-symbols-rounded">share</span>
       <% end %>
-  
-      <!-- Only allow editing/deleting if user is the original author -->
+
       <% if @article.user == current_user %>
         <%= link_to edit_article_path(@article), class: "user-interaction-btn", title: "Edit Article" do %>
           <span class="material-symbols-rounded">edit</span>
@@ -20,6 +17,10 @@
           turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
           <span class="material-symbols-rounded">delete</span>
         <% end %>
+      <% end %>
+    <% else %>
+      <%= button_to "#", class: "user-interaction-btn", title: "Share Article" do %>
+        <span class="material-symbols-rounded">share</span>
       <% end %>
     <% end %>
   </div>
@@ -38,7 +39,9 @@
   </div>
   
   <div class="comments-section" id="comments-section">
-    <%= render "comments/form", article: @article, comment: @comment %>
+    <% if @article.user == current_user %>
+      <%= render "comments/form", article: @article, comment: @comment %>
+    <% end %>
     <%= render @article.comments.select(&:body) %>
   </div>
 </div>

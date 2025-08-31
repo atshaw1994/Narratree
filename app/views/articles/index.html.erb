@@ -25,8 +25,8 @@
                         <div class="card article-card-grid">
                             <%= link_to article_path(article), class: "article-card-link" do %>
                                 <div class="article-card-main">
-                                    <h3 class="article-title"><%= article.title %></h3>
-                                    <div class="article-author">by <em><%= article.user.username %></em></div>
+                                    <h3 class="article-card-title"><%= article.title %></h3>
+                                    <div class="article-card-author">by <em><%= article.user.username %></em></div>
                                 </div>
                             <% end %>
                             <% if current_user %>

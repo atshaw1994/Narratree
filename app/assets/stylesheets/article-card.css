@@ -13,7 +13,7 @@
     justify-content: left;
 }
 
-.article-title {
+.article-card-title {
     margin: 0;
     font-size: 1.3rem;
     color: rgba(0, 0, 0, 0.8);
@@ -22,7 +22,7 @@
     text-decoration: none;
 }
 
-.article-author {
+.article-card-author {
     font-size: 1rem;
     color: #555;
     margin-top: 0.25em;
