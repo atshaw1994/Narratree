@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :article_likes, dependent: :destroy
+  has_many :users, through: :article_likes
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }

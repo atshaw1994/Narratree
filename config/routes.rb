@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :comments
     member do
       post "toggle_save"
+      post "like"
+      post "unlike"
     end
   end
 end

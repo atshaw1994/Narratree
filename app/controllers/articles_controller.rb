@@ -30,6 +30,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def like
+    @article = Article.find(params[:id])
+    @article.article_likes.create(user: current_user)
+    redirect_to @article, notice: "Article was successfully liked."
+  end
+
+  def unlike
+    @article = Article.find(params[:id])
+    @like = @article.article_likes.find_by(user: current_user)
+    @like.destroy
+    redirect_to @article, notice: "Article was successfully unliked."
+  end
+
   def show
     @article = Article.find(params[:id])
     @comment = @article.comments.build
