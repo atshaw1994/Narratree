@@ -1,26 +1,26 @@
-<div class="login-form">
-  <div class="login-form-top">
-    <div class="login-form-title">
-      <h2>Sign Up</h2>
-    </div>
+<div class="section-container signup-form">
+  <div class="section-container-header">
+    <h2>Create Account</h2>
   </div>
-  <div class="login-form-body">
-    <%= form_with(model: @user, local: true) do |form| %>
-      <div class="login-form-group">
-        <%= form.label :email %>
-        <%= form.email_field :email, required: true %>
-      </div>
-      <div class="login-form-group">
-        <%= form.label :password %>
-        <%= form.password_field :password, required: true %>
-      </div>
-      <div class="login-form-group">
-        <%= form.label :password_confirmation, "Confirm Password" %>
-        <%= form.password_field :password_confirmation, required: true %>
-      </div>
-      <div class="login-form-group">
-        <%= form.submit "Sign Up", class: "btn-signup" %>
-      </div>
-    <% end %>
+  <div class="section-container-body">
+    <div class="form-body">
+      <%= form_with(model: @user, local: true) do |form| %>
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.email_field :email, required: true %>
+        </div>
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.password_field :password, required: true %>
+        </div>
+        <div class="form-group">
+          <%= form.label :password_confirmation, "Confirm Password" %>
+          <%= form.password_field :password_confirmation, required: true %>
+        </div>
+        <div class="form-group">
+          <%= form.submit "Sign Up", class: "btn-signup" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

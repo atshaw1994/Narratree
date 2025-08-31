@@ -19,14 +19,14 @@
     <div class="body-content"><%= yield %></div>
     <div id="login-modal" class="modal">
       <div class="modal-content">
-          <div class="login-form">
-              <div class="login-form-top">
-                  <div class="login-form-title">
-                      <h2>Log In</h2>
-                  </div>
+          <div class="section-container">
+              <div class="section-container-header">
+                  <h2>Log In</h2>
                   <span class="close-button" onclick="hideModal()">&times;</span>
               </div>
-              <%= render 'shared/login_form' %>
+              <div class="section-container-body">
+                  <%= render 'shared/login_form' %>
+              </div>
           </div>
       </div>
     </div>
