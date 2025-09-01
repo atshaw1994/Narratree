@@ -4,11 +4,11 @@
     <% if current_user %>
       <% if current_user.saved_articles.include?(@article.id.to_s) %>
         <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
-          <span class="material-symbols-rounded">bookmark_remove</span>
+          <span class="material-symbols-rounded filled">bookmark</span>
         <% end %>
       <% else %>
         <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
-          <span class="material-symbols-rounded">bookmark_add</span>
+          <span class="material-symbols-rounded">bookmark</span>
         <% end %>
       <% end %>
       <% if @article.users.include?(current_user) %>
