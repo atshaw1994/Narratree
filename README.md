@@ -12,6 +12,8 @@ Narratree is a simple blogging platform built with Ruby on Rails. Users can crea
 - Add and delete comments on articles
 - Responsive and modern UI
 - Validations to prevent blank submissions
+- Like articles and comments
+- Save articles to your saved articles list
 
 ## Getting Started
 
@@ -25,8 +27,8 @@ Narratree is a simple blogging platform built with Ruby on Rails. Users can crea
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/atshaw1994/odin-blog.git
-   cd odin-blog
+   git clone https://github.com/atshaw1994/Narratree.git
+   cd Narratree
    ```
 2. Install dependencies:
    ```sh
