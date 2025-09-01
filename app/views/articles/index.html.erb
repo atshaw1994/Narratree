@@ -4,12 +4,16 @@
             <h2>Saved Articles</h2>
         </div>
         <div class="section-container-body">
-            <% if current_user && @saved_articles.present? %>
+            <% if current_user %>
+                <% if @saved_articles.present? %>
                 <ul>
                     <% @saved_articles.each do |article| %>
                         <li class="card"><%= link_to article.title, article_path(article) %></li>
                     <% end %>
                 </ul>
+                <% else %>
+                    <p><em>No saved articles.</em></p>
+                <% end %>
             <% else %>
                 <p>Please <%= link_to "log in", "#", onclick: "showModal(event); return false;" %> to see saved articles.</p>
             <% end %>

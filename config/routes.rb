@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: "logout"
 
   get "/about", to: "pages#about"
-  get "/signup", to: "sessions#new"
+  get "/signup", to: "users#new"
 
   resources :articles do
     resources :comments

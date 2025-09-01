@@ -60,7 +60,7 @@
   </div>
   
   <div class="comments-section" id="comments-section">
-    <% if @article.user == current_user %>
+    <% if current_user %>
       <%= render "comments/form", article: @article, comment: @comment %>
     <% end %>
     <%= render @article.comments.select(&:body) %>
