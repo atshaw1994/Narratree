@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_31_233059) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_01_012835) do
   create_table "article_likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "article_id", null: false
@@ -56,6 +56,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_31_233059) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "saved_articles"
+    t.string "first_name"
+    t.string "last_name"
   end
 
   add_foreign_key "article_likes", "articles"
