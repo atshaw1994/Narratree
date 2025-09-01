@@ -13,7 +13,7 @@
       <% end %>
       <% if @article.users.include?(current_user) %>
         <%= button_to unlike_article_path(@article), class: "user-interaction-btn", method: :post do %>
-          <span class="material-symbols-rounded">thumb_down</span>
+          <span class="material-symbols-rounded filled">thumb_up</span>
           <span class="like-count"><%= @article.users.count %></span>
         <% end %>
       <% else %>
