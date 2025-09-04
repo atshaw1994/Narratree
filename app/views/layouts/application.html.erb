@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <%= favicon_link_tag 'favicon.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -30,54 +31,6 @@
           </div>
       </div>
     </div>
-    <script>
-      // These functions are now in the global scope
-      const modal = document.getElementById('login-modal');
-
-      function showModal(event) {
-        event.preventDefault(); 
-        modal.style.display = 'block';
-      }
-
-      function hideModal() {
-        modal.style.display = 'none';
-      }
-
-      // Attach event listeners after the DOM has fully loaded
-      document.addEventListener("DOMContentLoaded", () => {
-          // Listener for the Sign Up link to show the modal
-          const signupLink = document.querySelector('[data-modal-target="login-modal"]');
-          if (signupLink) {
-              signupLink.addEventListener('click', showModal);
-          }
-          
-          // Listener for the close button
-          const closeBtn = document.querySelector('.close-button');
-          if (closeBtn) {
-              closeBtn.addEventListener('click', hideModal);
-          }
-
-          // Listener for clicks outside the modal
-          window.addEventListener('click', function(event) {
-              if (event.target == modal) {
-                  hideModal();
-              }
-          });
-
-          // You can also add validation logic here.
-          const form = document.getElementById('your-form-id'); // Add an ID to your form
-          if (form) {
-            form.addEventListener('submit', (event) => {
-              // Your validation logic goes here.
-              // If validation fails, use event.preventDefault() and display an error message.
-            });
-          }
-
-          // This event listener will handle Turbo page loads
-          document.addEventListener("turbo:load", function() {
-              // Your Turbo logic
-          });
-      });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
