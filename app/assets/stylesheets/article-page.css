@@ -50,11 +50,6 @@
     margin: 16px 64px 0 64px;
 }
 
-.comments-section h2 {
-    align-self: center;
-    justify-self: center;
-}
-
 .carousel-image {
     height: 400px;
     object-fit: contain;

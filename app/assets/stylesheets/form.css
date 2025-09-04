@@ -1,60 +1,80 @@
 .form {
-    background-color: rgba(31, 146, 253, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-top {
+  display: flex;
+  background: linear-gradient(
+    to top left, 
+    rgb(65, 151, 255), 
+    rgb(139, 191, 254)
+  );
+  border-radius: 8px 8px 0 0;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+}
+
+.form-group label{
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.form-group input{
+    font-size: 1.2em;
+    padding: 8px;
+    margin: 8px 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid #ccc;
     border-radius: 8px;
-    margin: 0 auto;
-    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.form-author-section {
-    padding-top: 16px;
+.form-group input:focus{
+    background-color: white;
+    border-color: #007bff;
+    outline: none;
 }
 
-.form-author-label {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin: 16px;
-    margin-left: 32px;
+.btn-login {
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  color: #333;
+  background-color: #f0f0f0;
+  margin-top: 12px;
 }
 
-.form-author-textfield {
-    margin: 8px 16px 0px 16px;
-    width: calc(100% - 48px);
+.btn-login:hover {
+  background-color: rgb(245, 245, 245);
 }
 
-.form-title-section {
-    padding-top: 16px;
+.signup-form {
+  width: 20%;
 }
 
-.form-title-label {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin: 16px;
-    margin-left: 32px;
-}
-
-.form-title-textfield {
-    margin: 8px 16px 8px 16px;
-    width: calc(100% - 48px);
-}
-
-.form-body-label {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin: 16px;
-    margin-left: 32px;
-}
-
-.form-body-section textarea {
-    min-height: 400px;
-    width: 98%;
-    max-width: 96%;
-    margin: 8px 16px;
+.article-body-field {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 250px;
+  resize: none;
 }
 
 .form-submit-section {
-    margin: 0px 24px 16px 0;
     display: flex;
     justify-content: flex-end;
 }
@@ -67,8 +87,10 @@
     cursor: pointer;
     font-size: 1.2em;
     padding: 8px 16px;
+    margin-right: 16px;
 }
 
 .form-submit-button:hover {
     background-color: #007acc;
 }
+

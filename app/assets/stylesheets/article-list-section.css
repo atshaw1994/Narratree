@@ -19,7 +19,8 @@
 
 .new-article-button {
     text-decoration: none;
-    margin-right: 8px;
+    margin-right: 16px;
+    margin-left: 8px;
     display: flex;
     align-items: center;
     justify-content: center;

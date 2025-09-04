@@ -17,6 +17,7 @@
     border-radius: 8px 8px 0 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
 }
 
 .section-container-header h2 {
@@ -26,14 +27,15 @@
 
 .section-container-body {
     display: flex;
-    margin: 0 16px;
     min-height: 64px;
+    margin: 16px;
 }
 
-.section-container ul {
+.section-container-body ul {
     list-style-type: none;
     padding-left: 0;
     flex-grow: 1;
+    margin: 0 16px 16px 16px;
 }
 
 .section-container li + li {
