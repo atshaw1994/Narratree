@@ -1,4 +1,8 @@
 .article-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
@@ -51,3 +55,7 @@
     justify-self: center;
 }
 
+.carousel-image {
+    height: 400px;
+    object-fit: contain;
+}
