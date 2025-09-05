@@ -1,4 +1,14 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [
+    :show,
+    :edit,
+    :update,
+    :destroy,
+    :toggle_save,
+    :like,
+    :unlike
+  ]
+
   def index
     @articles = Article.all
     if current_user
@@ -7,7 +17,6 @@ class ArticlesController < ApplicationController
   end
 
   def toggle_save
-    @article = Article.find(params[:id])
     if current_user
       saved_article = current_user.saved_articles.find_by(article: @article)
 
@@ -25,20 +34,17 @@ class ArticlesController < ApplicationController
   end
 
   def like
-    @article = Article.find(params[:id])
     @article.article_likes.create(user: current_user)
     redirect_to @article, notice: "Article was successfully liked."
   end
 
   def unlike
-    @article = Article.find(params[:id])
     @like = @article.article_likes.find_by(user: current_user)
     @like.destroy
     redirect_to @article, notice: "Article was successfully unliked."
   end
 
   def show
-    @article = Article.find(params[:id])
     @comment = @article.comments.build
   end
 
@@ -57,12 +63,9 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
-
     if @article.update(article_params)
       redirect_to @article
     else
@@ -71,16 +74,17 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
-
     redirect_to root_path, notice: "Article was successfully deleted."
   end
 
   private
 
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
   def article_params
-    # Make sure the user_id is NOT in the list of permitted params
     params.require(:article).permit(:title, :body)
   end
 end
