@@ -9,10 +9,12 @@
                 <ul>
                     <% @saved_articles.each do |article| %>
                         <li class="card">
-                            <%= link_to article.title, article_path(article) %>
-                            <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn" do %>
-                                <span class="material-symbols-rounded">bookmark</span>
-                            <% end %>
+                            <div class="saved-article-card-grid">
+                                <%= link_to article.title, article_path(article) %>
+                                <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn" do %>
+                                    <span class="material-symbols-rounded">bookmark</span>
+                                <% end %>
+                            </div>
                         </li>
                     <% end %>
                 </ul>

@@ -49,3 +49,10 @@
 .unsave-form {
   display: inline-block;
 }
+
+.saved-article-card-grid {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%;
+}
