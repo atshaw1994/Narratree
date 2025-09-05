@@ -1,30 +1,24 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
-    if current_user && current_user.saved_articles.present?
-      saved_article_ids = current_user.saved_articles.map(&:to_i)
-      @saved_articles = Article.where(id: saved_article_ids)
+    if current_user
+      @saved_articles = current_user.saved_articles_through_join_table
     end
   end
 
   def toggle_save
     @article = Article.find(params[:id])
     if current_user
-      if current_user.saved_articles.include?(@article.id.to_s)
-        # Unsave the article
-        current_user.saved_articles.delete(@article.id.to_s)
+      saved_article = current_user.saved_articles.find_by(article: @article)
+
+      if saved_article
+        saved_article.destroy
         notice_message = "Article was successfully unsaved."
       else
-        # Save the article
-        current_user.saved_articles << @article.id.to_s
+        current_user.saved_articles.create(article: @article)
         notice_message = "Article was successfully saved."
       end
-
-      if current_user.save
-        redirect_to @article, notice: notice_message
-      else
-        redirect_to @article, alert: "Failed to update article status."
-      end
+      redirect_to @article, notice: notice_message
     else
       redirect_to @article, alert: "You must be logged in to save or unsave articles."
     end

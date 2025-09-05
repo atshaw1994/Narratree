@@ -2,7 +2,7 @@
 <div class="article-page">
   <div class="article-btn-container">
     <% if current_user %>
-      <% if current_user.saved_articles.include?(@article.id.to_s) %>
+      <% if current_user.saved_articles.exists?(article_id: @article.id) %>
         <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
           <span class="material-symbols-rounded filled">bookmark</span>
         <% end %>

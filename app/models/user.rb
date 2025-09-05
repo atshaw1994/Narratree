@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :articles
-  serialize :saved_articles, coder: JSON
+  has_many :articles, dependent: :destroy
+  has_many :saved_articles, dependent: :destroy
+  has_many :saved_articles_through_join_table, through: :saved_articles, source: :article
 
   before_validation :set_default_saved_articles
 
