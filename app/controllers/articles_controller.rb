@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
         current_user.saved_articles.create(article: @article)
         notice_message = "Article was successfully saved."
       end
-      redirect_to @article, notice: notice_message
+      redirect_back fallback_location: root_path, notice: notice_message
     else
       redirect_to @article, alert: "You must be logged in to save or unsave articles."
     end
