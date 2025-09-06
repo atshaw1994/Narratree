@@ -1,14 +1,12 @@
+# config/routes.rb
+
 Rails.application.routes.draw do
-  resources :users
+  # Devise routes must come first to ensure they are matched correctly.
+  devise_for :users
+
   root "articles#index"
 
-  # Routes for the login session
-  get "/login", to: "sessions#new", as: "login"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy", as: "logout"
-
   get "/about", to: "pages#about"
-  get "/signup", to: "users#new"
 
   resources :articles do
     resources :comments

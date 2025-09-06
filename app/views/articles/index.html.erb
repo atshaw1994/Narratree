@@ -22,7 +22,7 @@
                     <p><em>No saved articles.</em></p>
                 <% end %>
             <% else %>
-                <p>Please <%= link_to "log in", "#", onclick: "showModal(event); return false;" %> to see saved articles.</p>
+                <p><%= link_to "log in", new_user_session_path, onclick: "showModal(event); return false;" %> to see saved articles.</p>
             <% end %>
         </div>
     </div>

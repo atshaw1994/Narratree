@@ -86,3 +86,37 @@
   font-size: 1.4em;
   margin-left: 4px;
 }
+
+.flash-messages {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.flash-messages .notice {
+  background-color: #4CAF50; /* Green */
+  animation: fadeOut 5s forwards;
+}
+
+.flash-messages .alert {
+  background-color: #f44336; /* Red */
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
