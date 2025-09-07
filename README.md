@@ -8,6 +8,12 @@
 
 Narratree is a simple blogging platform built with Ruby on Rails. Users can create articles and leave comments. This project is part of The Odin Project curriculum.
 
+## Branches
+
+-- **main** : This branch contains the **stable, production-ready** version of the application. Commits to _main_ are typically made only after a feature has been thoroughly tested and is ready for release.
+
+-- **beta** : This is our **public testing** branch. It contains the latest features and fixes that are ready for user feedback before being merged into _main_. We encourage users to check out this branch to test upcoming changes and report any issues.
+
 ## Roadmap
 
 View the current roadmap at [Trello](https://trello.com/b/YSJnFamJ/narratree)
