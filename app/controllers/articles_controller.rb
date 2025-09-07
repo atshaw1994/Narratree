@@ -34,10 +34,10 @@ class ArticlesController < ApplicationController
 
       if saved_article
         saved_article.destroy
-        notice_message = "Article was successfully unsaved."
+        notice_message = "Article unsaved."
       else
         current_user.saved_articles.create(article: @article)
-        notice_message = "Article was successfully saved."
+        notice_message = "Article saved."
       end
       redirect_back fallback_location: root_path, notice: notice_message
     else
@@ -47,13 +47,13 @@ class ArticlesController < ApplicationController
 
   def like
     @article.article_likes.create(user: current_user)
-    redirect_to @article, notice: "Article was successfully liked."
+    redirect_to @article, notice: "Article liked."
   end
 
   def unlike
     @like = @article.article_likes.find_by(user: current_user)
     @like.destroy
-    redirect_to @article, notice: "Article was successfully unliked."
+    redirect_to @article, notice: "Article unliked."
   end
 
   def show

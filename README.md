@@ -1,6 +1,8 @@
 # Narratree
 
-![Screenshot](Screenshot.png)
+![index_screenshot](screenshots/Index_Screenshot.png)
+
+![article_screenshot](screenshots/Article_Screenshot.png)
 
 ## Description
 
