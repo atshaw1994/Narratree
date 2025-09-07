@@ -8,6 +8,10 @@
 
 Narratree is a simple blogging platform built with Ruby on Rails. Users can create articles and leave comments. This project is part of The Odin Project curriculum.
 
+## Roadmap
+
+[Trello](https://trello.com/invite/b/68bcd7fba2d1d6453789a8c0/ATTIa98821cb29148050698e06eecf6b777063C3394C/narratree)
+
 ## Features
 
 - Create, edit, and delete articles
