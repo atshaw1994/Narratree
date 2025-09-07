@@ -10,7 +10,7 @@ Narratree is a simple blogging platform built with Ruby on Rails. Users can crea
 
 ## Roadmap
 
-[Trello](https://trello.com/invite/b/68bcd7fba2d1d6453789a8c0/ATTIa98821cb29148050698e06eecf6b777063C3394C/narratree)
+View the current roadmap at [Trello](https://trello.com/b/YSJnFamJ/narratree)
 
 ## Features
 
