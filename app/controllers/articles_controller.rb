@@ -1,4 +1,14 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [
+    :toggle_save,
+    :like,
+    :unlike,
+    :create,
+    :edit,
+    :update,
+    :destroy
+  ]
+
   before_action :set_article, only: [
     :show,
     :edit,
@@ -11,13 +21,15 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-    if current_user
+    if user_signed_in?
       @saved_articles = current_user.saved_articles_through_join_table
     end
+    puts "user_signed_in?: ", user_signed_in?
+    puts "current_user: ", current_user.inspect
   end
 
   def toggle_save
-    if current_user
+    if user_signed_in?
       saved_article = current_user.saved_articles.find_by(article: @article)
 
       if saved_article

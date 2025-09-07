@@ -17,9 +17,9 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="flash-messages" style="opacity: 0;">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="flash-messages">
+      <p><%= notice %></p>
+      <p><%= alert %></p>
     </div>
     <div class="body-content"><%= yield %></div>
     <div id="login-modal" class="modal">

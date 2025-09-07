@@ -89,7 +89,7 @@
 
 .flash-messages {
   position: fixed;
-  top: 20px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -99,16 +99,7 @@
   padding: 10px;
   border-radius: 5px;
   color: white;
-}
-
-.flash-messages .notice {
-  background-color: #4CAF50; /* Green */
-  animation: fadeOut 5s forwards;
-}
-
-.flash-messages .alert {
-  background-color: #f44336; /* Red */
-  animation: fadeOut 5s forwards;
+  animation: fadeOut 3s forwards;
 }
 
 @keyframes fadeOut {
