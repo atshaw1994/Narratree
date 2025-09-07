@@ -16,7 +16,7 @@
 .article-card-title {
     margin: 0;
     font-size: 1.3rem;
-    color: rgba(0, 0, 0, 0.8);
+    color: var(--article-card-title-color);
     align-self: flex-start;
     text-align: left;
     text-decoration: none;
@@ -24,7 +24,7 @@
 
 .article-card-author {
     font-size: 1rem;
-    color: #555;
+    color: var(--article-card-author-color);
     margin-top: 0.25em;
     align-self: flex-start;
     text-align: left;

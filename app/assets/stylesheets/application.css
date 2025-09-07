@@ -1,4 +1,3 @@
-
 /*
  * This is a manifest file that'll be compiled into application.css.
  *
@@ -10,15 +9,28 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+body{
+  background-color: var(--body-background);
+  color: var(--body-color);
+}
+
+body textarea {
+  background-color: var(--textarea-background);
+  border: 1px solid var(--textarea-border);
+  color: var(--body-color);
+  border-radius: 8px;
+}
+
 .body-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-interaction-btn {
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0,0,0,0.1);
+    background: var(--btn-background);
+    border: 1px solid var(--btn-border);
+    box-shadow: 2px 2px 4px var(--btn-shadow);
     border-radius: 100%;
     width: 40px;
     height: 40px;
@@ -27,28 +39,27 @@
     justify-content: center;
     margin: 0 6px;
     cursor: pointer;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     padding: 0;
     text-decoration: none;
     transition: background 0.1s;
 }
 
 .user-interaction-btn .material-symbols-rounded {
+    color: var(--btn-icon-color);
     font-size: 1.4rem;
-    color: #222;
     transition: color 0.1s;
 }
 
 .user-interaction-btn:hover .material-symbols-rounded {
-    color: blue;
+    color: var(--btn-hover-icon-color);
 }
 
 .user-interaction-btn:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--btn-hover-background);
 }
 
 .user-interaction-btn:active {
-  background-color: #d0d0d0;
+  background-color: var(--btn-active-background);
 }
 
 .user-interaction-btn[disabled] {
@@ -66,9 +77,9 @@
 }
 
 .form-input-field {
+  background-color: var(--input-background);
+  border: 1px solid var(--input-border);
   font-size: 1.2em;
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid #ccc;
   border-radius: 8px;
   width: 100%;
   height: 32px;
@@ -77,8 +88,8 @@
 }
 
 .form-input-field:focus {
-  background-color: white;
-  border-color: #007bff;
+  background-color: var(--input-focus-background);
+  border-color: var(--input-focus-border);
   outline: none;
 }
 
@@ -88,6 +99,7 @@
 }
 
 .flash-messages {
+  color: var(--flash-text-color);
   position: fixed;
   top: 12px;
   left: 50%;
@@ -98,7 +110,6 @@
   text-align: center;
   padding: 10px;
   border-radius: 5px;
-  color: white;
   animation: fadeOut 3s forwards;
 }
 

@@ -1,28 +1,28 @@
 .section-container {
-    background-color: rgba(31, 146, 253, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: var(--section-bg-color);
+    border: 1px solid var(--section-border-color);
     border-radius: 8px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 4px var(--section-shadow-color);
 }
 
 .section-container-header {
+    background: linear-gradient(
+        to top left, 
+        var(--section-header-gradient-start), 
+        var(--section-header-gradient-end)
+    );
+    border-bottom: 1px solid var(--section-header-border);
+    box-shadow: 0 2px 4px var(--section-header-shadow);
     display: flex;
     align-items: center;
     padding: 16px;
-    background: linear-gradient(
-        to top left, 
-        rgb(65, 151, 255), 
-        rgb(139, 191, 254)
-    );
     border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 16px;
 }
 
 .section-container-header h2 {
+    color: var(--section-header-text-color);
     margin: 0;
-    color: white;
 }
 
 .section-container-body {

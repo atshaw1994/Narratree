@@ -8,23 +8,29 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: var(--modal-overlay-bg); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--modal-content-bg);
+  color: var(--body-color);
+  border: 1px solid var(--modal-content-border);
   border-radius: 8px;
-  border: 1px solid black;
   margin: 15% auto; /* 15% from the top and centered */
   width: 80%; /* Could be more or less, depending on screen size */
   max-width: 500px;
   position: relative;
 }
 
+.modal-content textarea {
+  background-color: var(--textarea-background);
+  color: var(--textarea-color);
+}
+
 /* The Close Button */
 .close-button {
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--modal-close-color);
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -33,7 +39,7 @@
 
 .close-button:hover,
 .close-button:focus {
-  color: black;
+  color: var(--modal-close-hover-color);
   text-decoration: none;
   cursor: pointer;
 }

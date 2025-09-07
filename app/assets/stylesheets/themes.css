@@ -1,0 +1,238 @@
+/* Light theme */
+:root {
+    /* #region application.css */
+    --body-background: white;
+    --body-color: black;
+    --textarea-background: white;
+    --textarea-border: black;
+
+    --btn-background: rgba(0, 0, 0, 0.03);
+    --btn-border: rgba(0, 0, 0, 0.1);
+    --btn-shadow: rgba(0, 0, 0, 0.5);
+    --btn-icon-color: #222;
+    --btn-hover-icon-color: blue;
+    --btn-hover-background: rgba(255, 255, 255, 0.6);
+    --btn-active-background: #d0d0d0;
+    
+    --input-background: rgba(255, 255, 255, 0.6);
+    --input-border: #ccc;
+    --input-focus-background: white;
+    --input-focus-border: #007bff;
+
+    --flash-text-color: white;
+    /* #endregion */
+
+    /* #region header.css */
+    --header-background-start: #4197ff;
+    --header-background-end: #8bbffe;
+    --header-border-color: black;
+    --header-box-shadow: rgba(0, 0, 0, 0.1);
+    --header-text-color: white;
+    --header-page-title: rgba(255, 255, 255, 1);
+    --header-page-title-text-shadow: rgba(0, 0, 0, 1);
+    --header-btn-color: rgba(255, 255, 255, 0.4);
+    --header-btn-hover-color: rgba(255, 255, 255, 0.8);
+    --favicon-background: aliceblue;
+    --favicon-border: black;
+    /* #endregion */
+
+    /* #region article-card.css */
+    --article-card-title-color: rgba(0, 0, 0, 0.8);
+    --article-card-author-color: #555;
+    /* #endregion */
+
+    /* #region article-list-section.css */
+    --new-article-btn-color: rgba(255, 255, 255, 0.6);
+    --new-article-btn-hover-color: white;
+    /* #endregion */
+
+    /* #region article-page.css */
+    --article-page-author-color: #555;
+    --article-page-delete-btn-color: red;
+    /* #endregion */
+
+    /* #region card.css */
+    --card-gradient-start: rgba(255, 255, 255, 0.2);
+    --card-gradient-end: rgba(0, 0, 0, 0.1);
+    --card-border-color: rgba(0, 0, 0, 0.2);
+    --card-shadow-color: rgba(0, 0, 0, 0.2);
+    --card-hover-background: rgba(0, 0, 0, 0.1);
+    --card-link-color: rgba(0, 0, 0, 0.8);
+    /* #endregion */
+
+    /* #region comment.css */
+    --comment-form-background: rgba(31, 146, 253, 0.2);
+    --comment-form-border: rgba(0, 0, 0, 0.5);
+    --comment-form-shadow: rgba(0, 0, 0, 0.2);
+    --comments-section-background: #f9f9f9;
+    --comments-section-border: rgba(0, 0, 0, 0.2);
+    --comments-section-shadow: rgba(0, 0, 0, 0.5);
+    --comment-card-background: #fff;
+    --comment-card-border: #ddd;
+    --comment-card-shadow: rgba(0, 0, 0, 0.05);
+    --comment-author-color: #555;
+    --comment-body-color: #333;
+    --delete-comment-btn-hover-color: red;
+    --like-count-color: #555;
+    /* #endregion */
+
+    /* #region form.css */
+    --form-top-gradient-start: rgb(65, 151, 255);
+    --form-top-gradient-end: rgb(139, 191, 254);
+    --form-input-background: rgba(255, 255, 255, 0.6);
+    --form-input-border: #ccc;
+    --form-input-focus-background: white;
+    --form-input-focus-border: #007bff;
+    --login-btn-background: #f0f0f0;
+    --login-btn-hover-background: rgb(245, 245, 245);
+    --login-btn-border: #ccc;
+    --login-btn-color: #333;
+    --submit-btn-background: #1f92fd;
+    --submit-btn-hover-background: #007acc;
+    /* #endregion */
+
+    /* #region login-modal.css */
+    --modal-overlay-bg: rgba(0, 0, 0, 0.4);
+    --modal-content-bg: #fefefe;
+    --modal-content-border: black;
+    --modal-close-color: rgba(0, 0, 0, 0.6);
+    --modal-close-hover-color: black;
+    /* #endregion */
+
+    /* #region section-container.css */
+    --section-bg-color: rgba(31, 146, 253, 0.2);
+    --section-border-color: rgba(0, 0, 0, 0.5);
+    --section-shadow-color: rgba(0, 0, 0, 0.2);
+    --section-header-gradient-start: rgb(65, 151, 255);
+    --section-header-gradient-end: rgb(139, 191, 254);
+    --section-header-border: rgba(0, 0, 0, 0.5);
+    --section-header-shadow: rgba(0, 0, 0, 0.2);
+    --section-header-text-color: white;
+    /* #endregion */
+
+    /* #region signup-form.css */
+    --signup-submit-btn-border: #c6c6c6;
+    --signup-submit-btn-color: #333;
+    --signup-submit-btn-background: #ebf5ff;
+    /* #endregion */
+
+}
+
+/* Overrides for the dark theme */
+body.dark-mode {
+    /* #region application.css */
+    --body-background: #212b36;
+    --body-color: rgba(255,255,255,0.8);
+    --textarea-background: rgba(255, 255, 255, 0.4);
+    --textarea-border: rgba(255, 255, 255, 0.4);
+
+    --btn-background: rgba(255, 255, 255, 0.03);
+    --btn-border: rgba(255, 255, 255, 0.1);
+    --btn-shadow: rgba(2, 0, 0, 0.2);
+    --btn-icon-color: #eee;
+    --btn-hover-icon-color: #90caf9;
+    --btn-hover-background: rgba(255, 255, 255, 0.1);
+    --btn-active-background: #555555;
+    
+    --input-background: rgba(0, 0, 0, 0.2);
+    --input-border: #555;
+    --input-focus-background: #1e1e1e;
+    --input-focus-border: #90caf9;
+
+    --flash-text-color: #111;
+    /* #endregion */
+
+    /* #region header.css */
+    --header-background-start: #1a2a47;
+    --header-background-end: #315277;
+    --header-border-color: #555555;
+    --header-box-shadow: rgba(255, 255, 255, 0.1);
+    --header-text-color: #f0f0f0;
+    --header-page-title: #ffffff;
+    --header-page-title-text-shadow: rgba(255, 255, 255, 0.5);
+    --header-btn-color: rgba(255, 255, 255, 0.3);
+    --header-btn-hover-color: #ffffff;
+    --favicon-background: #333333;
+    --favicon-border: #888888;
+    /* #endregion */
+
+    /* #region article-card.css */
+    --article-card-title-color: rgba(255, 255, 255, 0.9);
+    --article-card-author-color: #aaaaaa;
+    /* #endregion */
+
+    /* #region article-list-section.css */
+    --new-article-btn-color: rgba(255, 255, 255, 0.6);
+    --new-article-btn-hover-color: white;
+    /* #endregion */
+
+    /* #region article-page.css */
+    --article-page-author-color: #aaaaaa;
+    --article-page-delete-btn-color: #dc3545; /* A slightly darker red for contrast */
+    /* #endregion */
+
+    /* #region card.css */
+    --card-gradient-end: rgba(0, 0, 0, 0.2);
+    --card-gradient-start: rgba(255, 255, 255, 0.1);
+    --card-border-color: rgba(255, 255, 255, 0.2);
+    --card-shadow-color: rgba(255, 255, 255, 0.1);
+    --card-hover-background: rgba(255, 255, 255, 0.1);
+    --card-link-color: rgba(255, 255, 255, 0.8);
+    /* #endregion */
+
+    /* #region comment.css */
+    --comment-form-background: rgba(31, 146, 253, 0.2);
+    --comment-form-border: rgba(255, 255, 255, 0.5);
+    --comment-form-shadow: rgba(255, 255, 255, 0.2);
+    --comments-section-background: #1e1e1e;
+    --comments-section-border: rgba(255, 255, 255, 0.2);
+    --comments-section-shadow: rgba(255, 255, 255, 0.1);
+    --comment-card-background: #222222;
+    --comment-card-border: #444;
+    --comment-card-shadow: rgba(255, 255, 255, 0.05);
+    --comment-author-color: #aaaaaa;
+    --comment-body-color: #dddddd;
+    --delete-comment-btn-hover-color: #dc3545;
+    --like-count-color: #aaaaaa;
+    /* #endregion */
+
+    /* #region form.css */
+    --form-top-gradient-start: #1a2a47;
+    --form-top-gradient-end: #315277;
+    --form-input-background: rgba(0, 0, 0, 0.2);
+    --form-input-border: #555;
+    --form-input-focus-background: #1e1e1e;
+    --form-input-focus-border: #90caf9;
+    --login-btn-background: #333;
+    --login-btn-hover-background: #222;
+    --login-btn-border: #555;
+    --login-btn-color: #f0f0f0;
+    --submit-btn-background: #1747a0;
+    --submit-btn-hover-background: #007acc;
+    /* #endregion */
+
+    /* #region login-modal.css */
+    --modal-overlay-bg: rgba(0, 0, 0, 0.6);
+    --modal-content-bg: var(--body-background);
+    --modal-content-border: #555;
+    --modal-close-color: rgba(255, 255, 255, 0.6);
+    --modal-close-hover-color: white;
+    /* #endregion */
+
+    /* #region section-container.css */
+    --section-bg-color: rgba(0, 0, 0, 0.2);
+    --section-border-color: rgba(255, 255, 255, 0.2);
+    --section-shadow-color: rgba(255, 255, 255, 0.1);
+    --section-header-gradient-start: #1a2a47;
+    --section-header-gradient-end: #315277;
+    --section-header-border: rgba(255, 255, 255, 0.2);
+    --section-header-shadow: rgba(255, 255, 255, 0.1);
+    --section-header-text-color: #f0f0f0;
+    /* #endregion */
+
+    /* #region signup-form.css */
+    --signup-submit-btn-border: #555;
+    --signup-submit-btn-color: #f0f0f0;
+    --signup-submit-btn-background: #1a2a47;
+    /* #endregion */
+}

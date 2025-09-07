@@ -18,17 +18,17 @@
 }
 
 .new-article-button {
+    color: var(--new-article-btn-color);
     text-decoration: none;
     margin-right: 16px;
     margin-left: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: color 0.15s;
 }
 
 .new-article-button:hover {
-    color: white;
+    color: var(--new-article-btn-hover-color);
 }

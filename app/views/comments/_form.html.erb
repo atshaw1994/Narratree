@@ -1,10 +1,33 @@
 <div class="comment-form">
   <%= form_with model: [ article, comment ] do |form| %>
     <div class="comment-body-section">
-      <%= form.text_area :body, class: "comment-body-textarea" %>
+      <%= form.text_area :body, maxlength:"250", id: "comment-body-field" %>
     </div>
     <div class="comment-submit-section">
+      <p style="justify-self: flex-start; margin: -8px 0 -16px 32px;">
+        <span id="charCount">250 / 250</span>
+        </p>
       <%= form.submit "Post", class: "form-submit-button" %>
     </div>
   <% end %>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Get the textarea and the span element
+    const textArea = document.getElementById('comment-body-field');
+    const charCount = document.getElementById('charCount');
+    
+    // Set the max length from the HTML attribute
+    const maxLength = textArea.getAttribute('maxlength');
+
+    // Update the count on initial page load
+    const currentLength = textArea.value.length;
+    charCount.textContent = `${maxLength - currentLength} / ${maxLength}`;
+    
+    // Update the count on every keypress
+    textArea.addEventListener('input', () => {
+      const currentLength = textArea.value.length;
+      charCount.textContent = `${maxLength - currentLength} / ${maxLength}`;
+    });
+  });
+</script>

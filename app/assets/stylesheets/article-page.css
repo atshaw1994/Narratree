@@ -20,7 +20,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    color: #555;
+    color: var(--article-page-author-color);
     margin-top: 4px;
 }
 
@@ -39,7 +39,7 @@
 
 /* Override the hover effect for the delete button */
 .article-delete-btn:hover .material-symbols-rounded {
-    color: red;
+    color: var(--article-page-delete-btn-color);
 }
 
 .article-body {

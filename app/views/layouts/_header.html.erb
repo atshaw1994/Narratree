@@ -10,6 +10,9 @@
     <%= link_to about_path, class: "header-btn" do %>
         <span class="material-symbols-rounded">info</span>
     <% end %>
+    <button id="theme-toggle" aria-label="Toggle theme mode" class="header-btn">
+      <span class="material-symbols-rounded">brightness_7</span>
+    </button>
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "header-btn" do %>
         <span class="material-symbols-rounded">logout</span>

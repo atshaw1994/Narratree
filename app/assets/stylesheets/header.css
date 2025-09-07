@@ -1,16 +1,14 @@
-
 .header {
   display: grid;
   grid-template-columns: auto 4px 1fr auto;
   background: linear-gradient(
         to top left, 
-        #4197ff, 
-        #8bbffe
+        var(--header-background-start), 
+        var(--header-background-end)
     );
-  border-radius: 16px 16px 0 0;
-  border: 1px solid black;
-  box-shadow: 1 4px 6px rgba(0, 0, 0, 0.1);
-  color: white;
+  border: 1px solid var(--header-border-color);
+  box-shadow: 1 4px 6px var(--header-box-shadow);
+  color: var(--header-text-color);
   margin-bottom: 32px;
 }
 
@@ -34,8 +32,8 @@
 
 .page-title {
   grid-column: 1 / 2;
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 0 0 4px rgba(0, 0, 0, 1);
+  color: var(--header-page-title);
+  text-shadow: 0 0 4px var(--header-page-title-text-shadow);
   font-family: sans-serif;
   margin: 8px 0 8px 8px;
   font-size: 2.5rem;
@@ -59,11 +57,11 @@
   height: 40px;
   background-color: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--header-btn-color);
   text-decoration: none;
   margin-left: 8px;
   margin-right: 0;
-  transition: background 0.15s, border 0.15s;
+  transition: color 0.15s;
   box-sizing: border-box;
   padding: 0;
   font-size: 1.2rem;
@@ -74,13 +72,13 @@
 }
 
 .header-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--header-btn-hover-color);
   text-decoration: none;
 }
 
 .favicon {
   width: 16px;
   height: 16px;
-  background-color: aliceblue;
-  border: 1px solid black;
+  background-color: var(--favicon-background);
+  border: 1px solid var(--favicon-border);
 }
