@@ -96,3 +96,18 @@
     text-align: right;
     margin: 0 16px 16px 0;
 }
+
+.comment-card.reply {
+  margin-left: 30px;
+  border-left: 2px solid #ccc; /* Adds a visual line for the thread */
+  padding-left: 10px; /* Adds space between the line and the content */
+}
+
+/* Deeper nesting for multiple reply levels */
+.comment-card.reply .comment-card.reply {
+  margin-left: 30px; /* Indents replies to replies */
+}
+
+.replies.hidden {
+  display: none;
+}

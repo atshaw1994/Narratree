@@ -1,0 +1,14 @@
+<div id="reply-form-<%= comment.id %>" class="comment-form">
+  <%= form_with(model: [article, Comment.new], class: "reply-form", data: { parent_id: comment.id }) do |form| %>
+    <%= form.hidden_field :parent_id, value: comment.id %>
+    <div class="comment-body-section">
+      <%= form.text_area :body, class: "reply-textarea" %>
+    </div>
+    <div class="comment-submit-section">
+      <p style="justify-self: flex-start; margin: -8px 0 -16px 32px;">
+        <span id="charCount">250 / 250</span>
+      </p>
+      <%= form.submit "Post", class: "form-submit-button" %>
+    </div>
+  <% end %>
+</div>

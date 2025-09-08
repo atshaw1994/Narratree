@@ -1,0 +1,5 @@
+<%= turbo_stream.append "replies-#{@comment.parent_id}" do %>
+  <%= render @comment %>
+<% end %>
+
+<%= turbo_stream.remove "reply-form-#{@comment.parent_id}" %>

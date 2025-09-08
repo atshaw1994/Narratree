@@ -1,18 +1,15 @@
-<div class="comment-card">
+<div class="comment-card <%= 'reply' if comment.parent_id.present? %>" data-controller="reply" data-reply-id-value="<%= comment.id %>" data-reply-article-id-value="<%= comment.article.id %>">
   <div class="comment-card-data">
     <p><em><%= comment.user&.username || "unknown user" %></em>: <%= comment.body %></p>
   </div>
   <div class="comment-card-btns">
     <% if current_user %>
-    <!-- Like button does not have functionality yet -->
       <%= button_to "#", class: "user-interaction-btn" do %>
-          <span class="like-count"></span> <!-- Like count -->
-          <span class="material-symbols-rounded like-btn-icon">thumb_up</span>
+        <span class="like-count"></span> <span class="material-symbols-rounded like-btn-icon">thumb_up</span>
       <% end %>
-      <!-- Reply button does not have functionality yet -->
-      <%= button_to "#", class: "user-interaction-btn" do %>
-          <span class="material-symbols-rounded like-btn-icon">reply</span>
-      <% end %>
+      <button class="user-interaction-btn" data-action="click->reply#toggleForm">
+        <span class="material-symbols-rounded like-btn-icon">reply</span>
+      </button>
       <% if comment.user == current_user%>
         <%= button_to [comment.article, comment], method: :delete, 
         data: { confirm: "Are you sure?" }, class: "user-interaction-btn delete-comment-btn" do %>
@@ -20,5 +17,16 @@
         <% end %>
       <% end %>
     <% end %>
+  </div>
+  <div data-reply-target="formContainer"></div>
+
+  <% if comment.replies.any? %>
+    <a href="#" class="view-replies-link" data-action="click->reply#toggleReplies" data-reply-target="repliesLink">
+      View Replies
+    </a>
+  <% end %>
+
+  <div class="replies hidden" id="replies-<%= comment.id %>" data-reply-target="repliesContainer">
+    <%= render comment.replies.order(created_at: :asc) %>
   </div>
 </div>

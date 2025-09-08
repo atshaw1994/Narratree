@@ -87,6 +87,6 @@
     <% if current_user %>
       <%= render "comments/form", article: @article, comment: @comment %>
     <% end %>
-    <%= render @article.comments.select(&:body) %>
+    <%= render @article.comments.where(parent_id: nil).order(created_at: :desc) %>
   </div>
 </div>

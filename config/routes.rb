@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
 
   resources :articles do
-    resources :comments
+    resources :comments do
+      member do
+        get "reply_form"
+      end
+    end
     member do
       post "toggle_save"
       post "like"
