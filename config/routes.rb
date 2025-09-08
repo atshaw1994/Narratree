@@ -8,8 +8,12 @@ Rails.application.routes.draw do
 
   get "/about", to: "pages#about"
 
+  concern :likeable do
+    resources :likes, only: [ :create, :destroy ]
+  end
+
   resources :articles do
-    resources :comments do
+    resources :comments, concerns: :likeable do
       member do
         get "reply_form"
       end

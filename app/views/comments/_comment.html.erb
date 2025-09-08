@@ -4,8 +4,20 @@
   </div>
   <div class="comment-card-btns">
     <% if current_user %>
-      <%= button_to "#", class: "user-interaction-btn" do %>
-        <span class="like-count"></span> <span class="material-symbols-rounded like-btn-icon">thumb_up</span>
+      <% if current_user.likes.exists?(likeable: comment) %>
+        <%= button_to article_comment_like_path(comment.article, comment, current_user.likes.find_by(likeable: comment)), method: :delete, class: "user-interaction-btn" do %>
+          <span class="material-symbols-rounded filled">thumb_up</span>
+          <% if comment.likes.count > 0 %>
+            <span class="like-count"><%= comment.likes.count %></span>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= button_to article_comment_likes_path(comment.article, comment), method: :post, class: "user-interaction-btn" do %>
+          <span class="material-symbols-rounded">thumb_up</span>
+          <% if comment.likes.count > 0 %>
+            <span class="like-count"><%= comment.likes.count %></span>
+          <% end %>
+        <% end %>
       <% end %>
       <button class="user-interaction-btn" data-action="click->reply#toggleForm">
         <span class="material-symbols-rounded like-btn-icon">reply</span>
