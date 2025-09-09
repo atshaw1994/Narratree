@@ -51,7 +51,7 @@
       <%= @article.title %>
     </h1>
     <p class="article-page-author">
-      <em>by <%= @article.user&.username %> on <%= @article.created_at.strftime("%B %d, %Y") %></em>
+      <em>by <%= link_to @article.user.username, @article.user %> on <%= @article.created_at.strftime("%B %d, %Y") %></em>
     </p>
   </div>
   
