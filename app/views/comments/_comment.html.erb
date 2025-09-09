@@ -1,6 +1,14 @@
 <div class="comment-card <%= 'reply' if comment.parent_id.present? %>" data-controller="reply" data-reply-id-value="<%= comment.id %>" data-reply-article-id-value="<%= comment.article.id %>">
   <div class="comment-card-data">
-    <p><em><%= comment.user&.username || "unknown user" %></em>: <%= comment.body %></p>
+    <div class="comment-header-info">
+      <% if comment.user&.profile_picture.attached? %>
+        <%= image_tag comment.user&.profile_picture, class: "profile-pic-small" %>
+      <% else %>
+        <span class="material-symbols-rounded comment-user-icon">account_circle</span>
+      <% end %>
+      <p class="comment-username"><em><%= comment.user&.username || "unknown user" %></em>:</p>
+    </div>
+    <p class="comment-body"><%= comment.body %></p>
   </div>
   <div class="comment-card-btns">
     <% if current_user %>

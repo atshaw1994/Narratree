@@ -16,7 +16,11 @@
     <% if user_signed_in? %>
       <div class="dropdown-menu-container">
         <button class="header-btn dropdown-trigger">
-          <span class="material-symbols-rounded">account_circle</span>
+          <% if current_user.profile_picture.attached? %>
+            <%= image_tag current_user.profile_picture, class: "profile-pic-small" %>
+          <% else %>
+            <span class="material-symbols-rounded">account_circle</span>
+          <% end %>
           <span><%= current_user.username %></span>
         </button>
         <div class="dropdown-menu">

@@ -1,6 +1,16 @@
 <div style="display: grid; grid-template: auto 1fr / auto 1fr; width: 100%; margin: 0 16px;">
     <div class="section-container" style="grid-row: 1/2; grid-column: 1/2; margin-right: 16px;">
         <div class="section-container-header">
+            <%= form_with model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true do |form| %>
+                <%= form.file_field :profile_picture, class: "hidden-file-input" %>
+                <div id="profile-pic-container">
+                    <% if @user.profile_picture.attached? %>
+                        <%= image_tag @user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-small", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture" %>
+                    <% else %>
+                        <span class="material-symbols-rounded" id="profile-pic-uploader">account_circle</span>
+                    <% end %>
+                </div>
+            <% end %>
             <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
         </div>
         <div class="section-container-body">
@@ -48,3 +58,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const profilePicUploader = document.getElementById('profile-pic-uploader');
+    const hiddenFileInput = document.querySelector('.hidden-file-input');
+    
+    if (profilePicUploader && hiddenFileInput) {
+        // When the user clicks the visible image/icon, click the hidden input
+        profilePicUploader.addEventListener('click', () => {
+        hiddenFileInput.click();
+        });
+
+        // When the user selects a file, automatically submit the form
+        hiddenFileInput.addEventListener('change', () => {
+        document.getElementById('profile-pic-form').submit();
+        });
+    }
+    });
+</script>

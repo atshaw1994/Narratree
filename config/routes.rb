@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   # Devise routes must come first to ensure they are matched correctly.
   devise_for :users
-  resources :users, only: [ :show ]
+  resources :users, only: [ :show, :update ]
 
   root "articles#index"
 

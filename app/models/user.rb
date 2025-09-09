@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :saved_articles, dependent: :destroy
   has_many :saved_articles_through_join_table, through: :saved_articles, source: :article
   has_many :likes, dependent: :destroy
+  has_one_attached :profile_picture
 
   before_validation :set_default_saved_articles
 
