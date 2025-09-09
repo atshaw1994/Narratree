@@ -1,0 +1,50 @@
+<div style="display: grid; grid-template: auto 1fr / auto 1fr; width: 100%; margin: 0 16px;">
+    <div class="section-container" style="grid-row: 1/2; grid-column: 1/2; margin-right: 16px;">
+        <div class="section-container-header">
+            <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+        </div>
+        <div class="section-container-body">
+            <div style="display: flex; flex-direction: column;">
+                <h4>Username:</h4>
+                <p style="margin-left: 16px;"><%= @user.username %></p>
+                <h4>Email:</h4>
+                <p style="margin-left: 16px;"><%= @user.email %></p>
+                <p>Member since <%= @user.created_at.strftime("%B %d, %Y") %></p>
+                <button class="form-submit-button">Change Password</button>
+            </div>
+        </div>
+    </div>
+    <div class="section-container" style="grid-rowspan: 2; grid-column: 2/3; ">
+        <div class="section-container-header">
+            <h2>Articles</h2>
+        </div>
+        <div class="section-container-body">
+            <% if @articles.count > 0%>
+                <ul>
+                    <% @articles.each do |article| %>
+                        <li>
+                            <div class="card article-card-grid">
+                                <%= link_to article_path(article), class: "article-card-link" do %>
+                                    <div class="article-card-main">
+                                        <h3 class="article-card-title"><%= article.title %></h3>
+                                        <div class="article-card-author">
+                                            by <em><%= article.user.username %></em>
+                                        </div>
+                                    </div>
+                                <% end %>
+                                <% if current_user && current_user == article.user %>
+                                    <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
+                                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                        <span class="material-symbols-rounded">delete</span>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            <% else %>
+                <p>No articles written by this user.</p>
+            <% end %>
+        </div>
+    </div>
+</div>

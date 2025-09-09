@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    # Finds the user based on the ID in the URL
+    @user = User.find(params[:id])
+    @articles = @user.articles
+  end
+
   private
 
   def user_params

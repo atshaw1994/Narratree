@@ -24,8 +24,6 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       @saved_articles = current_user.saved_articles_through_join_table
     end
-    puts "user_signed_in?: ", user_signed_in?
-    puts "current_user: ", current_user.inspect
   end
 
   def toggle_save
