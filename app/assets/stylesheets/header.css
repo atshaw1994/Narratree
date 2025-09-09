@@ -110,13 +110,10 @@
   text-decoration: none;
   display: block;
   text-align: left;
+  transition: background-color 0.2s ease; 
 }
 
 .dropdown-item:hover {
-  background: linear-gradient(
-    to top left, 
-    var(--section-header-gradient-start), 
-    var(--section-header-gradient-end)
-  );
-  color: var(--body-color)
+  background-color: var(--btn-hover-background);
+  color: var(--body-color);
 }
