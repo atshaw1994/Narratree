@@ -20,9 +20,19 @@ class ArticlesController < ApplicationController
   ]
 
   def index
-    @articles = Article.all
+    if params[:query].present?
+      @articles = Article.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
+    else
+      @articles = Article.all
+    end
+
     if user_signed_in?
       @saved_articles = current_user.saved_articles_through_join_table
+    end
+
+    respond_to do |format|
+      format.html # Renders the full HTML page
+      format.turbo_stream # Renders the turbo_stream.erb template
     end
   end
 
