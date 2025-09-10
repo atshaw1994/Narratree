@@ -133,6 +133,10 @@ body textarea {
   outline: none;
 }
 
+.default-user-icon {
+  font-size: 48px;
+}
+
 .flash-messages {
   color: var(--flash-text-color);
   position: fixed;

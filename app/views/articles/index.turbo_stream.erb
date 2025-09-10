@@ -1,4 +1,5 @@
 <%= turbo_stream.update "articles" do %>
+  <% if @articles.present? %>
     <ul>
       <% @articles.each do |article| %>
         <li>
@@ -21,4 +22,7 @@
         </li>
       <% end %>
     </ul>
+  <% else %>
+    <p><em>No articles found.</em></p>
+  <% end %>
 <% end %>

@@ -4,7 +4,7 @@
       <% if comment.user&.profile_picture.attached? %>
         <%= image_tag comment.user&.profile_picture, class: "profile-pic-small" %>
       <% else %>
-        <span class="material-symbols-rounded comment-user-icon">account_circle</span>
+        <span class="material-symbols-rounded default-user-icon">account_circle</span>
       <% end %>
       <p class="comment-username"><em><%= comment.user&.username || "unknown user" %></em>:</p>
     </div>
