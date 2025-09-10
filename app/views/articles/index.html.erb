@@ -34,41 +34,40 @@
                 <% end %>
             <% end %>
             <h2>Global Articles</h2>
-            <div class="search-bar-container" data-controller="article-search">
+            <div class="search-bar-container">
                 <%= text_field_tag :query, params[:query],
                     placeholder: "Search...",
                     class: "search-input",
-                    data: { action: "input->article-search#filter" }
+                    data: { action: "input->article-search#filter", article_search_target: "input" }
                 %>
             </div>
         </div>
-        <div class="section-container-body">
-            <% if @articles.any? %>
-                <ul>
+        <div class="section-container-body" data-article-search-target="articlesContainer">
+            <ul>
                 <% @articles.each do |article| %>
                     <li class="article-card-list-item" data-title="<%= article.title.downcase %>">
-                    <div class="card article-card-grid">
-                        <%= link_to article_path(article), class: "article-card-link" do %>
-                            <div class="article-card-main">
-                                <h3 class="article-card-title"><%= article.title %></h3>
-                                <div class="article-card-author">
-                                    by <em><%= article.user.username %></em>
+                        <div class="card article-card-grid">
+                            <%= link_to article_path(article), class: "article-card-link" do %>
+                                <div class="article-card-main">
+                                    <h3 class="article-card-title"><%= article.title %></h3>
+                                    <div class="article-card-author">
+                                        by <em><%= article.user.username %></em>
+                                    </div>
                                 </div>
-                            </div>
-                        <% end %>
-                        <% if current_user == article.user %>
-                        <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
-                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                            <span class="material-symbols-rounded">delete</span>
-                        <% end %>
-                        <% end %>
-                    </div>
+                            <% end %>
+                            <% if current_user == article.user %>
+                            <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                <span class="material-symbols-rounded">delete</span>
+                            <% end %>
+                            <% end %>
+                        </div>
                     </li>
                 <% end %>
-                </ul>
-            <% else %>
-                <p><em>No articles found.</em></p>
-            <% end %>
+            </ul>
+        </div>
+        <div class="no-articles-message" data-article-search-target="noArticles" style="display: none;">
+            <p><em>No articles found.</em></p>
         </div>
     </div>
 </div>
