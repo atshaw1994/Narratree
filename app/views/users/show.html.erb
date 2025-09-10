@@ -1,5 +1,5 @@
-<div style="display: grid; grid-template: auto 1fr / auto 1fr; width: 100%; margin: 0 16px;">
-    <div class="section-container" style="grid-row: 1/2; grid-column: 1/2; margin-right: 16px;">
+<div class="user-profile">
+    <div class="section-container profile-section-container">
         <div class="section-container-header">
             <%= form_with model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true do |form| %>
                 <%= form.file_field :profile_picture, class: "hidden-file-input" %>
@@ -7,24 +7,24 @@
                     <% if @user.profile_picture.attached? %>
                         <%= image_tag @user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-small", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture" %>
                     <% else %>
-                        <span class="material-symbols-rounded" id="profile-pic-uploader">account_circle</span>
+                        <span class="material-symbols-rounded default-user-icon" id="profile-pic-uploader">account_circle</span>
                     <% end %>
                 </div>
             <% end %>
             <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
         </div>
         <div class="section-container-body">
-            <div style="display: flex; flex-direction: column;">
+            <div class="profile-section-container-body">
                 <h4>Username:</h4>
-                <p style="margin-left: 16px;"><%= @user.username %></p>
+                <p class="profile-info-label"><%= @user.username %></p>
                 <h4>Email:</h4>
-                <p style="margin-left: 16px;"><%= @user.email %></p>
+                <p class="profile-info-label"><%= @user.email %></p>
                 <p>Member since <%= @user.created_at.strftime("%B %d, %Y") %></p>
                 <button class="form-submit-button">Change Password</button>
             </div>
         </div>
     </div>
-    <div class="section-container" style="grid-rowspan: 2; grid-column: 2/3; ">
+    <div class="section-container profile-article-list-container">
         <div class="section-container-header">
             <h2>Articles</h2>
         </div>
@@ -53,7 +53,7 @@
                     <% end %>
                 </ul>
             <% else %>
-                <p>No articles written by this user.</p>
+                <p><em>This user hasn't written any articles.</em></p>
             <% end %>
         </div>
     </div>
