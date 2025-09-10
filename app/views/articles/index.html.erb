@@ -1,7 +1,7 @@
 <div class="homepage">
-    <div id="saved-articles" class="section-container">
+    <div id="pinned-articles" class="section-container">
         <div class="section-container-header">
-            <h2>Saved Articles</h2>
+            <h2>Pinned Articles</h2>
         </div>
         <div class="section-container-body">
             <% if current_user %>
@@ -11,8 +11,8 @@
                         <li class="card">
                             <div class="saved-article-card-grid">
                                 <%= link_to article.title, article_path(article) %>
-                                <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn" do %>
-                                    <span class="material-symbols-rounded">bookmark</span>
+                                <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn", title: "Unpin Article" do %>
+                                    <span class="material-symbols-rounded filled">keep_off</span>
                                 <% end %>
                             </div>
                         </li>
@@ -22,7 +22,7 @@
                     <p><em>No saved articles.</em></p>
                 <% end %>
             <% else %>
-                <p><%= link_to "log in", new_user_session_path, onclick: "showModal(event); return false;" %> to see saved articles.</p>
+                <p><%= link_to "log in", new_user_session_path, onclick: "showModal(event); return false;" %> to see pinned articles.</p>
             <% end %>
         </div>
     </div>

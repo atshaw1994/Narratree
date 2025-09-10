@@ -42,14 +42,14 @@ class ArticlesController < ApplicationController
 
       if saved_article
         saved_article.destroy
-        notice_message = "Article unsaved."
+        notice_message = "Article unpinned."
       else
         current_user.saved_articles.create(article: @article)
-        notice_message = "Article saved."
+        notice_message = "Article pinned."
       end
       redirect_back fallback_location: root_path, notice: notice_message
     else
-      redirect_to @article, alert: "You must be logged in to save or unsave articles."
+      redirect_to @article, alert: "You must be logged in to pin or unpin articles."
     end
   end
 

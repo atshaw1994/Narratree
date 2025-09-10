@@ -3,12 +3,12 @@
   <div class="article-btn-container">
     <% if current_user %>
       <% if current_user.saved_articles.exists?(article_id: @article.id) %>
-        <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
-          <span class="material-symbols-rounded filled">bookmark</span>
+        <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn", title: "Remove from Pinned Articles" do %>
+          <span class="material-symbols-rounded filled">keep</span>
         <% end %>
       <% else %>
-        <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn" do %>
-          <span class="material-symbols-rounded">bookmark</span>
+        <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn", title: "Add to Pinned Articles" do %>
+          <span class="material-symbols-rounded">keep</span>
         <% end %>
       <% end %>
       <% if @article.users.include?(current_user) %>
