@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: user1@example.com
+  username: john_doe
+  encrypted_password: $2a$12$rGWCx9uddQ2SoR99UDE/5.nfdVm/RBft8YhRuYdKtkM8sg1uRZJPC
+  first_name: "John"
+  last_name: "Doe"
+
+two:
+  email: user2@example.com
+  username: jane_smith
+  encrypted_password: $2a$12$rGWCx9uddQ2SoR99UDE/5.nfdVm/RBft8YhRuYdKtkM8sg1uRZJPC
+  first_name: "Jane"
+  last_name: "Smith"

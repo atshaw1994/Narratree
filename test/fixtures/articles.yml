@@ -1,9 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+two:
 one:
-  title: MyString
-  body: MyText
+  title: "Test Article"
+  body: "This is a valid article body."
+  user: one
 
 two:
-  title: MyString
-  body: MyText
+  title: "Another Article"
+  body: "Another valid article body."
+  user: two
