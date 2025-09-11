@@ -63,10 +63,6 @@
   background-color: var(--login-btn-hover-background);
 }
 
-.signup-form {
-  width: 20%;
-}
-
 .article-body-field {
   background-color: var(--form-input-background);
   border: 1px solid var(--form-input-border);

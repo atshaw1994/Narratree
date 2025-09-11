@@ -10,7 +10,7 @@
     <%= link_to about_path, class: "header-btn" do %>
         <span class="material-symbols-rounded">info</span>
     <% end %>
-    <button id="theme-toggle" aria-label="Toggle theme mode" class="header-btn" data-controller="theme-controller" data-action="click->theme-controller#toggle">
+    <button title="Toggle theme mode" class="header-btn" data-controller="theme" data-action="click->theme#toggle">
       <span class="material-symbols-rounded">brightness_7</span>
     </button>
     <% if user_signed_in? %>

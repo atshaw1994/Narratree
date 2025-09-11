@@ -1,20 +1,19 @@
 .homepage {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     padding: 0 16px;
+    gap: 16px;
 }
 
 #pinned-articles {
-    margin-right: auto;
-    max-width: 15vw;
-    min-width: 15vw;
+    width: 98%;
 }
 
 #article-list {
-    width: 100%;
-    margin-left: 32px;
+    width: 98%;
 }
 
 .new-article-button {

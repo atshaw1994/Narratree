@@ -44,6 +44,9 @@
         </div>
         <div class="section-container-body" data-article-search-target="articlesContainer">
             <ul>
+                <li data-article-search-target="noArticles" style="display: none;">
+                    <p><em>No articles found.</em></p>
+                </li>
                 <% @articles.each do |article| %>
                     <li class="article-card-list-item" data-title="<%= article.title.downcase %>">
                         <div class="card article-card-grid">
@@ -65,9 +68,6 @@
                     </li>
                 <% end %>
             </ul>
-        </div>
-        <div class="no-articles-message" data-article-search-target="noArticles" style="display: none;">
-            <p><em>No articles found.</em></p>
         </div>
     </div>
 </div>
