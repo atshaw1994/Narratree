@@ -49,8 +49,7 @@
         </div>
         <div class="signup-form-submit-group">
           <%= link_to 'Change Password', edit_user_registration_path, class: 'form-submit-button signup-form-submit-button', style: 'margin-top: 8px;' %>
-        </div>
-        <div class="signup-form-submit-group">
+          <%= button_to "Delete Account", registration_path(:user), method: :delete, data: { confirm: "Are you sure you want to delete your account? This action cannot be undone.", turbo_confirm: "Are you sure you want to delete your account? This action cannot be undone." }, class: "form-submit-button signup-form-submit-button delete-account-button" %>
           <%= form.submit 'Save Changes', class: 'form-submit-button signup-form-submit-button' %>
         </div>
       <% end %>
