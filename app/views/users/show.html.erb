@@ -1,27 +1,27 @@
 <div class="user-profile">
-    <div class="section-container profile-section-container">
-        <div class="section-container-header">
+    <div class="section-container">
+        <div class="section-container-header" style="justify-content: center;">
+            <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
+        </div>
+        <div class="section-container-body profile-section-container-body">
             <%= form_with model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true do |form| %>
                 <%= form.file_field :profile_picture, class: "hidden-file-input" %>
                 <div id="profile-pic-container">
                     <% if @user.profile_picture.attached? %>
-                        <%= image_tag @user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-small", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture" %>
+                        <%= image_tag @user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-large", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture" %>
                     <% else %>
                         <span class="material-symbols-rounded default-user-icon" id="profile-pic-uploader">account_circle</span>
                     <% end %>
                 </div>
             <% end %>
-            <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
-        </div>
-        <div class="section-container-body">
-            <div class="profile-section-container-body">
-                <h4>Username:</h4>
-                <p class="profile-info-label"><%= @user.username %></p>
-                <h4>Email:</h4>
-                <p class="profile-info-label"><%= @user.email %></p>
-                <p>Member since <%= @user.created_at.strftime("%B %d, %Y") %></p>
-                <button class="form-submit-button">Change Password</button>
-            </div>
+            <h4>Username:</h4>
+            <p><%= @user.username %></p>
+            <h4>Email:</h4>
+            <p><%= @user.email %></p>
+            <p>Member since <%= @user.created_at.strftime("%B %d, %Y") %></p>
+            <% if current_user == @user %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'form-submit-button', style: 'margin: 0; text-decoration: none;' %>
+            <% end %>
         </div>
     </div>
     <div class="section-container profile-article-list-container">

@@ -1,7 +1,10 @@
 # app/controllers/users_controller.rb
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [ :show, :update ]
+  before_action :set_user, only: [ :show, :update, :edit ]
+  def edit
+    # @user is set by before_action
+  end
 
   def new
     @user = User.new
@@ -28,6 +31,7 @@ class UsersController < ApplicationController
       render :show, status: :unprocessable_entity
     end
   end
+
 
   private
 

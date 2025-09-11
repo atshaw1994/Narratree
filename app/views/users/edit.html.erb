@@ -1,0 +1,59 @@
+<div class="user-profile">
+  <div class="section-container">
+    <div class="section-container-header" style="justify-content: center;">
+      <h2>Edit Profile</h2>
+    </div>
+    <div class="section-container-body profile-section-container-body">
+      <%= form_with model: @user, url: user_path(@user), method: :patch, multipart: true do |form| %>
+        <div class="form-group signup-form-profile-picture-group">
+          <div id="profile-pic-edit-container"
+               data-controller="profile-picture-overlay"
+               data-action="mouseenter->profile-picture-overlay#showOverlay mouseleave->profile-picture-overlay#hideOverlay">
+            <% if @user.profile_picture.attached? %>
+              <%= image_tag @user.profile_picture,
+                  class: "profile-pic-large",
+                  style: "cursor: pointer;",
+                  data: {
+                    profile_picture_overlay_target: "edit",
+                    action: "click->profile-picture-overlay#triggerFileInput"
+                  } %>
+            <% else %>
+              <span class="material-symbols-rounded default-user-icon profile-pic-large"
+                    data-profile-picture-overlay-target="edit"
+                    data-action="click->profile-picture-overlay#triggerFileInput"
+                    style="cursor: pointer;">account_circle</span>
+            <% end %>
+            <div class="profile-pic-overlay" data-profile-picture-overlay-target="overlay">
+              <span class="material-symbols-rounded">edit</span>
+            </div>
+            <%= form.file_field :profile_picture, class: "hidden-file-input", style: "display: none;", data: { profile_picture_overlay_target: "fileInput" } %>
+          </div>
+        </div>
+        <div class="form-group signup-form-name-group">
+            <div>
+              <%= form.label :first_name %>
+              <%= form.text_field :first_name %>
+            </div>
+            <div>
+              <%= form.label :last_name %>
+              <%= form.text_field :last_name %>
+            </div>
+        </div>
+        <div class="form-group signup-form-username-group">
+          <%= form.label :username %>
+          <%= form.text_field :username %>
+        </div>
+        <div class="form-group signup-form-email-group">
+          <%= form.label :email %>
+          <%= form.email_field :email %>
+        </div>
+        <div class="signup-form-submit-group">
+          <%= link_to 'Change Password', edit_user_registration_path, class: 'form-submit-button signup-form-submit-button', style: 'margin-top: 8px;' %>
+        </div>
+        <div class="signup-form-submit-group">
+          <%= form.submit 'Save Changes', class: 'form-submit-button signup-form-submit-button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
