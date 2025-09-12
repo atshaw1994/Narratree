@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     if params[:query].present?
       @articles = Article.where("LOWER(title) LIKE ?", "%#{params[:query].downcase}%")
     else
-      @articles = Article.all
+        @articles = Article.order(created_at: :desc).page(params[:page]).per(10)
     end
 
     if user_signed_in?
