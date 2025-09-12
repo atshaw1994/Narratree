@@ -1,3 +1,7 @@
+/* Show modal when visible class is added */
+.modal.visible {
+  display: block;
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */

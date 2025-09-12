@@ -15,19 +15,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="login-modal">
     <%= render 'layouts/header' %>
     <div class="flash-messages">
       <p><%= notice %></p>
       <p><%= alert %></p>
     </div>
     <div class="body-content"><%= yield %></div>
-    <div id="login-modal" class="modal">
+  <div id="login-modal" class="modal" data-login-modal-target="modal">
       <div class="modal-content">
           <div class="section-container">
               <div class="section-container-header">
                   <h2>Log In</h2>
-                  <span class="close-button" onclick="hideModal()">&times;</span>
+                  <span class="close-button" data-action="click->login-modal#hide">&times;</span>
               </div>
               <div class="section-container-body">
                   <%= render 'shared/login_form' %>
@@ -35,50 +35,6 @@
           </div>
       </div>
     </div>
-    <script>
-      // Function to show the modal (keep this in the global scope)
-      function showModal(event) {
-        event.preventDefault(); 
-        const modal = document.getElementById('login-modal');
-        if (modal) {
-          modal.style.display = 'block';
-        }
-      }
-
-      // Function to hide the modal (keep this in the global scope)
-      function hideModal() {
-        const modal = document.getElementById('login-modal');
-        if (modal) {
-          modal.style.display = 'none';
-        }
-      }
-
-      // Attach event listeners when Turbo loads a new page
-      document.addEventListener("turbo:load", () => {
-        const signupLink = document.querySelector('[data-modal-target="login-modal"]');
-        const closeBtn = document.querySelector('.close-button');
-        const modal = document.getElementById('login-modal');
-
-        // Listener for the Sign Up link to show the modal
-        if (signupLink) {
-          signupLink.addEventListener('click', showModal);
-        }
-        
-        // Listener for the close button
-        if (closeBtn) {
-          closeBtn.addEventListener('click', hideModal);
-        }
-
-        // Listener for clicks outside the modal
-        if (modal) {
-          window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                hideModal();
-            }
-          });
-        }
-      });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
