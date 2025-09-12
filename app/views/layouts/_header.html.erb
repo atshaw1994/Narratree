@@ -3,36 +3,67 @@
     <img src="<%= asset_path('logo.png') %>" alt="Logo" class="logo">
     <h1 class="page-title">Narratree</h1>
   </div>
-  <div class="header-btns">
-    <%= link_to root_path, class: "header-btn" do %>
-        <span class="material-symbols-rounded">home</span>
-    <% end %>
-    <%= link_to about_path, class: "header-btn" do %>
-        <span class="material-symbols-rounded">info</span>
-    <% end %>
-    <button title="Toggle theme mode" class="header-btn" data-controller="theme" data-action="click->theme#toggle">
-      <span class="material-symbols-rounded">brightness_7</span>
+  <div class="header-btns" data-controller="mobile-menu">
+    <button class="hamburger-btn" data-action="click->mobile-menu#toggle" aria-label="Open menu">
+      <span class="material-symbols-rounded">menu</span>
     </button>
-    <% if user_signed_in? %>
-      <div class="dropdown-menu-container" data-controller="dropdown">
-        <button class="header-btn dropdown-trigger" data-action="click->dropdown#toggle">
-          <% if current_user.profile_picture.attached? %>
-            <%= image_tag current_user.profile_picture, class: "profile-pic-small" %>
-          <% else %>
-            <span class="material-symbols-rounded">account_circle</span>
-          <% end %>
-          <span><%= current_user.username %></span>
-        </button>
-        <div class="dropdown-menu" data-dropdown-target="menu">
-          <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-          <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
-        </div>
-      </div>
-    <% else %>
-      <%= link_to new_user_session_path, onclick: "showModal(event); return false;", class: "header-btn" do %>
-        <span class="material-symbols-rounded">account_circle</span>
-        <span><em>Not Signed In</em></span>
+    <div class="header-btns-menu">
+      <%= link_to root_path, class: "header-btn" do %>
+          <span class="material-symbols-rounded">home</span>
       <% end %>
-    <% end %>
+      <%= link_to about_path, class: "header-btn" do %>
+          <span class="material-symbols-rounded">info</span>
+      <% end %>
+      <button title="Toggle theme mode" class="header-btn" data-controller="theme" data-action="click->theme#toggle">
+        <span class="material-symbols-rounded">brightness_7</span>
+      </button>
+      <% if user_signed_in? %>
+        <div class="dropdown-menu-container" data-controller="dropdown">
+          <button class="header-btn dropdown-trigger" data-action="click->dropdown#toggle">
+            <% if current_user.profile_picture.attached? %>
+              <%= image_tag current_user.profile_picture, class: "profile-pic-small" %>
+            <% else %>
+              <span class="material-symbols-rounded">account_circle</span>
+            <% end %>
+            <span><%= current_user.username %></span>
+          </button>
+          <div class="dropdown-menu" data-dropdown-target="menu">
+            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to new_user_session_path, onclick: "showModal(event); return false;", class: "header-btn" do %>
+          <span class="material-symbols-rounded">account_circle</span>
+          <span><em>Not Signed In</em></span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="mobile-sidebar" data-mobile-menu-target="sidebar">
+      <button class="close-sidebar-btn" data-action="click->mobile-menu#toggle" aria-label="Close menu">
+        <span class="material-symbols-rounded">close</span>
+      </button>
+      <nav class="mobile-sidebar-links">
+        <%= link_to root_path, class: "sidebar-link" do %>
+          <span class="material-symbols-rounded">home</span>
+          <span>Home</span>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= link_to user_path(current_user), class: "sidebar-link" do %>
+            <span class="material-symbols-rounded">account_circle</span>
+            <span>Profile</span>
+          <% end %>
+          <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "sidebar-link" do %>
+            <span class="material-symbols-rounded">logout</span>
+            <span>Log Out</span>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, onclick: "showModal(event); return false;", class: "sidebar-link" do %>
+            <span class="material-symbols-rounded">login</span>
+            <span>Log In</span>
+          <% end %>
+        <% end %>
+      </nav>
+    </div>
   </div>
 </div>
