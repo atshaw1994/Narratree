@@ -14,8 +14,8 @@
       <span class="material-symbols-rounded">brightness_7</span>
     </button>
     <% if user_signed_in? %>
-      <div class="dropdown-menu-container">
-        <button class="header-btn dropdown-trigger">
+      <div class="dropdown-menu-container" data-controller="dropdown">
+        <button class="header-btn dropdown-trigger" data-action="click->dropdown#toggle">
           <% if current_user.profile_picture.attached? %>
             <%= image_tag current_user.profile_picture, class: "profile-pic-small" %>
           <% else %>
@@ -23,7 +23,7 @@
           <% end %>
           <span><%= current_user.username %></span>
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" data-dropdown-target="menu">
           <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
           <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
         </div>
@@ -36,24 +36,3 @@
     <% end %>
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const dropdownTrigger = document.querySelector('.dropdown-trigger');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-
-    if (dropdownTrigger && dropdownMenu) {
-      dropdownTrigger.addEventListener('click', (event) => {
-        event.preventDefault();
-        dropdownMenu.classList.toggle('visible');
-      });
-
-      // Close the dropdown if the user clicks outside of it
-      document.addEventListener('click', (event) => {
-        if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-          dropdownMenu.classList.remove('visible');
-        }
-      });
-    }
-  });
-</script>
