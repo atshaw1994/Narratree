@@ -1,3 +1,32 @@
+/* Article list header responsive layout */
+#article-list .section-container-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+#article-list .search-bar-container {
+  flex: 1;
+  max-width: 300px;
+}
+@media (max-width: 620px) {
+  #article-list .section-container-header {
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  #article-list .new-article-button,
+  #article-list h2 {
+    flex: none;
+    margin-bottom: 0;
+  }
+  #article-list .search-bar-container {
+    flex-basis: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin-top: 0.5em;
+    order: 2;
+  }
+}
 /* Mobile sidebar styles */
 .mobile-sidebar {
   position: fixed;
@@ -44,7 +73,7 @@
 .sidebar-link:hover {
   background: #f0f0f0;
 }
-@media (max-width: 600px) {
+@media (max-width: 620px) {
   .header-btns-menu {
     display: none;
   }
@@ -56,7 +85,7 @@
     display: flex;
   }
 }
-@media (min-width: 601px) {
+@media (min-width: 620px) {
   .mobile-sidebar {
     display: none !important;
   }
@@ -77,27 +106,27 @@
   gap: 0.5em;
   align-items: center;
 }
-@media (max-width: 600px) {
-  .header-btns-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    z-index: 100;
-    min-width: 180px;
-    padding: 1em 0.5em;
+  @media (max-width: 620px) {
+    .header-btns-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      z-index: 100;
+      min-width: 180px;
+      padding: 1em 0.5em;
+    }
+    .header-btns-menu.mobile-visible {
+      display: flex;
+    }
+    .hamburger-btn {
+      display: flex;
+    }
   }
-  .header-btns-menu.mobile-visible {
-    display: flex;
-  }
-  .hamburger-btn {
-    display: flex;
-  }
-}
 .header {
   display: grid;
   grid-template-columns: auto 4px 1fr auto;
