@@ -22,10 +22,6 @@
           <span class="like-count"><%= @article.users.count %></span>
         <% end %>
       <% end %>
-      <%= button_to "#", class: "user-interaction-btn", title: "Share Article" do %>
-        <span class="material-symbols-rounded">share</span>
-      <% end %>
-
       <% if @article.user == current_user %>
         <%= link_to edit_article_path(@article), class: "user-interaction-btn", title: "Edit Article" do %>
           <span class="material-symbols-rounded">edit</span>
@@ -40,10 +36,16 @@
           <span class="material-symbols-rounded">thumb_up</span>
           <span class="like-count"><%= @article.users.count %></span>
       <% end %>
-      <%= button_to "#", class: "user-interaction-btn", title: "Share Article" do %>
-        <span class="material-symbols-rounded">share</span>
-      <% end %>
     <% end %>
+    <button title="Share Article"
+      class="user-interaction-btn"
+      type="button"
+      data-controller="share"
+      data-share-url-value="<%= article_url(@article) %>"
+      data-share-title-value="<%= @article.title %>"
+      data-action="click->share#share">
+      <span class="material-symbols-rounded">share</span>
+    </button>
   </div>
   
   <div id="article-top">
