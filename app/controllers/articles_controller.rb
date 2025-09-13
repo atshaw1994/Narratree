@@ -55,6 +55,10 @@ class ArticlesController < ApplicationController
 
   def like
     @article.article_likes.create(user: current_user)
+    # Send notification email to the article author (unless the liker is the author)
+    if @article.user != current_user
+      UserMailer.article_liked_email(@article, current_user).deliver_later
+    end
     redirect_to @article, notice: "Article liked."
   end
 

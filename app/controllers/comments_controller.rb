@@ -8,6 +8,10 @@ class CommentsController < ApplicationController
     @comment.parent_id = params[:comment][:parent_id] if params[:comment][:parent_id].present?
 
     if @comment.save
+      # Send notification email to the article author (unless the commenter is the author)
+      if @article.user != current_user
+        UserMailer.article_commented_email(@article, current_user, @comment).deliver_later
+      end
       respond_to do |format|
         format.html { redirect_to @article }
         format.turbo_stream
