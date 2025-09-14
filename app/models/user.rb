@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  def admin?
+    self.admin
+  end
+
   private
 
   def set_default_saved_articles

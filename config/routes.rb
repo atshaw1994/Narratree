@@ -26,4 +26,8 @@ Rails.application.routes.draw do
       delete "remove_photo/:photo_id", to: "articles#remove_photo", as: :remove_photo
     end
   end
+
+  namespace :admin do
+    get "dashboard", to: "dashboard#index"
+  end
 end

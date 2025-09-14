@@ -29,6 +29,9 @@
           </button>
           <div class="dropdown-menu" data-dropdown-target="menu">
             <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <% if current_user.admin? %>
+              <%= link_to "Admin Dashboard", admin_dashboard_path, class: "dropdown-item" %>
+            <% end %>
             <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
           </div>
         </div>
@@ -52,6 +55,12 @@
           <%= link_to user_path(current_user), class: "sidebar-link" do %>
             <span class="material-symbols-rounded">account_circle</span>
             <span>Profile</span>
+          <% end %>
+          <% if current_user.admin? %>
+            <%= link_to admin_dashboard_path, class: "sidebar-link" do %>
+              <span class="material-symbols-rounded">dashboard</span>
+              <span>Admin Dashboard</span>
+            <% end %>
           <% end %>
           <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "sidebar-link" do %>
             <span class="material-symbols-rounded">logout</span>
