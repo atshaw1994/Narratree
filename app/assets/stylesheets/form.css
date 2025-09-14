@@ -90,3 +90,9 @@
 .form-submit-button:hover {
     background-color: var(--submit-btn-hover-background);
 }
+
+#photo-upload-group {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}

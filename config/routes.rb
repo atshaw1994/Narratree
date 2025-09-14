@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       post "toggle_save"
       post "like"
       post "unlike"
+      delete "remove_photo/:photo_id", to: "articles#remove_photo", as: :remove_photo
     end
   end
 end

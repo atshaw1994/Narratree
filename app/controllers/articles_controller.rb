@@ -16,8 +16,15 @@ class ArticlesController < ApplicationController
     :destroy,
     :toggle_save,
     :like,
-    :unlike
+    :unlike,
+    :remove_photo
   ]
+
+  def remove_photo
+    photo = @article.photos.find(params[:photo_id])
+    photo.purge
+    redirect_to edit_article_path(@article), notice: "Photo removed."
+  end
 
   def index
     if params[:query].present?
@@ -78,7 +85,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-
     if @article.save
       redirect_to @article, notice: "Article was successfully created."
     else
@@ -109,6 +115,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, photos: [])
   end
 end

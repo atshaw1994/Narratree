@@ -1,5 +1,6 @@
 <div class="form">
-    <%= form_with model: User.new, url: new_user_session_path, data: { turbo: false }, novalidate: true do |form| %>
+    <div id="login-modal-errors" style="color:red;margin-bottom:8px;"></div>
+    <%= form_with model: User.new, url: user_session_path, local: false, data: { turbo: false }, novalidate: true do |form| %>
         <div class="form-group">
             <%= form.label :email %>
             <%= form.email_field :email, required: true %>

@@ -58,7 +58,7 @@
             <span>Log Out</span>
           <% end %>
         <% else %>
-          <%= link_to '#', data: { action: "click->login-modal#show" }, class: "sidebar-link" do %>
+          <%= link_to '#', data: { action: "click->login-modal#show" }, class: "sidebar-link", onclick: "event.preventDefault();" do %>
             <span class="material-symbols-rounded">login</span>
             <span>Log In</span>
           <% end %>

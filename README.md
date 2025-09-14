@@ -21,11 +21,15 @@ View the current roadmap at [Trello](https://trello.com/b/YSJnFamJ/narratree)
 ## Features
 
 - Create, edit, and delete articles
+- Upload and display article photos
 - Add and delete comments on articles
 - Responsive and modern UI
 - Validations to prevent blank submissions
 - Like articles and comments
 - Save articles to your saved articles list
+- Light/Dark Mode
+- Share articles
+- Email Notifications
 
 ## Getting Started
 
@@ -34,6 +38,7 @@ View the current roadmap at [Trello](https://trello.com/b/YSJnFamJ/narratree)
 - Ruby 3.x
 - Rails 7.x
 - SQLite3 (default) or another supported database
+- libvips (recommended for image uploads and processing with Active Storage)
 
 ### Setup
 
@@ -46,15 +51,22 @@ View the current roadmap at [Trello](https://trello.com/b/YSJnFamJ/narratree)
    ```sh
    bundle install
    ```
-3. Set up the database:
+3. Install libvips (recommended for image uploads):
+   ```sh
+   # macOS (Homebrew)
+   brew install vips
+   # Ubuntu/Debian
+   sudo apt-get install libvips
+   ```
+4. Set up the database:
    ```sh
    bin/rails db:setup
    ```
-4. Start the server:
+5. Start the server:
    ```sh
    bin/rails server
    ```
-5. Visit `http://localhost:3000` in your browser.
+6. Visit `http://localhost:3000` in your browser.
 
 ## Usage
 
