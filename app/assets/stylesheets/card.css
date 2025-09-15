@@ -13,7 +13,11 @@
 }
 
 .card:hover {
-    background-color: var(--card-hover-background);
+    background: linear-gradient(
+        to bottom right, 
+        var(--card-gradient-end), 
+        var(--card-gradient-end)
+    );
 }
 
 .card a {

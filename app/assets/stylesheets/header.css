@@ -1,3 +1,8 @@
+.logo-halloween { display: none; }
+.logo-christmas { display: none; }
+body.spooky-mode .logo-default { display: none !important; }
+body.spooky-mode .logo-halloween { display: inline-block !important; }
+body.santa-mode .logo-christmas { display: inline-block !important; }
 /* Site Header Responsive Layout */
 #article-list .section-container-header {
   display: flex;
@@ -146,7 +151,7 @@
         var(--header-background-start), 
         var(--header-background-end)
     );
-  border: 1px solid var(--header-border-color);
+  border-bottom: 1px solid var(--header-border-color);
   box-shadow: 1 4px 6px var(--header-box-shadow);
   color: var(--header-text-color);
   margin-bottom: 32px;

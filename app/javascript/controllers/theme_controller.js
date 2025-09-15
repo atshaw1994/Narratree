@@ -2,7 +2,17 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   // Define a static array of theme modes
-  static modes = ['system', 'light', 'dark'];
+  static get modes() {
+    const now = new Date();
+    const year = now.getFullYear();
+    let modes = ['system', 'light', 'dark'];
+    const start = new Date(year, 9, 1); // months are 0-indexed
+    const end = new Date(year, 10, 1);
+    if (now >= start && now < end) {
+      modes.push('spooky');
+    }
+    return modes;
+  }
   
   connect() {
     this.body = document.body;
@@ -17,14 +27,14 @@ export default class extends Controller {
       this.currentModeIndex = this.constructor.modes.indexOf('system');
     } else {
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
+      if (savedTheme && this.constructor.modes.includes(savedTheme)) {
         this.currentModeIndex = this.constructor.modes.indexOf(savedTheme);
       }
     }
-    
+
     // Set the initial theme based on the index
     this.setTheme(this.constructor.modes[this.currentModeIndex]);
-    
+
     // Listen for changes to the system's color scheme
     this.prefersDark.addEventListener('change', this.handleSystemPreference.bind(this));
   }
@@ -41,18 +51,24 @@ export default class extends Controller {
     switch(mode) {
       case 'light':
         icon.textContent = 'brightness_7';
-        this.body.classList.remove('dark-mode');
+        this.body.classList.remove('dark-mode', 'spooky-mode');
         break;
       case 'dark':
         icon.textContent = 'brightness_4';
         this.body.classList.add('dark-mode');
+        this.body.classList.remove('spooky-mode');
+        break;
+      case 'spooky':
+        icon.textContent = 'skull';
+        this.body.classList.add('spooky-mode');
+        this.body.classList.remove('dark-mode');
         break;
       case 'system':
         icon.textContent = 'brightness_auto';
         this.handleSystemPreference();
+        this.body.classList.remove('spooky-mode');
         break;
     }
-    
     // Save the new mode
     localStorage.setItem('theme', mode);
   }

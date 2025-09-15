@@ -236,3 +236,123 @@ body.dark-mode {
     --signup-submit-btn-background: #1a2a47;
     /* #endregion */
 }
+
+/* Halloween theme */
+body.spooky-mode {
+    /* #region application.css */
+    --body-background: #1a0a0a;
+    --body-color: #ff9800;
+    --textarea-background: #2d1600;
+    --textarea-border: #ff6f00;
+
+    --btn-background: #7c2e0b;
+    --btn-border: #ff9800;
+    --btn-shadow: rgba(255, 87, 34, 0.2);
+    --btn-icon-color: #ff9800;
+    --btn-hover-icon-color: #793400;
+    --btn-hover-background: #ff6f00;
+    --btn-active-background: #4e2600;
+    
+    --input-background: #2d1600;
+    --input-border: #ff6f00;
+    --input-focus-background: #1a0a0a;
+    --input-focus-border: #ff9800;
+
+    --flash-text-color: #ff9800;
+    /* #endregion */
+
+    /* #region header.css */
+    --header-background-start: #4e2600;
+    --header-background-end: #7c2e0b;
+    --header-border-color: #ff9800;
+    --header-box-shadow: rgba(255, 87, 34, 0.2);
+    --header-text-color: #ff9800;
+    --header-page-title: #ff6f00;
+    --header-page-title-text-shadow: #1a0a0a;
+    --header-btn-color: #ff9800;
+    --header-btn-hover-color: #ff6f00;
+    --favicon-background: #ff6f00;
+    --favicon-border: #ff9800;
+    /* #endregion */
+
+    /* #region article-card.css */
+    --article-card-title-color: #ff9800;
+    --article-card-author-color: #ff6f00;
+
+    /* #endregion */
+
+    /* #region article-list-section.css */
+    --new-article-btn-color: #ff9800;
+    --new-article-btn-hover-color: #7c2e0b;
+    /* #endregion */
+
+    /* #region article-page.css */
+    --article-page-author-color: #ff6f00;
+    --article-page-delete-btn-color: #b71c1c;
+    /* #endregion */
+
+    /* #region card.css */
+    --card-gradient-end: #7c2e0b;
+    --card-gradient-start: #1a0a0a;
+    --card-border-color: #ff9800;
+    --card-shadow-color: #4e2600;
+    --card-hover-background: #4e2600;
+    --card-link-color: #ff9800;
+    /* #endregion */
+
+    /* #region comment.css */
+    --comment-form-background: #4e2600;
+    --comment-form-border: #ff9800;
+    --comment-form-shadow: #7c2e0b;
+    --comments-section-background: #1a0a0a;
+    --comments-section-border: #ff9800;
+    --comments-section-shadow: #4e2600;
+    --comment-card-background: #2d1600;
+    --comment-card-border: #ff6f00;
+    --comment-card-shadow: #7c2e0b;
+    --comment-author-color: #ff9800;
+    --comment-body-color: #ffb74d;
+    --delete-comment-btn-hover-color: #b71c1c;
+    --like-count-color: #ff6f00;
+    /* #endregion */
+
+    /* #region form.css */
+    --form-top-gradient-start: #4e2600;
+    --form-top-gradient-end: #7c2e0b;
+    --form-input-background: #2d1600;
+    --form-input-border: #ff6f00;
+    --form-input-focus-background: #1a0a0a;
+    --form-input-focus-border: #ff9800;
+    --login-btn-background: #7c2e0b;
+    --login-btn-hover-background: #ff9800;
+    --login-btn-border: #ff6f00;
+    --login-btn-color: #ffb74d;
+    --submit-btn-background: #ff6f00;
+    --submit-btn-hover-background: #b71c1c;
+    /* #endregion */
+
+    /* #region login-modal.css */
+    --modal-overlay-bg: rgba(123, 31, 162, 0.4);
+    --modal-content-bg: #2d1600;
+    --modal-content-border: #ff9800;
+    --modal-close-color: #ff9800;
+    --modal-close-hover-color: #ff6f00;
+    /* #endregion */
+
+    /* #region section-container.css */
+    --section-bg-color: #1a0a0a;
+    --section-border-color: #ff6f00;
+    --section-shadow-color: #4e2600;
+    --section-header-gradient-start: #4e2600;
+    --section-header-gradient-end: #7c2e0b;
+    --section-header-border: #ff9800;
+    --section-header-shadow: #4e2600;
+    --section-header-text-color: #ff9800;
+    /* #endregion */
+
+    /* #region signup-form.css */
+    --signup-submit-btn-border: #ff6f00;
+    --signup-submit-btn-color: #ffb74d;
+    --signup-submit-btn-background: #7c2e0b;
+    /* #endregion */
+}
