@@ -69,7 +69,7 @@
                         <% Article.all.each do |article| %>
                             <tr>
                                 <td><%= article.id %></td>
-                                <td><%= article.title %></td>
+                                <td><%= link_to article.title, article_path(article) %></td>
                                 <td><%= article.user.username %></td>
                                 <td><%= article.created_at %></td>
                                 <td><%= article.updated_at %></td>
