@@ -32,6 +32,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def settings
+    @user = current_user
+  end
+
+  def update_settings
+    @user = current_user
+    prefs = params[:user][:email_notification_preferences] || {}
+    # Convert string keys/values to boolean
+    new_prefs = User::EMAIL_NOTIFICATION_OPTIONS.keys.index_with { |k| prefs[k.to_s] == "true" || prefs[k.to_s] == true }
+    if @user.update(email_notification_preferences: new_prefs)
+      redirect_to settings_path, notice: "Settings updated."
+    else
+      render :settings, alert: "Could not update settings."
+    end
+  end
 
   private
 

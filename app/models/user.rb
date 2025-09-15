@@ -9,6 +9,15 @@ class User < ApplicationRecord
 
   before_validation :set_default_saved_articles
 
+  EMAIL_NOTIFICATION_OPTIONS = {
+    like: "A user likes your article",
+    comment: "A user comments on your article",
+    follow: "A user follows you",
+    mention: "You are mentioned in a comment or article"
+  }.freeze
+
+  after_initialize :set_default_email_notification_preferences, if: :new_record?
+
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
@@ -16,6 +25,20 @@ class User < ApplicationRecord
 
   def admin?
     self.admin
+  end
+
+  def set_default_email_notification_preferences
+    self.email_notification_preferences ||= EMAIL_NOTIFICATION_OPTIONS.keys.index_with { true }
+  end
+
+  def email_notification_enabled?(key)
+    email_notification_preferences && email_notification_preferences[key.to_s]
+  end
+
+  def update_email_notification_preference(key, value)
+    prefs = (email_notification_preferences || {}).dup
+    prefs[key.to_s] = value
+    update(email_notification_preferences: prefs)
   end
 
   private

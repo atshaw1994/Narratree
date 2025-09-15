@@ -30,6 +30,7 @@
           </button>
           <div class="dropdown-menu" data-dropdown-target="menu">
             <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Settings", settings_path, class: "dropdown-item" %>
             <% if current_user.admin? %>
               <%= link_to "Admin Dashboard", admin_dashboard_path, class: "dropdown-item" %>
             <% end %>
@@ -54,6 +55,10 @@
         <% end %>
         <% if user_signed_in? %>
           <%= link_to user_path(current_user), class: "sidebar-link" do %>
+          <%= link_to settings_path, class: "sidebar-link" do %>
+            <span class="material-symbols-rounded">settings</span>
+            Settings
+          <% end %>
             <span class="material-symbols-rounded">account_circle</span>
             <span>Profile</span>
           <% end %>

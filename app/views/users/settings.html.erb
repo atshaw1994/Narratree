@@ -1,0 +1,22 @@
+<div class="section-container">
+    <div class="section-container-header">
+        <h2>User Settings</h2>
+    </div>
+    <div class="section-container-body">
+        <%= form_with model: @user, url: settings_path, method: :patch, local: true do |f| %>
+            <fieldset>
+            <legend>Email Notifications</legend>
+            <p>Email when:</p>
+            <% User::EMAIL_NOTIFICATION_OPTIONS.each do |key, label| %>
+              <div>
+                <%= check_box_tag "user[email_notification_preferences][#{key}]", true, @user.email_notification_enabled?(key), id: "user_email_notification_preferences_#{key}" %>
+                <%= label_tag "user_email_notification_preferences_#{key}", label %>
+              </div>
+            <% end %>
+          </fieldset>
+          <div class="form-group" style="margin-top: 1em;">
+            <%= f.submit 'Save Settings', class: 'form-submit-button' %>
+          </div>
+        <% end %>
+    </div>
+</div>
