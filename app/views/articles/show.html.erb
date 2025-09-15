@@ -78,7 +78,7 @@
   <% end %>
 
   <div class="article-body">
-    <p><%= @article.body %></p>
+    <%= simple_format(@article.body) %>
   </div>
   
   <div class="comments-section" id="comments-section">
