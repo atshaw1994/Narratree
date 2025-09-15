@@ -36,6 +36,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if current_user && current_user != user && !current_user.following.include?(user)
       current_user.following << user
+      if user.email_notification_enabled?(:follow)
+        UserMailer.followed_email(user, current_user).deliver_later
+      end
     end
     redirect_to user_path(user)
   end

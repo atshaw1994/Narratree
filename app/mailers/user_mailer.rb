@@ -21,4 +21,11 @@ class UserMailer < ApplicationMailer
     @url = "http://localhost:3000/articles/#{article.id}"
     mail(to: article.user.email, subject: "New comment on your article!")
   end
+
+  def followed_email(user, follower)
+    @user = user
+    @follower = follower
+    @url = user_url(@follower)
+    mail(to: @user.email, subject: "You have a new follower!")
+  end
 end

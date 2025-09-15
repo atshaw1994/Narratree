@@ -3,19 +3,19 @@
         <div class="section-container-header">
             <% if current_user && current_user != @user %>
                 <% following = current_user.following.include?(@user) %>
-                                <a href="#"
-                                     data-controller="follow"
-                                     data-follow-user-id-value="<%= @user.id %>"
-                                     data-follow-following-value="<%= following %>"
-                                     data-follow-follow-url-value="<%= follow_user_path(@user) %>"
-                                     data-follow-unfollow-url-value="<%= unfollow_user_path(@user) %>"
-                                     data-action="click->follow#toggleFollow"
-                                     class="new-article-button"
-                                     style="margin-right: 1em;"
-                                     title="<%= following ? 'Unfollow User' : 'Follow User' %>"
-                                     data-follow-target="button">
-                                    <span class="material-symbols-rounded" data-follow-target="icon"><%= following ? 'person_remove' : 'person_add' %></span>
-                                </a>
+                    <a href="#"
+                            data-controller="follow"
+                            data-follow-user-id-value="<%= @user.id %>"
+                            data-follow-following-value="<%= following %>"
+                            data-follow-follow-url-value="<%= follow_user_path(@user) %>"
+                            data-follow-unfollow-url-value="<%= unfollow_user_path(@user) %>"
+                            data-action="click->follow#toggleFollow"
+                            class="new-article-button"
+                            style="margin-right: 1em;"
+                            title="<%= following ? 'Unfollow User' : 'Follow User' %>"
+                            data-follow-target="button">
+                        <span class="material-symbols-rounded" data-follow-target="icon"><%= following ? 'person_remove' : 'person_add' %></span>
+                    </a>
             <% end %>
             <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
         </div>
@@ -34,7 +34,10 @@
             <p><%= @user.username %></p>
             <h4>Email:</h4>
             <p><%= @user.email %></p>
-            <p>Member since <%= @user.created_at.strftime("%B %d, %Y") %></p>
+            <h4>Followers:</h4>
+            <p><%= @user.followers.count %></p>
+            <h4>Member Since:</h4>
+            <p><%= @user.created_at.strftime("%B %d, %Y") %></p>
             <% if current_user == @user %>
                 <%= link_to 'Edit Profile', edit_user_path(@user), class: 'form-submit-button', style: 'margin: 0; text-decoration: none;' %>
             <% end %>
