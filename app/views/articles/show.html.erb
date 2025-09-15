@@ -80,7 +80,13 @@
   <div class="article-body">
     <%= simple_format(@article.body) %>
   </div>
-  
+
+  <% if (@article.updated_at - @article.created_at) > 1.hour %>
+    <div class="article-modified" style="margin: 1em 0; font-size: 1em; color: var(--article-page-author-color);">
+      <em>Modified on <%= @article.updated_at.strftime("%B %d, %Y at %I:%M %p") %></em>
+    </div>
+  <% end %>
+
   <div class="comments-section" id="comments-section">
     <% if current_user %>
       <%= render "comments/form", article: @article, comment: @comment %>

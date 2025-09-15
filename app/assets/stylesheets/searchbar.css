@@ -9,7 +9,7 @@
 
 .search-bar-container:hover,
 .search-bar-container:focus-within {
-  width: 70%;
+  width: 100%;
   flex-grow: 1;
 }
 

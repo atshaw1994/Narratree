@@ -37,3 +37,12 @@
     background-color: var(--section-header-gradient-start);
     color: var(--section-header-text-color);
 }
+
+/* Prevent selection of admin dashboard table header text and arrows */
+.admin-table th span,
+.admin-table th .sort-arrow {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

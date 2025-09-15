@@ -1,26 +1,35 @@
-<div class="section-container">
+<div class="section-container" style="min-width: 80%;">
     <div class="section-container-header">
         <h2>Admin Dashboard</h2>
     </div>
     <div class="section-container-body">
-        <div id="admin-tabs" data-controller="admin-tabs">
-            <div class="admin-tab-buttons">
-                <button type="button" class="admin-tab-btn active" data-admin-tabs-target="tabBtn" data-tab="users" data-action="click->admin-tabs#switch">Users</button>
-                <button type="button" class="admin-tab-btn" data-admin-tabs-target="tabBtn" data-tab="articles" data-action="click->admin-tabs#switch">Articles</button>
+        <div id="admin-tabs" data-controller="admin-tabs" style="width: 100%;">
+            <div class="admin-tab-header-flex" style="display: flex; align-items: center; justify-content: space-between; gap: 1em; max-height: 70vh;">
+                <div class="admin-tab-buttons" style="display: flex; gap: 0.5em;">
+                    <button type="button" class="admin-tab-btn active" data-admin-tabs-target="tabBtn" data-tab="users" data-action="click->admin-tabs#switch">Users</button>
+                    <button type="button" class="admin-tab-btn" data-admin-tabs-target="tabBtn" data-tab="articles" data-action="click->admin-tabs#switch">Articles</button>
+                </div>
+                <div class="search-bar-container" style="flex-grow: 1; max-width: 80%;">
+                    <%= text_field_tag :admin_query, params[:admin_query],
+                        placeholder: "Search users, articles, authors...",
+                        class: "search-input",
+                        data: { action: "input->admin-tabs#search", admin_tabs_target: "searchInput" }
+                    %>
+                </div>
             </div>
             <div class="admin-tab-content" id="users-tab" data-admin-tabs-target="tabContent" style="display: block;">
                 <table class="admin-table">
                     <thead>
                         <tr>
                             <th>Picture</th>
-                            <th>User Id</th>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Encrypted Password</th>
-                            <th>Role</th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="user-id"><span>User Id</span><span class="sort-arrow" data-admin-tabs-target="userIdArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="username"><span>Username</span><span class="sort-arrow" data-admin-tabs-target="usernameArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="first-name"><span>First Name</span><span class="sort-arrow" data-admin-tabs-target="firstNameArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="last-name"><span>Last Name</span><span class="sort-arrow" data-admin-tabs-target="lastNameArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="created-at"><span>Created At</span><span class="sort-arrow" data-admin-tabs-target="createdAtArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="updated-at"><span>Updated At</span><span class="sort-arrow" data-admin-tabs-target="updatedAtArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="encrypted-password"><span>Encrypted Password</span><span class="sort-arrow" data-admin-tabs-target="encryptedPasswordArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="role"><span>Role</span><span class="sort-arrow" data-admin-tabs-target="roleArrow"></span></th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -54,14 +63,14 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>Article Id</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Created At</th>
-                            <th>Updated At</th>
-                            <th>Comments</th>
-                            <th>Photos</th>
-                            <th>Likes</th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="article-id"><span>Article Id</span><span class="sort-arrow" data-admin-tabs-target="articleIdArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="title"><span>Title</span><span class="sort-arrow" data-admin-tabs-target="titleArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="author"><span>Author</span><span class="sort-arrow" data-admin-tabs-target="authorArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="created-at"><span>Created At</span><span class="sort-arrow" data-admin-tabs-target="createdAtArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="updated-at"><span>Updated At</span><span class="sort-arrow" data-admin-tabs-target="updatedAtArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="comments"><span>Comments</span><span class="sort-arrow" data-admin-tabs-target="commentsArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="photos"><span>Photos</span><span class="sort-arrow" data-admin-tabs-target="photosArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="likes"><span>Likes</span><span class="sort-arrow" data-admin-tabs-target="likesArrow"></span></th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -70,7 +79,7 @@
                             <tr>
                                 <td><%= article.id %></td>
                                 <td><%= link_to article.title, article_path(article) %></td>
-                                <td><%= article.user.username %></td>
+                                <td><%= link_to article.user.username, user_path(article.user) %></td>
                                 <td><%= article.created_at %></td>
                                 <td><%= article.updated_at %></td>
                                 <td><%= article.comments.count %></td>
