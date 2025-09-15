@@ -26,6 +26,34 @@
             <% end %>
         </div>
     </div>
+    <% if current_user %>
+        <% followed_articles = current_user.following.flat_map(&:articles).sort_by { |a| a.created_at }.reverse %>
+        <% if followed_articles.any? %>
+            <div id="followed-articles" class="section-container">
+                <div class="section-container-header">
+                    <h2>Followed</h2>
+                </div>
+                <div class="section-container-body">
+                    <ul>
+                        <% followed_articles.each do |article| %>
+                            <li class="card">
+                                <div class="article-card-grid">
+                                    <%= link_to article_path(article), class: "article-card-link" do %>
+                                        <div class="article-card-main">
+                                            <h3 class="article-card-title"><%= article.title %></h3>
+                                            <div class="article-card-author">
+                                                by <em><%= article.user.username %></em>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
     <div id="article-list" class="section-container" data-controller="article-search">
         <div class="section-container-header">
             <% if current_user %>

@@ -3,7 +3,12 @@
 Rails.application.routes.draw do
   # Devise routes must come first to ensure they are matched correctly.
   devise_for :users
-  resources :users, only: [ :show, :update, :edit ]
+  resources :users, only: [ :show, :update, :edit ] do
+    member do
+      post "follow", to: "users#follow"
+      post "unfollow", to: "users#unfollow"
+    end
+  end
 
   root "articles#index"
 

@@ -16,6 +16,10 @@
     width: 98%;
 }
 
+#followed-articles {
+    width: 98%;
+}
+
 .new-article-button {
     color: var(--new-article-btn-color);
     text-decoration: none;

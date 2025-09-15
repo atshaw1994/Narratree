@@ -32,6 +32,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    user = User.find(params[:id])
+    if current_user && current_user != user && !current_user.following.include?(user)
+      current_user.following << user
+    end
+    redirect_to user_path(user)
+  end
+
+  def unfollow
+    user = User.find(params[:id])
+    if current_user && current_user != user && current_user.following.include?(user)
+      current_user.following.destroy(user)
+    end
+    redirect_to user_path(user)
+  end
+
   def settings
     @user = current_user
   end
