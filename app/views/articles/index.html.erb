@@ -1,32 +1,26 @@
 <div class="homepage">
-    <div id="pinned-articles" class="section-container">
-        <div class="section-container-header">
-            <h2>Pinned Articles</h2>
-        </div>
-        <div class="section-container-body">
-            <% if current_user %>
-                <% if @saved_articles.present? %>
-                <ul>
-                    <% @saved_articles.each do |article| %>
-                        <li class="card">
-                            <div class="saved-article-card-grid">
-                                <%= link_to article.title, article_path(article) %>
-                                <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn", title: "Unpin Article" do %>
-                                    <span class="material-symbols-rounded filled">keep_off</span>
-                                <% end %>
-                            </div>
-                        </li>
-                    <% end %>
-                </ul>
-                <% else %>
-                    <p><em>No saved articles.</em></p>
-                <% end %>
-            <% else %>
-                <p><%= link_to "log in", "#", data: { action: "click->login-modal#show" }, class: "login-link" %> to see pinned articles.</p>
-            <% end %>
-        </div>
-    </div>
     <% if current_user %>
+        <% if @saved_articles.present? %>
+            <div id="pinned-articles" class="section-container">
+                <div class="section-container-header">
+                    <h2>Pinned Articles</h2>
+                </div>
+                <div class="section-container-body">
+                    <ul>
+                        <% @saved_articles.each do |article| %>
+                            <li class="card">
+                                <div class="saved-article-card-grid">
+                                    <%= link_to article.title, article_path(article) %>
+                                    <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn", title: "Unpin Article" do %>
+                                        <span class="material-symbols-rounded filled">keep_off</span>
+                                    <% end %>
+                                </div>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        <% end %>
         <% followed_articles = current_user.following.flat_map(&:articles).sort_by { |a| a.created_at }.reverse %>
         <% if followed_articles.any? %>
             <div id="followed-articles" class="section-container">
