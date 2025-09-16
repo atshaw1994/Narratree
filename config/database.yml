@@ -18,9 +18,8 @@ production:
   database: narratree_production
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
-
-cable: &cable
-  <<: *default
-  database: narratree_production
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  cable:
+    <<: *default
+    database: narratree_production
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
