@@ -118,8 +118,8 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
   top: 0;
   left: 0;
   height: 100vh;
-  width: 240px;
-  background: #fff;
+  width: 75vw;
+  background: var(--body-background);
   box-shadow: 2px 0 8px rgba(0,0,0,0.15);
   z-index: 200;
   transform: translateX(-100%);
