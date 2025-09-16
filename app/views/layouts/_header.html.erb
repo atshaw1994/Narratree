@@ -38,10 +38,10 @@
           </div>
         </div>
       <% else %>
-        <%= link_to new_user_session_path, onclick: "showModal(event); return false;", class: "header-btn" do %>
+        <button class="header-btn" data-action="click->login-modal#show">
           <span class="material-symbols-rounded">account_circle</span>
           <span><em>Not Signed In</em></span>
-        <% end %>
+        </button>
       <% end %>
     </div>
     <div class="mobile-sidebar" data-mobile-menu-target="sidebar">
