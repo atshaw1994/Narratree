@@ -1,8 +1,10 @@
+/* Header Logo Styles */
 .logo-halloween { display: none; }
 .logo-christmas { display: none; }
 body.spooky-mode .logo-default { display: none !important; }
 body.spooky-mode .logo-halloween { display: inline-block !important; }
 body.santa-mode .logo-christmas { display: inline-block !important; }
+
 /* Site Header Responsive Layout */
 #article-list .section-container-header {
   display: flex;
@@ -58,7 +60,7 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
   }
 }
 
-/* Desktop Styles (min-width: 620px) */
+/* #region Desktop Styles (min-width: 620px) */
 @media (min-width: 620px) {
   .mobile-sidebar {
     display: none !important;
@@ -78,6 +80,37 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
     padding: 0;
   }
 }
+.dropdown-menu-container {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-menu {
+  background-color: var(--body-background);
+  border: 1px solid var(--btn-border);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: none;
+  position: absolute;
+  z-index: 16;
+  min-width: 160px;
+  right: 0;
+  border-radius: 8px;
+}
+.dropdown-menu.visible {
+  display: block;
+}
+.dropdown-item {
+  color: var(--body-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  transition: background-color 0.2s ease; 
+}
+.dropdown-item:hover {
+  background-color: var(--btn-hover-background);
+  color: var(--body-color);
+}
+/* #endregion */
 
 /* #region Mobile Sidebar Styles */
 .mobile-sidebar {
@@ -217,35 +250,5 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
   height: 16px;
   background-color: var(--favicon-background);
   border: 1px solid var(--favicon-border);
-}
-.dropdown-menu-container {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-menu {
-  background-color: var(--body-background);
-  border: 1px solid var(--btn-border);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  display: none;
-  position: absolute;
-  z-index: 1;
-  min-width: 160px;
-  right: 0;
-  border-radius: 8px;
-}
-.dropdown-menu.visible {
-  display: block;
-}
-.dropdown-item {
-  color: var(--body-color);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  transition: background-color 0.2s ease; 
-}
-.dropdown-item:hover {
-  background-color: var(--btn-hover-background);
-  color: var(--body-color);
 }
 /* #endregion */
