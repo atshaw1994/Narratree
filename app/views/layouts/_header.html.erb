@@ -48,37 +48,47 @@
       <button class="close-sidebar-btn" data-action="click->mobile-menu#toggle" aria-label="Close menu">
         <span class="material-symbols-rounded">close</span>
       </button>
-      <nav class="mobile-sidebar-links">
-        <%= link_to root_path, class: "sidebar-link" do %>
-          <span class="material-symbols-rounded">home</span>
-          <span>Home</span>
-        <% end %>
-        <% if user_signed_in? %>
-          <%= link_to user_path(current_user), class: "sidebar-link" do %>
-            <span class="material-symbols-rounded">account_circle</span>
-            <span>Profile</span>
+      <div class="mobile-sidebar-links-container" style="display: flex; flex-direction: column; height: 100%;">
+        <nav class="mobile-sidebar-links" style="flex: 1 1 auto;">
+          <%= link_to root_path, class: "sidebar-link" do %>
+            <span class="material-symbols-rounded">home</span>
+            <span>Home</span>
           <% end %>
-          <%= link_to settings_path, class: "sidebar-link" do %>
-            <span class="material-symbols-rounded">settings</span>
-            Settings
-          <% end %>
-          <% if current_user.admin? %>
-            <%= link_to admin_dashboard_path, class: "sidebar-link" do %>
-              <span class="material-symbols-rounded">dashboard</span>
-              <span>Admin Dashboard</span>
+          <% if user_signed_in? %>
+            <%= link_to user_path(current_user), class: "sidebar-link" do %>
+              <span class="material-symbols-rounded">account_circle</span>
+              <span>Profile</span>
+            <% end %>
+            <%= link_to settings_path, class: "sidebar-link" do %>
+              <span class="material-symbols-rounded">settings</span>
+              Settings
+            <% end %>
+            <% if current_user.admin? %>
+              <%= link_to admin_dashboard_path, class: "sidebar-link" do %>
+                <span class="material-symbols-rounded">dashboard</span>
+                <span>Admin Dashboard</span>
+              <% end %>
             <% end %>
           <% end %>
-          <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "sidebar-link" do %>
-            <span class="material-symbols-rounded">logout</span>
-            <span>Log Out</span>
+        </nav>
+        <div class="mobile-sidebar-links-container">
+          <a href="#" role="button" tabindex="0" class="sidebar-link" title="Toggle theme mode" data-controller="theme" data-action="click->theme#toggle" onclick="event.preventDefault();">
+            <span class="material-symbols-rounded">brightness_7</span>
+            <span>Toggle Theme</span>
+          </a>
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, class: "sidebar-link", data: { controller: "logout", action: "logout#logout" } do %>
+              <span class="material-symbols-rounded">logout</span>
+              <span>Log Out</span>
+            <% end %>
+          <% else %>
+            <%= link_to '#', data: { action: "click->login-modal#show" }, class: "sidebar-link", onclick: "event.preventDefault();" do %>
+              <span class="material-symbols-rounded">login</span>
+              <span>Log In</span>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to '#', data: { action: "click->login-modal#show" }, class: "sidebar-link", onclick: "event.preventDefault();" do %>
-            <span class="material-symbols-rounded">login</span>
-            <span>Log In</span>
-          <% end %>
-        <% end %>
-      </nav>
+        </div>
+      </div>
     </div>
   </div>
 </div>
