@@ -12,6 +12,10 @@ development:
 test:
   <<: *default
   database: narratree_test
+  username: postgres
+  password: postgres
+  database: narratree_test
+  host: localhost
 
 production:
   url: <%= ENV["DATABASE_URL"] %>
