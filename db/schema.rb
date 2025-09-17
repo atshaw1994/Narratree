@@ -122,6 +122,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_16_221817) do
     t.json "email_notification_preferences"
     t.integer "warnings_count", default: 0, null: false
     t.boolean "accepted_guidelines", default: false, null: false
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
