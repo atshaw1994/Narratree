@@ -34,6 +34,19 @@
             <p><%= @user.username %></p>
             <h4>Email:</h4>
             <p><%= @user.email %></p>
+            <h4>Role:</h4>
+            <p>
+                <% case @user.role %>
+                <% when "owner" %>
+                    Owner, Admin, Moderator, User
+                <% when "admin" %>
+                    Admin, Moderator, User
+                <% when "moderator" %>
+                    Moderator, User
+                <% else %>
+                    User
+                <% end %>
+            </p>
             <h4>Followers:</h4>
             <p><%= @user.followers.count %></p>
             <h4>Member Since:</h4>
