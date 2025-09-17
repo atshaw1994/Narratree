@@ -116,13 +116,13 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
 .mobile-sidebar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   max-height: 60vh;
   width: 75vw;
   background: var(--body-background);
   box-shadow: 2px 0 8px rgba(0,0,0,0.15);
   z-index: 200;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(.4,0,.2,1);
   display: flex;
   flex-direction: column;
