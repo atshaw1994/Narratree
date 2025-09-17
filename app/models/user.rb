@@ -57,8 +57,8 @@ class User < ApplicationRecord
   def set_default_email_notification_preferences
     # Migration-safe: only set if column exists and no error
     if has_attribute?(:email_notification_preferences)
-      # Use a compatible approach for all Ruby versions and migration safety
-      self.email_notification_preferences ||= Hash[EMAIL_NOTIFICATION_OPTIONS.keys.map { |k| [ k, true ] }]
+  # Use a compatible approach for all Ruby versions and migration safety
+  self.email_notification_preferences ||= Hash[EMAIL_NOTIFICATION_OPTIONS.keys.map { |k| [ k, true ] }]
     end
   rescue StandardError
     # Ignore errors during migrations
