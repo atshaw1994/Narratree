@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :likes, only: [ :create, :destroy ]
   end
 
+  resources :flags, only: [ :create ]
+
   resources :articles do
     resources :comments, concerns: :likeable do
       member do
