@@ -1,4 +1,3 @@
-  has_many :flags, as: :flaggable, dependent: :destroy
 class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -6,6 +5,7 @@ class Article < ApplicationRecord
   has_many :users, through: :article_likes
   has_many :saved_articles, dependent: :destroy
   has_many :savers, through: :saved_articles, source: :user
+  has_many :flags, as: :flaggable, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }

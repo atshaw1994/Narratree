@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
     end
 
     if user_signed_in?
-      @saved_articles = current_user.saved_articles_through_join_table
+      @saved_articles = current_user.saved_articles
     end
 
     respond_to do |format|
@@ -45,13 +45,13 @@ class ArticlesController < ApplicationController
 
   def toggle_save
     if user_signed_in?
-      saved_article = current_user.saved_articles.find_by(article: @article)
+      saved_article_join = current_user.saved_article_joins.find_by(article: @article)
 
-      if saved_article
-        saved_article.destroy
+      if saved_article_join
+        saved_article_join.destroy
         notice_message = "Article unpinned."
       else
-        current_user.saved_articles.create(article: @article)
+        current_user.saved_article_joins.create(article: @article)
         notice_message = "Article pinned."
       end
       redirect_back fallback_location: root_path, notice: notice_message

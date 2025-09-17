@@ -1,4 +1,4 @@
-class BackfillEmailNotificationPreferencesForUsers < ActiveRecord::Migration[7.0]
+class BackfillEmailNotificationPreferencesForUsers < ActiveRecord::Migration[7.1]
   def up
     default_prefs = {
       "like" => true,

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_17_102020) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_17_203000) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,11 +43,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_17_102020) do
   end
 
   create_table "article_likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "article_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_article_likes_on_article_id"
+    t.index ["user_id", "article_id"], name: "index_article_likes_on_user_id_and_article_id", unique: true
     t.index ["user_id"], name: "index_article_likes_on_user_id"
   end
 
@@ -56,16 +57,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_17_102020) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
+    t.string "author"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
+    t.string "commenter"
     t.text "body"
-    t.integer "article_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "parent_id"
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
@@ -94,24 +97,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_17_102020) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "likeable_type", null: false
-    t.integer "likeable_id", null: false
+    t.bigint "likeable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "saved_articles", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "article_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_saved_articles_on_article_id"
@@ -122,19 +119,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_17_102020) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
+    t.integer "role", default: 0, null: false
+    t.string "username", null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "accepted_guidelines", default: false, null: false
+    t.integer "warnings_count", default: 0, null: false
+    t.json "email_notification_preferences"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.boolean "admin", default: false, null: false
-    t.json "email_notification_preferences"
-    t.integer "warnings_count", default: 0, null: false
-    t.boolean "accepted_guidelines", default: false, null: false
-    t.integer "role", default: 0, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

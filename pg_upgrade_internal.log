@@ -1,0 +1,13 @@
+
+-----------------------------------------------------------------
+  pg_upgrade run on Wed Sep 17 16:34:53 2025
+-----------------------------------------------------------------
+
+You must identify the directory where the old cluster binaries reside.
+Please use the -b command-line option or the PGBINOLD environment variable.
+
+-----------------------------------------------------------------
+  pg_upgrade run on Wed Sep 17 16:36:09 2025
+-----------------------------------------------------------------
+
+could not open version file "/usr/local/var/postgres/PG_VERSION": No such file or directory

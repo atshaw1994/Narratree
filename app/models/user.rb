@@ -9,8 +9,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :articles, dependent: :destroy
-  has_many :saved_articles, dependent: :destroy
-  has_many :saved_articles_through_join_table, through: :saved_articles, source: :article
+  has_many :saved_article_joins, class_name: "SavedArticle", dependent: :destroy
+  has_many :saved_articles, through: :saved_article_joins, source: :article
   has_many :likes, dependent: :destroy
   has_one_attached :profile_picture
 
@@ -29,24 +29,18 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :accepted_guidelines, acceptance: { accept: true, message: "must be accepted" }, on: :create
+  validates :accepted_guidelines, inclusion: { in: [ true ], message: "must be accepted" }
 
   enum role: { user: 0, moderator: 1, admin: 2, owner: 3 }
 
-  def owner?
-    role == "owner"
+  # Use Rails enum predicate methods: user?, moderator?, admin?, owner? (now user_role?)
+  # If you need custom logic for admin or moderator, define as below:
+  def admin_or_owner?
+    admin_user_role? || owner_user_role?
   end
 
-  def admin?
-    role == "admin" || owner?
-  end
-
-  def moderator?
-    role == "moderator" || admin? || owner?
-  end
-
-  def regular_user?
-    role == "user"
+  def moderator_or_higher?
+    moderator_user_role? || admin_user_role? || owner_user_role?
   end
 
   # Follows another user
@@ -83,6 +77,6 @@ class User < ApplicationRecord
   private
 
   def set_default_saved_articles
-    self.saved_articles ||= []
+    self.saved_article_joins ||= []
   end
 end

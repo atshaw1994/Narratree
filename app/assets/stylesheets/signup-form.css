@@ -58,6 +58,27 @@
     text-align: center;
 }
 
+.form-check{
+    display: flex;
+    align-items: left;
+    width: 150%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 12px;
+}
+
+.form-check-input {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
 .delete-account-button {
     background-color: darkred;
 }

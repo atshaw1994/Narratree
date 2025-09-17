@@ -1,4 +1,4 @@
-class AddAuthorToArticles < ActiveRecord::Migration[8.0]
+class AddAuthorToArticles < ActiveRecord::Migration[7.1]
   def change
     add_column :articles, :author, :string
   end

@@ -1,5 +1,6 @@
-  has_many :flags, as: :flaggable, dependent: :destroy
+
 class Comment < ApplicationRecord
+  has_many :flags, as: :flaggable, dependent: :destroy
   belongs_to :article
   belongs_to :user
   belongs_to :parent, class_name: "Comment", optional: true
