@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root "articles#index"
 
   get "/about", to: "pages#about"
+  get "/guidelines", to: "pages#guidelines", as: :guidelines
 
   concern :likeable do
     resources :likes, only: [ :create, :destroy ]
@@ -34,6 +35,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "dashboard", to: "dashboard#index"
+    resources :users, only: [] do
+      post :warn, on: :member
+    end
   end
 
   get "/settings", to: "users#settings", as: :settings

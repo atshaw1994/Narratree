@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # Counter for admin warnings
+  validates :warnings_count, numericality: { greater_than_or_equal_to: 0 }
   # User following associations
   has_many :active_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_follows, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
@@ -27,6 +29,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :accepted_guidelines, acceptance: { accept: true, message: "must be accepted" }, on: :create
 
   def admin?
     self.admin

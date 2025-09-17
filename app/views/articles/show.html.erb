@@ -87,10 +87,12 @@
     </div>
   <% end %>
 
-  <div class="comments-section" id="comments-section">
-    <% if current_user %>
-      <%= render "comments/form", article: @article, comment: @comment %>
-    <% end %>
-    <%= render @article.comments.where(parent_id: nil).order(created_at: :desc) %>
-  </div>
+  <% if current_user || @article.comments.exists? %>
+    <div class="comments-section" id="comments-section">
+      <% if current_user %>
+        <%= render "comments/form", article: @article, comment: @comment %>
+      <% end %>
+      <%= render @article.comments.where(parent_id: nil).order(created_at: :desc) %>
+    </div>
+  <% end %>
 </div>

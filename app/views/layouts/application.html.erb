@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
   <head>
     <title><%= content_for(:title) || "Narratree" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,13 +15,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-controller="login-modal">
+  <body data-controller="login-modal" style="min-height: 100vh; display: flex; flex-direction: column;">
     <%= render 'layouts/header' %>
     <div class="flash-messages">
       <p><%= notice %></p>
       <p><%= alert %></p>
     </div>
-    <div class="body-content"><%= yield %></div>
+  <div class="body-content" style="flex: 1 0 auto;"><%= yield %></div>
+    <footer class="site-footer footer mt-5 py-3 text-center">
+      <div class="container">
+        <a href="<%= guidelines_path %>">Community Guidelines</a>
+      </div>
+    </footer>
     <div id="login-modal" class="modal" data-login-modal-target="modal">
       <div class="modal-content">
           <div class="section-container">
