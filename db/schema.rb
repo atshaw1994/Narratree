@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_16_221817) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_17_102020) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -70,6 +70,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_16_221817) do
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "flags", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "flaggable_type", null: false
+    t.bigint "flaggable_id", null: false
+    t.string "reason", limit: 250
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flaggable_type", "flaggable_id"], name: "index_flags_on_flaggable_type_and_flaggable_id"
+    t.index ["user_id"], name: "index_flags_on_user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -134,6 +145,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_16_221817) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
+  add_foreign_key "flags", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "saved_articles", "articles"
   add_foreign_key "saved_articles", "users"

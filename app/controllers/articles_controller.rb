@@ -104,8 +104,18 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    unless can_delete_article?(@article)
+      redirect_to @article, alert: "Not authorized to delete this article." and return
+    end
     @article.destroy
     redirect_to root_path, notice: "Article was successfully deleted."
+  end
+
+  private
+
+  def can_delete_article?(article)
+    return false unless current_user
+    current_user.admin? || current_user.owner? || article.user == current_user
   end
 
   private

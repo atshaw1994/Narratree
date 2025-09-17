@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_admin!
+  before_action :require_admin_or_owner!
 
   def warn
     @user = User.find(params[:user_id] || params[:id])
@@ -15,8 +15,8 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def require_admin!
-    unless current_user&.admin?
+  def require_admin_or_owner!
+    unless current_user&.admin? || current_user&.owner?
       redirect_to root_path, alert: "Not authorized."
     end
   end

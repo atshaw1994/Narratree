@@ -1,3 +1,4 @@
+  has_many :flags, as: :flaggable, dependent: :destroy
 class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy

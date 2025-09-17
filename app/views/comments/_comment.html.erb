@@ -12,6 +12,11 @@
   </div>
   <div class="comment-card-btns">
     <% if current_user %>
+      <% if current_user.moderator? || current_user.admin? || current_user.owner? %>
+        <%= button_to flags_path(comment_id: comment.id), method: :post, class: "flag-button", title: "Flag Comment for Review" do %>
+          <span class="material-symbols-rounded">flag_2</span>
+        <% end %>
+      <% end %>
       <% if current_user.likes.exists?(likeable: comment) %>
         <%= button_to article_comment_like_path(comment.article, comment, current_user.likes.find_by(likeable: comment)), method: :delete, class: "user-interaction-btn" do %>
           <span class="material-symbols-rounded filled">thumb_up</span>

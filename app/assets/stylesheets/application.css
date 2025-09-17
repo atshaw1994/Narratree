@@ -1,3 +1,22 @@
+/* Moderator flag button styles */
+.flag-button {
+  background-color: #FFD07B;
+  border-radius: 100%;
+  color: #1A150C;
+  border: 1px solid #B39256;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.flag-button:hover {
+  background-color: #FFC94D;
+}
+.flag-button:active {
+  background-color: #E6A700;
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}
 /*
  * This is a manifest file that'll be compiled into application.css.
  *

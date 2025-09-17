@@ -14,7 +14,7 @@
           <span class="material-symbols-rounded">settings</span>
           Settings
         <% end %>
-        <% if current_user.admin? %>
+  <% if current_user.admin? || current_user.owner? %>
           <%= link_to admin_dashboard_path, class: "sidebar-link" do %>
             <span class="material-symbols-rounded">dashboard</span>
             <span>Admin Dashboard</span>

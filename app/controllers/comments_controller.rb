@@ -28,8 +28,18 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    unless can_delete_comment?(@comment)
+      redirect_to @comment.article, alert: "Not authorized to delete this comment." and return
+    end
     @comment.destroy
     redirect_to @comment.article
+  end
+
+  private
+
+  def can_delete_comment?(comment)
+    return false unless current_user
+    current_user.admin? || current_user.owner? || comment.user == current_user
   end
 
   private

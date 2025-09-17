@@ -2,6 +2,11 @@
 <div class="article-page">
   <div class="article-btn-container">
     <% if current_user %>
+      <% if current_user.moderator? || current_user.admin? || current_user.owner? %>
+        <%= button_to flags_path(article_id: @article), method: :post, class: "flag-button", title: "Flag Article for Review" do %>
+          <span class="material-symbols-rounded">flag_2</span>
+        <% end %>
+      <% end %>
       <% if current_user.saved_articles.exists?(article_id: @article.id) %>
         <%= button_to toggle_save_article_path(@article), method: :post, class: "user-interaction-btn", title: "Remove from Pinned Articles" do %>
           <span class="material-symbols-rounded filled">keep</span>

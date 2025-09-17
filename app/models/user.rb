@@ -31,8 +31,22 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :accepted_guidelines, acceptance: { accept: true, message: "must be accepted" }, on: :create
 
+  enum role: { user: 0, moderator: 1, admin: 2, owner: 3 }
+
+  def owner?
+    role == "owner"
+  end
+
   def admin?
-    self.admin
+    role == "admin" || owner?
+  end
+
+  def moderator?
+    role == "moderator" || admin? || owner?
+  end
+
+  def regular_user?
+    role == "user"
   end
 
   # Follows another user
@@ -47,7 +61,13 @@ class User < ApplicationRecord
   end
 
   def set_default_email_notification_preferences
-    self.email_notification_preferences ||= EMAIL_NOTIFICATION_OPTIONS.keys.index_with { true }
+    # Migration-safe: only set if column exists and no error
+    if has_attribute?(:email_notification_preferences)
+      # Use a compatible approach for all Ruby versions and migration safety
+      self.email_notification_preferences ||= Hash[EMAIL_NOTIFICATION_OPTIONS.keys.map { |k| [ k, true ] }]
+    end
+  rescue StandardError
+    # Ignore errors during migrations
   end
 
   def email_notification_enabled?(key)
