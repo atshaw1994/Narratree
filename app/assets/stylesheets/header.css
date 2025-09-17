@@ -117,7 +117,7 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 80vh;
   width: 75vw;
   background: var(--body-background);
   box-shadow: 2px 0 8px rgba(0,0,0,0.15);
