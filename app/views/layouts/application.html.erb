@@ -16,7 +16,10 @@
   </head>
 
   <body data-controller="login-modal" style="min-height: 100vh; display: flex; flex-direction: column;">
-    <%= render 'layouts/header' %>
+    <div id="site-header-area" data-controller="mobile-menu">
+      <%= render 'layouts/mobile_sidebar' %>
+      <%= render 'layouts/header' %>
+    </div>
     <div class="flash-messages">
       <p><%= notice %></p>
       <p><%= alert %></p>
