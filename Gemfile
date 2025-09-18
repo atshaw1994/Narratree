@@ -45,7 +45,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Use AWS SDK for S3 (for Active Storage). Required for Cloudflare R2
-gem "aws-sdk-s3", "~> 1.114.0"
+gem "aws-sdk-s3", "= 1.114.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
