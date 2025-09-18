@@ -1,3 +1,12 @@
+class UserMailer < ApplicationMailer
+  default from: ENV["GMAIL_USERNAME"]
+
+  def account_approved_email(user)
+    @user = user
+    @url = login_url
+    mail(to: @user.email, subject: "Your Narratree account has been approved!")
+  end
+
   # Notifies the owner when a new user signs up
   def new_user_waiting_approval(user)
     @user = user
@@ -5,9 +14,6 @@
     owner = User.find_by(role: :owner)
     mail(to: owner.email, subject: "New user awaiting approval: #{@user.username}")
   end
-class UserMailer < ApplicationMailer
-  default from: ENV["GMAIL_USERNAME"]
-
 
   def welcome_email(user)
     @user = user

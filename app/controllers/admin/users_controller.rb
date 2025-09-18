@@ -17,6 +17,7 @@ class Admin::UsersController < ApplicationController
   def approve
     @user = User.find(params[:id])
     if @user.update(approved: true)
+      UserMailer.account_approved_email(@user).deliver_later
       redirect_to admin_dashboard_path, notice: "User approved."
     else
       redirect_to admin_dashboard_path, alert: "Could not approve user."
