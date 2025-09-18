@@ -9,7 +9,7 @@ class Admin::DashboardController < ApplicationController
   private
 
   def require_admin
-    unless current_user&.admin? || current_user&.owner?
+    unless current_user&.admin_or_owner?
       redirect_to root_path, alert: "You are not authorized to access the admin dashboard."
     end
   end

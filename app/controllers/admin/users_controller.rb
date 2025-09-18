@@ -34,10 +34,20 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  # Delete a user and all associated data
+  def destroy
+    unless current_user.admin_or_owner?
+      redirect_to root_path, alert: "Not authorized." and return
+    end
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to admin_dashboard_path, notice: "User and all associated data deleted."
+  end
+
   private
 
   def require_admin_or_owner!
-    unless current_user&.admin? || current_user&.owner?
+    unless current_user&.admin_or_owner?
       redirect_to root_path, alert: "Not authorized."
     end
   end

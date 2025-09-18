@@ -9,6 +9,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :saved_article_joins, class_name: "SavedArticle", dependent: :destroy
   has_many :saved_articles, through: :saved_article_joins, source: :article
   has_many :likes, dependent: :destroy

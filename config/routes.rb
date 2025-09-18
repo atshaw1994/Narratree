@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   # Devise routes must come first to ensure they are matched correctly.
   devise_for :users
-  resources :users, only: [ :show, :update, :edit ] do
+  resources :users, only: [ :show, :update, :edit, :destroy ] do
     member do
       post "follow", to: "users#follow"
       post "unfollow", to: "users#unfollow"
@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "dashboard", to: "dashboard#index"
-    resources :users, only: [] do
+    resources :users, only: [ :destroy ] do
       post :warn, on: :member
       member do
         patch :approve
