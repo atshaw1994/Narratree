@@ -3,14 +3,14 @@ if defined?(Aws::S3::Object)
     alias_method :orig_put, :put
 
     def put(options = {}, &block)
-      # Remove all possible checksum options
       options = options.dup
-      options.delete(:checksum_sha256)
-      options.delete(:checksum_sha1)
-      options.delete(:checksum_crc32)
-      options.delete(:checksum_crc32c)
+      # Log all option keys for debugging
+      Rails.logger.warn "AWS S3 put options: #{options.keys.inspect}" if defined?(Rails)
+      # Remove any key that includes 'checksum'
+      options.keys.each do |k|
+        options.delete(k) if k.to_s.include?("checksum")
+      end
       options.delete(:content_md5)
-      options.delete(:checksum)
       orig_put(options, &block)
     end
   end
