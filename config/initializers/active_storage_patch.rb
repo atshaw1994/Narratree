@@ -5,21 +5,27 @@ Rails.application.config.to_prepare do
 
       def upload(key, io, checksum: nil, **options)
         instrument :upload, key: key, checksum: checksum do
-          options.delete(:checksum_sha256)
-          options.delete(:checksum_sha1)
-          options.delete(:checksum_crc32)
-          options.delete(:checksum_crc32c)
-          object_for(key).put(body: io, **options)
+          sanitized_options = options.dup
+          sanitized_options.delete(:checksum_sha256)
+          sanitized_options.delete(:checksum_sha1)
+          sanitized_options.delete(:checksum_crc32)
+          sanitized_options.delete(:checksum_crc32c)
+          sanitized_options.delete(:content_md5)
+          sanitized_options.delete(:checksum)
+          object_for(key).put(body: io, **sanitized_options)
         end
       end
 
       def upload_without_unfurling(key, io, checksum: nil, **options)
         instrument :upload, key: key, checksum: checksum do
-          options.delete(:checksum_sha256)
-          options.delete(:checksum_sha1)
-          options.delete(:checksum_crc32)
-          options.delete(:checksum_crc32c)
-          object_for(key).put(body: io, **options)
+          sanitized_options = options.dup
+          sanitized_options.delete(:checksum_sha256)
+          sanitized_options.delete(:checksum_sha1)
+          sanitized_options.delete(:checksum_crc32)
+          sanitized_options.delete(:checksum_crc32c)
+          sanitized_options.delete(:content_md5)
+          sanitized_options.delete(:checksum)
+          object_for(key).put(body: io, **sanitized_options)
         end
       end
     end
