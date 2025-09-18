@@ -4,8 +4,9 @@ if defined?(Aws::S3::Object)
 
     def put(options = {}, &block)
       options = options.dup
-      # Log all option keys for debugging
-      Rails.logger.warn "AWS S3 put options: #{options.keys.inspect}" if defined?(Rails)
+      # Log all option keys and values for debugging
+      puts "=== AWS S3 put options: #{options.inspect}"
+      Rails.logger.warn "=== AWS S3 put options: #{options.inspect}" if defined?(Rails)
       # Remove any key that includes 'checksum'
       options.keys.each do |k|
         options.delete(k) if k.to_s.include?("checksum")
