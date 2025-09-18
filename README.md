@@ -1,6 +1,6 @@
 # Narratree
 
-[Live Website (Hosted on Render)](www.narratree.onrender.com)
+[Live Website (Hosted on Render)](https://narratree.onrender.com/)
 
 ![index_screenshot](screenshots/Index_Screenshot.png)
 
