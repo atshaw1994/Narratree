@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     get "dashboard", to: "dashboard#index"
     resources :users, only: [] do
       post :warn, on: :member
+      member do
+        patch :approve
+        delete :reject
+      end
     end
   end
 

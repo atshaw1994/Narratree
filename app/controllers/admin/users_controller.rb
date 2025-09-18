@@ -13,6 +13,26 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  # Approve a pending user
+  def approve
+    @user = User.find(params[:id])
+    if @user.update(approved: true)
+      redirect_to admin_dashboard_path, notice: "User approved."
+    else
+      redirect_to admin_dashboard_path, alert: "Could not approve user."
+    end
+  end
+
+  # Reject (delete) a pending user
+  def reject
+    @user = User.find(params[:id])
+    if @user.destroy
+      redirect_to admin_dashboard_path, notice: "User rejected and deleted."
+    else
+      redirect_to admin_dashboard_path, alert: "Could not reject user."
+    end
+  end
+
   private
 
   def require_admin_or_owner!
