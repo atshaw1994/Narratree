@@ -37,11 +37,11 @@ class User < ApplicationRecord
   # Use Rails enum predicate methods: user?, moderator?, admin?, owner? (now user_role?)
   # If you need custom logic for admin or moderator, define as below:
   def admin_or_owner?
-    admin_user_role? || owner_user_role?
+    admin? || owner?
   end
 
   def moderator_or_higher?
-    moderator_user_role? || admin_user_role? || owner_user_role?
+    moderator? || admin? || owner?
   end
 
   # Follows another user
