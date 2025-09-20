@@ -2,6 +2,10 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin_or_owner!
 
+  def index
+    @users = User.all
+  end
+
   def warn
     @user = User.find(params[:user_id] || params[:id])
     admin_message = params[:admin_message].presence || "No message provided."
