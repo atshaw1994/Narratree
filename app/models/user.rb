@@ -32,7 +32,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :accepted_guidelines, inclusion: { in: [ true ], message: "must be accepted" }
 
-  enum role: { user: 0, moderator: 1, admin: 2, owner: 3 }
+  enum :role, { user: 0, moderator: 1, admin: 2, owner: 3 }
 
   # Use Rails enum predicate methods: user?, moderator?, admin?, owner? (now user_role?)
   # If you need custom logic for admin or moderator, define as below:
