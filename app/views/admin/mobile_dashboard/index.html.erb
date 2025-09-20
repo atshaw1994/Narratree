@@ -1,5 +1,11 @@
 <div class="mobile-dashboard">
     <h1 style="margin-bottom: 24px;">Admin Dashboard</h1>
-    <%= link_to 'Users', admin_users_path, class: 'signup-form-submit-button', style: 'text-decoration: none; margin-bottom: 1em; width: 100%; padding: 12px 16px;' %>
-    <%= link_to 'Articles', admin_articles_path, class: 'signup-form-submit-button', style: 'text-decoration: none; margin-bottom: 1em; width: 100%; padding: 12px 16px;' %>
+    <%= link_to admin_users_path, class: 'mobile-dashboard-btn', style: 'text-decoration: none; margin-bottom: 1em; width: 100%; padding: 12px 16px;' do %>
+      Users
+      <span class="material-symbols-rounded">keyboard_arrow_right</span>
+    <% end %>
+    <%= link_to admin_articles_path, class: 'mobile-dashboard-btn', style: 'text-decoration: none; margin-bottom: 1em; width: 100%; padding: 12px 16px;' do %>
+      Articles
+      <span class="material-symbols-rounded">keyboard_arrow_right</span>
+    <% end %>
 </div>
