@@ -15,5 +15,4 @@ if defined?(Aws::S3::Object)
       orig_put(options, &block)
     end
   end
-  Rails.logger.info "AWS S3 Object put method patched to remove checksum headers" if defined?(Rails)
 end

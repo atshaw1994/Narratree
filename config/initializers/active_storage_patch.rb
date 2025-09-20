@@ -30,5 +30,4 @@ Rails.application.config.to_prepare do
       end
     end
   end
-  Rails.logger.info "ActiveStorage S3Service patch loaded" if defined?(Rails)
 end
