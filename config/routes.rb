@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :articles, only: [ :index, :destroy ]
   end
 
+  get "sitemap.xml", to: "sitemap#index", defaults: { format: "xml" }
   root "articles#index"
   get "/about", to: "pages#about"
   get "/guidelines", to: "pages#guidelines", as: :guidelines
