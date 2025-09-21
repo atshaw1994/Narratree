@@ -22,9 +22,9 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(approved: true)
       UserMailer.account_approved_email(@user).deliver_later
-      redirect_to admin_dashboard_path, notice: "User approved."
+      redirect_to admin_users_path, notice: "User approved."
     else
-      redirect_to admin_dashboard_path, alert: "Could not approve user."
+      redirect_to admin_users_path, alert: "Could not approve user."
     end
   end
 
@@ -32,9 +32,9 @@ class Admin::UsersController < ApplicationController
   def reject
     @user = User.find(params[:id])
     if @user.destroy
-      redirect_to admin_dashboard_path, notice: "User rejected and deleted."
+      redirect_to admin_users_path, notice: "User rejected and deleted."
     else
-      redirect_to admin_dashboard_path, alert: "Could not reject user."
+      redirect_to admin_users_path, alert: "Could not reject user."
     end
   end
 

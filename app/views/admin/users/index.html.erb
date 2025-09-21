@@ -22,14 +22,14 @@
                 </div>
                 <div class="user-actions">
                     <% if user.approved? %>
-                        <%= link_to user_path(user), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, title: 'Delete' do %>
+                        <%= link_to user_path(user), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'admin-delete-button', title: 'Delete' do %>
                             <span class="material-symbols-rounded" aria-hidden="true">delete</span>
                         <% end %>
                     <% else %>
-                        <%= button_to reject_admin_user_path(user), class: 'mobile-btn-reject-user', method: :delete, data: { confirm: 'Reject and delete this user?' } do %>
+                        <%= button_to reject_admin_user_path(user), class: 'admin-delete-button', method: :delete, data: { confirm: 'Reject and delete this user?' } do %>
                             <span class="material-symbols-rounded">cancel</span>
                         <% end %>
-                        <%= button_to approve_admin_user_path(user), class: 'mobile-btn-approve-user', method: :patch, data: { confirm: 'Approve this user?' } do %>
+                        <%= button_to approve_admin_user_path(user), class: 'admin-approve-button', method: :patch, data: { confirm: 'Approve this user?' } do %>
                             <span class="material-symbols-rounded">check_circle</span>
                         <% end %>
                     <% end %>

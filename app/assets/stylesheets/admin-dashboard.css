@@ -46,3 +46,40 @@
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+.admin-delete-button {
+    background-color: #d32f2f;
+    border: 1px solid #921616;
+    color: #ffa0a0;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0.25em 0.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+.admin-delete-button:hover {
+    background-color: #b71c1c;
+    color: #ffffff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1.0;
+}
+
+.admin-approve-button {
+    background-color: #388e3c;
+    border: 1px solid #1b5e20;
+    color: #a5d6a7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0.25em 0.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+
+.admin-delete-button span,
+.admin-approve-button span,
+.admin-reject-button span {
+    padding-top: 4px;
+}
