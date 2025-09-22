@@ -1,0 +1,99 @@
+<tr id="user-row-<%= user.id %>">
+  <%# User Profile Picture Cell %>
+  <td>
+    <% if user.profile_picture.attached? %>
+      <%= image_tag user.profile_picture, class: "profile-pic-small" %>
+    <% else %>
+      <span class="material-symbols-rounded default-user-icon">account_circle</span>
+    <% end %>
+  </td>
+  <%# User ID Cell %>
+  <td><%= user.id %></td>
+  <%# Username Cell %>
+  <td><%= link_to user.username, user_path(user) %></td>
+  <%# First Name Cell %>
+  <td><%= user.first_name %></td>
+  <%# Last Name Cell %>
+  <td><%= user.last_name %></td>
+  <%# Created At Cell %>
+  <td><%= user.created_at %></td>
+  <%# Updated At Cell %>
+  <td><%= user.updated_at %></td>
+  <%# Encrypted Password Cell %>
+  <td><%= user.encrypted_password.present? ? "Set" : "Unset" %></td>
+  <%# Warnings Count Cell %>
+  <td><%= user.warnings_count %></td>
+  <%# User Role Cell (with AJAX form) %>
+  <td>
+    <% if user.owner? %>
+        <%= user.role.titleize %>
+    <% else %>
+        <% roles = User.roles.keys %>
+        <%= form_with url: update_role_admin_user_path(user), method: :patch, local: true, html: { class: 'role-form', data: { user_id: user.id, controller: 'role-form' } } do |f| %>
+          <%= select_tag "role",
+            options_for_select(roles.map { |r| [r.titleize, r] }, user.role),
+            disabled: !(current_user.admin_or_owner?),
+            class: 'role-dropdown',
+            data: { user_id: user.id, action: 'change->role-form#showCheck' } %>
+          <%= button_tag type: 'submit', title: 'Save', class: 'admin-approve-button', style: 'display:none; width: 24px; height: 24px;', data: { user_id: user.id, role_form_target: 'button' } do %>
+            <span class="material-symbols-rounded" style="font-size: 16px; padding: 0;">check_circle</span>
+          <% end %>
+          <%= button_tag type: 'cancel', title: 'Cancel', class: 'admin-reject-button', style: 'display:none; width: 24px; height: 24px;', data: { user_id: user.id, role_form_target: 'button' } do %>
+            <span class="material-symbols-rounded" style="font-size: 16px; padding: 0;">cancel</span>
+          <% end %>
+        <% end %>
+    <% end %>
+  </td>
+  <%# User Approval Cell %>
+  <td>
+    <% if user.approved? %>
+        <input type="checkbox" <%= 'checked' if user.approved? %> readonly style="pointer-events: none;" />
+    <% else %>
+        <div style="display: flex; gap: 0.5em; align-items: center;">
+            <button type="button" class="admin-reject-button"
+                data-controller="admin-approve-reject"
+                data-admin-approve-reject-url-value="<%= reject_admin_user_path(user) %>"
+                data-admin-approve-reject-method-value="delete"
+                data-admin-approve-reject-confirm-value="Reject and delete this user?"
+                data-action="admin-approve-reject#handleAction">
+                <span class="material-symbols-rounded">cancel</span>
+            </button>
+            <button type="button" class="admin-approve-button"
+                data-controller="admin-approve-reject"
+                data-admin-approve-reject-url-value="<%= approve_admin_user_path(user) %>"
+                data-admin-approve-reject-method-value="patch"
+                data-admin-approve-reject-confirm-value="Approve this user?"
+                data-action="admin-approve-reject#handleAction">
+                <span class="material-symbols-rounded">check_circle</span>
+            </button>
+        </div>
+    <% end %>
+  </td>
+  <%# Actions Cell (Warn, Delete) %>
+  <td>
+    <% if !user.owner? %>
+        <div style="display: flex; gap: 0.5em; align-items: center; justify-content: center;">
+            <form id="warn-user-form-<%= user.id %>" action="<%= warn_admin_user_path(user) %>" method="post" style="display:none;">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="admin_message">
+            </form>
+            <button type="button"
+              class="admin-warn-button"
+              title="Warn user"
+              onclick="
+                var msg = prompt('Message to user:');
+                if (msg !== null && msg.trim() !== '') {
+                  var f = document.getElementById('warn-user-form-<%= user.id %>');
+                  f.admin_message.value = msg;
+                  f.submit();
+                }
+              ">
+              <span class="material-symbols-rounded" style="font-size: 20px; color: #b71c1c;">warning</span>
+            </button>
+            <%= button_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'admin-delete-button' do %>
+              <span class="material-symbols-rounded" style="font-size: 20px; color: #fff;">delete</span>
+            <% end %>
+        </div>
+    <% end %>
+  </td>
+</tr>

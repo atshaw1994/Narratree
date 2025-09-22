@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "dashboard", to: "dashboard#index"
     resources :users, only: [ :index, :destroy ] do
+      patch :update_role, on: :member
       post :warn, on: :member
       member do
         patch :approve
