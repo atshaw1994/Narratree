@@ -100,7 +100,7 @@
     /* #endregion */
 
     /* #region section-container.css */
-    --section-bg-color: rgba(31, 146, 253, 0.2);
+    --section-bg-color: rgba(31, 146, 253, 0.8);
     --section-border-color: rgba(0, 0, 0, 0.5);
     --section-shadow-color: rgba(0, 0, 0, 0.2);
     --section-header-gradient-start: rgb(65, 151, 255);
@@ -220,7 +220,7 @@ body.dark-mode {
     /* #endregion */
 
     /* #region section-container.css */
-    --section-bg-color: rgba(0, 0, 0, 0.2);
+    --section-bg-color: rgba(26, 43, 63, 0.6);
     --section-border-color: rgba(255, 255, 255, 0.2);
     --section-shadow-color: rgba(255, 255, 255, 0.1);
     --section-header-gradient-start: #1a2a47;
