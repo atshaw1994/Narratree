@@ -1,23 +1,25 @@
 <%= javascript_include_tag 'admin_user_roles' %>
-<div class="section-container" style="max-width: 95%;">
+<div class="section-container" style="max-width: 95%;" data-controller="admin-tabs">
     <div class="section-container-header">
-        <h2>Admin Dashboard</h2>
+        <h2 style="width: 16rem;">Admin Dashboard</h2>
+        <div style="display: flex; align-items: center; gap: 1em; width: 100%;">
+            <div class="admin-tab-header-flex" style="display: flex; align-items: center; justify-content: space-between; gap: 1em; max-height: 70vh;">
+                    <div class="admin-tab-buttons" style="display: flex; gap: 0.5em;">
+                        <button type="button" class="admin-tab-btn active" data-admin-tabs-target="tabBtn" data-tab="users" data-action="click->admin-tabs#switch">Users</button>
+                        <button type="button" class="admin-tab-btn" data-admin-tabs-target="tabBtn" data-tab="articles" data-action="click->admin-tabs#switch">Articles</button>
+                    </div>
+                </div>
+            <div class="search-bar-container" style="flex-grow: 1;">
+                <%= text_field_tag :admin_query, params[:admin_query],
+                    placeholder: "Search users, articles, authors...",
+                    class: "search-input",
+                    data: { action: "input->admin-tabs#search", admin_tabs_target: "searchInput" }
+                %>
+            </div>
+        </div>
     </div>
     <div class="section-container-body">
-        <div id="admin-tabs" data-controller="admin-tabs" style="width: 100%;">
-            <div class="admin-tab-header-flex" style="display: flex; align-items: center; justify-content: space-between; gap: 1em; max-height: 70vh;">
-                <div class="admin-tab-buttons" style="display: flex; gap: 0.5em;">
-                    <button type="button" class="admin-tab-btn active" data-admin-tabs-target="tabBtn" data-tab="users" data-action="click->admin-tabs#switch">Users</button>
-                    <button type="button" class="admin-tab-btn" data-admin-tabs-target="tabBtn" data-tab="articles" data-action="click->admin-tabs#switch">Articles</button>
-                </div>
-                <div class="search-bar-container" style="flex-grow: 1;">
-                    <%= text_field_tag :admin_query, params[:admin_query],
-                        placeholder: "Search users, articles, authors...",
-                        class: "search-input",
-                        data: { action: "input->admin-tabs#search", admin_tabs_target: "searchInput" }
-                    %>
-                </div>
-            </div>
+    <div id="admin-tabs" style="width: 100%;">
             <div class="admin-tab-content" id="users-tab" data-admin-tabs-target="tabContent" style="display: block;">
                 <table class="admin-table">
                     <thead>
