@@ -184,8 +184,8 @@ body.dark-mode {
     --comment-form-background: rgba(31, 146, 253, 0.2);
     --comment-form-border: rgba(255, 255, 255, 0.5);
     --comment-form-shadow: rgba(255, 255, 255, 0.2);
-    --comments-section-background: #1e1e1e;
-    --comments-section-border: rgba(255, 255, 255, 0.2);
+    --comments-section-background: #2c394e;
+    --comments-section-border: rgba(255, 255, 255, 0.1);
     --comments-section-shadow: rgba(255, 255, 255, 0.1);
     --comment-card-background: #222222;
     --comment-card-border: #444;
