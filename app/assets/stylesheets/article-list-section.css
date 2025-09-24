@@ -8,15 +8,9 @@
     gap: 16px;
 }
 
-#pinned-articles {
-    width: 98%;
-}
-
+#pinned-articles,
+#followed-articles,
 #article-list {
-    width: 98%;
-}
-
-#followed-articles {
     width: 98%;
 }
 
@@ -34,4 +28,9 @@
 
 .new-article-button:hover {
     color: var(--new-article-btn-hover-color);
+}
+
+[data-article-search-target="articlesContainer"] {
+    flex-grow: 1;
+    display: block;
 }
