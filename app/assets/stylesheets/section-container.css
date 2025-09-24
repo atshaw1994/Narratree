@@ -4,6 +4,9 @@
     border-radius: 8px;
     box-shadow: 2px 2px 4px var(--section-shadow-color);
     backdrop-filter: blur(12px);
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-container-header {
@@ -12,7 +15,6 @@
         var(--section-header-gradient-start), 
         var(--section-header-gradient-end)
     );
-    border-bottom: 1px solid var(--section-header-border);
     border-radius: 8px 8px 0 0;
     box-shadow: 0 2px 4px var(--section-header-shadow);
     display: flex;

@@ -110,10 +110,6 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
   align-items: center;
   gap: 1em;
 }
-#article-list .search-bar-container {
-  flex: 1;
-  max-width: 300px;
-}
 
 /* Mobile Styles (max-width: 620px) */
 @media (max-width: 620px) {

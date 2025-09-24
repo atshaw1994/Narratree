@@ -62,24 +62,24 @@
                         <p><em>No articles found.</em></p>
                     </li>
                     <% @articles.each do |article| %>
-                    <li class="article-card-list-item" data-title="<%= article.title.downcase %>">
-                        <div class="card article-card-grid">
-                            <%= link_to article_path(article), class: "article-card-link" do %>
-                                <div class="article-card-main">
-                                    <h3 class="article-card-title"><%= article.title %></h3>
-                                    <div class="article-card-author">
-                                        by <em><%= article.user.username %></em>
+                        <li class="article-card-list-item" data-title="<%= article.title.downcase %>">
+                            <div class="card article-card-grid">
+                                <%= link_to article_path(article), class: "article-card-link" do %>
+                                    <div class="article-card-main">
+                                        <h3 class="article-card-title"><%= article.title %></h3>
+                                        <div class="article-card-author">
+                                            by <em><%= article.user.username %></em>
+                                        </div>
                                     </div>
-                                </div>
-                            <% end %>
-                            <% if current_user == article.user %>
-                                <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
-                                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                    <span class="material-symbols-rounded">delete</span>
                                 <% end %>
-                            <% end %>
-                        </div>
-                    </li>
+                                <% if current_user == article.user %>
+                                    <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
+                                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                        <span class="material-symbols-rounded">delete</span>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </li>
                     <% end %>
                 </ul>
                 <div class="pagination-container">
