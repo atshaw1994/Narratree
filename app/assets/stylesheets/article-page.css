@@ -44,6 +44,7 @@
 
 .article-body {
     display: flex;
+    background-color: var(--body-background);
     flex-direction: column;
     justify-content: center;
     align-items: left;
