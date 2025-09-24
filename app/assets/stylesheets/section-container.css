@@ -3,6 +3,7 @@
     border: 1px solid var(--section-border-color);
     border-radius: 8px;
     box-shadow: 2px 2px 4px var(--section-shadow-color);
+    backdrop-filter: blur(12px);
 }
 
 .section-container-header {
@@ -42,3 +43,4 @@
 .section-container li + li {
   margin-top: 10px;
 }
+
