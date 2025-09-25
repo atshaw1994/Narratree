@@ -237,6 +237,125 @@ body.dark-mode {
     /* #endregion */
 }
 
+/* Fall theme */
+body.fall-mode {
+    /* #region application.css */
+    --body-background: #4e2e0e;    /* Deep Brown */
+    --body-color: #f5e6c8;         /* Wheat/Light Tan */
+    --textarea-background: #7c5e3c;/* Medium Brown */
+    --textarea-border: #c97a3a;    /* Pumpkin Orange */
+
+    --btn-background: #a0522d;     /* Sienna Brown */
+    --btn-border: #f5e6c8;         /* Wheat/Light Tan */
+    --btn-shadow: rgba(201, 122, 58, 0.3); /* Pumpkin Glow */
+    --btn-icon-color: #f5e6c8;     /* Wheat/Light Tan */
+    --btn-hover-icon-color: #4e2e0e; /* Deep Brown */
+    --btn-hover-background: #c97a3a; /* Pumpkin Orange */
+    --btn-active-background: #3b210a; /* Very Dark Brown */
+
+    --input-background: #7c5e3c;   /* Medium Brown */
+    --input-border: #bfa76a;       /* Muted Gold */
+    --input-focus-background: #4e2e0e; /* Deep Brown */
+    --input-focus-border: #fffbe6; /* Pale Gold */
+
+    --flash-text-color: #c97a3a;   /* Pumpkin Orange */
+    /* #endregion */
+
+    /* #region header.css */
+    --header-background-start: #7c5e3c; /* Medium Brown */
+    --header-background-end: #4e2e0e;   /* Deep Brown */
+    --header-border-color: #fffbe6;     /* Pale Gold */
+    --header-box-shadow: rgba(245, 230, 200, 0.3); /* Wheat Shadow */
+    --header-text-color: #f5e6c8;       /* Wheat/Light Tan */
+    --header-page-title: #c97a3a;       /* Pumpkin Orange */
+    --header-page-title-text-shadow: #3b210a; /* Dark Brown Shadow */
+    --header-btn-color: #bfa76a;        /* Muted Gold */
+    --header-btn-hover-color: #f5e6c8;  /* Wheat/Light Tan */
+    --favicon-background: #a0522d;      /* Sienna Brown */
+    --favicon-border: #f5e6c8;          /* Wheat/Light Tan */
+    /* #endregion */
+
+    /* #region article-card.css */
+    --article-card-title-color: #fffbe6; /* Pale Gold */
+    --article-card-author-color: #c97a3a; /* Pumpkin Orange */
+    /* #endregion */
+
+    /* #region article-list-section.css */
+    --new-article-btn-color: #a0522d;       /* Sienna Brown */
+    --new-article-btn-hover-color: #4e2e0e; /* Deep Brown */
+    /* #endregion */
+
+    /* #region article-page.css */
+    --article-page-author-color: #c97a3a;   /* Pumpkin Orange */
+    --article-page-delete-btn-color: #b22222; /* Firebrick Red */
+    /* #endregion */
+
+    /* #region card.css */
+    --card-gradient-end: rgba(78, 46, 14, 0.8);  /* Deep Brown Transparent */
+    --card-gradient-start: rgba(124, 94, 60, 0.8); /* Medium Brown Transparent */
+    --card-border-color: #bfa76a;             /* Muted Gold Edge */
+    --card-shadow-color: #c97a3a5e;           /* Pumpkin Shadow */
+    --card-hover-background: #6b3e1d;         /* Slightly darker brown on hover */
+    --card-link-color: #f5e6c8;               /* Wheat/Light Tan link */
+    /* #endregion */
+
+    /* #region comment.css */
+    --comment-form-background: #7c5e3c;    /* Medium Brown */
+    --comment-form-border: #bfa76a;        /* Muted Gold */
+    --comment-form-shadow: #c97a3a;        /* Pumpkin Orange */
+    --comments-section-background: #ffffff10; /* Very Dark Brown */
+    --comments-section-border: #f5e6c8;    /* Wheat/Light Tan */
+    --comments-section-shadow: #a0522d;    /* Sienna Brown */
+    --comment-card-background: #6b3e1d;    /* Darker Brown */
+    --comment-card-border: #c97a3a;        /* Pumpkin Orange Outline */
+    --comment-card-shadow: #bfa76a;        /* Muted Gold */
+    --comment-author-color: #c97a3a;       /* Pumpkin Orange */
+    --comment-body-color: #f5e6c8;         /* Wheat/Light Tan */
+    --delete-comment-btn-hover-color: #b22222; /* Firebrick Red */
+    --like-count-color: #c97a3a;           /* Pumpkin Orange */
+    /* #endregion */
+
+    /* #region form.css */
+    --form-top-gradient-start: #7c5e3c;  /* Medium Brown */
+    --form-top-gradient-end: #4e2e0e;    /* Deep Brown */
+    --form-input-background: #3b210a;    /* Very Dark Brown */
+    --form-input-border: #bfa76a;        /* Muted Gold */
+    --form-input-focus-background: #6b3e1d; /* Darker Brown */
+    --form-input-focus-border: #fffbe6;  /* Pale Gold */
+    --login-btn-background: #a0522d;     /* Sienna Brown */
+    --login-btn-hover-background: #c97a3a; /* Pumpkin Orange */
+    --login-btn-border: #f5e6c8;         /* Wheat/Light Tan */
+    --login-btn-color: #4e2e0e;          /* Deep Brown Text */
+    --submit-btn-background: #c97a3a;    /* Pumpkin Orange */
+    --submit-btn-hover-background: #a0522d; /* Sienna Brown */
+    /* #endregion */
+
+    /* #region login-modal.css */
+    --modal-overlay-bg: rgba(245, 230, 200, 0.2); /* Wheat Transparent Overlay */
+    --modal-content-bg: #6b3e1d;           /* Darker Brown */
+    --modal-content-border: #fffbe6;       /* Pale Gold */
+    --modal-close-color: #c97a3a;          /* Pumpkin Orange */
+    --modal-close-hover-color: #fffbe6;    /* Pale Gold */
+    /* #endregion */
+
+    /* #region section-container.css */
+    --section-bg-color: rgba(124, 94, 60, 0.4); /* Medium Brown Transparent */
+    --section-border-color: #bfa76a;          /* Muted Gold */
+    --section-shadow-color: #3b210a;          /* Very Dark Brown */
+    --section-header-gradient-start: #7c5e3c; /* Medium Brown */
+    --section-header-gradient-end: #4e2e0e;   /* Deep Brown */
+    --section-header-border: #c97a3a;         /* Pumpkin Orange */
+    --section-header-shadow: rgba(160, 82, 45, 0.4);         /* Sienna Shadow */
+    --section-header-text-color: #fffbe6;     /* Pale Gold */
+    /* #endregion */
+
+    /* #region signup-form.css */
+    --signup-submit-btn-border: #fffbe6;       /* Pale Gold */
+    --signup-submit-btn-color: #f5e6c8;        /* Wheat/Light Tan */
+    --signup-submit-btn-background: #a0522d;   /* Sienna Brown */
+    /* #endregion */
+}
+
 /* Halloween theme */
 body.spooky-mode {
     /* #region application.css */

@@ -7,6 +7,7 @@ export default class extends Controller {
         const footer = document.querySelector("footer");
         switch (this.getSeason()) {
             case "fall":
+                // Falling elements
                 this.maxFallingElements = 30;
                 this.stopped = false;
                 this.createElements("leaf");

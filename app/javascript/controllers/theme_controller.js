@@ -1,20 +1,27 @@
 import { Controller } from "@hotwired/stimulus";
 
+console.log("Month: ", new Date().getMonth());
+
 export default class extends Controller {
   // Define a static array of theme modes
   static get modes() {
     const now = new Date();
+    const month = now.getMonth();
     let modes = ['system', 'light', 'dark'];
-    if (now.getMonth() === 10) {
+    if (month === 8 || month === 10) {
+      modes.push('fall');
+    }
+    else if (month === 9) {
       modes.push('spooky');
     }
-    else if (now.getMonth() === 11) {
+    else if (month === 11) {
       modes.push('santa');
     }
     return modes;
   }
   
   connect() {
+    console.log("ThemeController Modes: ", this.constructor.modes);
     this.body = document.body;
     this.prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     this.currentModeIndex = 0;
@@ -62,6 +69,11 @@ export default class extends Controller {
         icon.textContent = 'brightness_auto';
         this.body.className = "";
         this.handleSystemPreference();
+        break;
+      case 'fall':
+        icon.textContent = 'temp_preferences_eco';
+        this.body.className = "";
+        this.body.classList.add('fall-mode');
         break;
       case 'spooky':
         icon.textContent = 'skull';
