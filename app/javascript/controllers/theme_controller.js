@@ -58,15 +58,15 @@ export default class extends Controller {
         this.body.className = "";
         this.body.classList.add('dark-mode');
         break;
-      case 'spooky':
-        icon.textContent = 'skull';
-        this.body.className = "";
-        this.body.classList.add('spooky-mode');
-        break;
       case 'system':
         icon.textContent = 'brightness_auto';
         this.body.className = "";
         this.handleSystemPreference();
+        break;
+      case 'spooky':
+        icon.textContent = 'skull';
+        this.body.className = "";
+        this.body.classList.add('spooky-mode');
         break;
       case 'santa':
         icon.textContent = 'mode_cool';

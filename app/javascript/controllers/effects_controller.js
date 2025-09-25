@@ -5,8 +5,6 @@ export default class extends Controller {
         this.maxFallingElements = 50;
         this.stopped = false;
         const footer = document.querySelector("footer");
-        const themeBtnIcon = document.querySelector('.header-btn[data-controller~="theme"] .material-symbols-rounded');
-        
         switch (this.getSeason()) {
             case "fall":
                 this.maxFallingElements = 30;
@@ -31,11 +29,6 @@ export default class extends Controller {
                 // Spiderwebs and witch hats on section headers
                 this.decorateHeaders("spooky");
 
-                // Theme icon and body class
-                if (themeBtnIcon) themeBtnIcon.textContent = 'skull';
-                document.body.classList.add("spooky-mode");
-                document.body.classList.remove("dark-mode");
-
                 // Falling elements
                 this.maxFallingElements = 30;
                 this.stopped = false;
@@ -54,11 +47,6 @@ export default class extends Controller {
                 // Santa hats on section headers
                 this.decorateHeaders("christmas");
 
-                // Theme icon and body class
-                if (themeBtnIcon) themeBtnIcon.textContent = 'mode_cool';
-                document.body.classList.add("santa-mode");
-                document.body.classList.remove("dark-mode");
-                
                 // Falling elements
                 this.maxFallingElements = 30;
                 this.stopped = false;
