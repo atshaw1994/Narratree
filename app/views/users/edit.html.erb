@@ -1,58 +1,56 @@
 <div class="user-profile">
-  <div class="section-container">
-    <div class="section-container-header" style="justify-content: center;">
-      <h2>Edit Profile</h2>
-    </div>
-    <div class="section-container-body profile-section-container-body">
-      <%= form_with model: @user, url: user_path(@user), method: :patch, multipart: true do |form| %>
-        <div class="form-group signup-form-profile-picture-group">
-          <div id="profile-pic-edit-container"
-               data-controller="profile-picture-overlay"
-               data-action="mouseenter->profile-picture-overlay#showOverlay mouseleave->profile-picture-overlay#hideOverlay">
-            <% if @user.profile_picture.attached? %>
-              <%= image_tag @user.profile_picture,
+  <%= render partial: "shared/section_container", locals: {
+  width: "100%",
+  header: content_tag(:h2, "Edit Profile"),
+  body: content_tag(:div, class: "profile-section-container-body", style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
+    content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
+      form_with(model: @user, url: user_path(@user), method: :patch, multipart: true) do |form|
+        safe_join([
+          content_tag(:div, class: "form-group signup-form-profile-picture-group") do
+            content_tag(:div, id: "profile-pic-edit-container", data: { controller: "profile-picture-overlay", action: "mouseenter->profile-picture-overlay#showOverlay mouseleave->profile-picture-overlay#hideOverlay" }) do
+              if @user.profile_picture.attached?
+                image_tag(@user.profile_picture,
                   class: "profile-pic-large",
                   style: "cursor: pointer;",
                   data: {
                     profile_picture_overlay_target: "edit",
                     action: "click->profile-picture-overlay#triggerFileInput"
-                  } %>
-            <% else %>
-              <span class="material-symbols-rounded default-user-icon profile-pic-large"
-                    data-profile-picture-overlay-target="edit"
-                    data-action="click->profile-picture-overlay#triggerFileInput"
-                    style="cursor: pointer;">account_circle</span>
-            <% end %>
-            <div class="profile-pic-overlay" data-profile-picture-overlay-target="overlay">
-              <span class="material-symbols-rounded">edit</span>
-            </div>
-            <%= form.file_field :profile_picture, class: "hidden-file-input", style: "display: none;", data: { profile_picture_overlay_target: "fileInput" } %>
-          </div>
-        </div>
-        <div class="form-group signup-form-name-group">
-            <div>
-              <%= form.label :first_name %>
-              <%= form.text_field :first_name %>
-            </div>
-            <div>
-              <%= form.label :last_name %>
-              <%= form.text_field :last_name %>
-            </div>
-        </div>
-        <div class="form-group signup-form-username-group">
-          <%= form.label :username %>
-          <%= form.text_field :username %>
-        </div>
-        <div class="form-group signup-form-email-group">
-          <%= form.label :email %>
-          <%= form.email_field :email %>
-        </div>
-        <div class="signup-form-submit-group">
-          <%= link_to 'Change Password', edit_user_registration_path, class: 'form-submit-button signup-form-submit-button', style: 'margin-top: 8px;' %>
-          <%= button_to "Delete Account", registration_path(:user), method: :delete, data: { confirm: "Are you sure you want to delete your account? This action cannot be undone.", turbo_confirm: "Are you sure you want to delete your account? This action cannot be undone." }, class: "form-submit-button signup-form-submit-button delete-account-button" %>
-          <%= form.submit 'Save Changes', class: 'form-submit-button signup-form-submit-button' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+                  }) +
+                "".html_safe
+              else
+                content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon profile-pic-large", data: { profile_picture_overlay_target: "edit", action: "click->profile-picture-overlay#triggerFileInput" }, style: "cursor: pointer;")
+              end +
+              content_tag(:div, content_tag(:span, "edit", class: "material-symbols-rounded"), class: "profile-pic-overlay", data: { profile_picture_overlay_target: "overlay" }) +
+              form.file_field(:profile_picture, class: "hidden-file-input", style: "display: none;", data: { profile_picture_overlay_target: "fileInput" })
+            end
+          end,
+          content_tag(:div, class: "form-group signup-form-name-group") do
+            content_tag(:div) do
+              form.label(:first_name) +
+              form.text_field(:first_name)
+            end +
+            content_tag(:div) do
+              form.label(:last_name) +
+              form.text_field(:last_name)
+            end
+          end,
+          content_tag(:div, class: "form-group signup-form-username-group") do
+            form.label(:username) +
+            form.text_field(:username)
+          end,
+          content_tag(:div, class: "form-group signup-form-email-group") do
+            form.label(:email) +
+            form.email_field(:email)
+          end,
+          content_tag(:div, class: "signup-form-submit-group") do
+            link_to('Change Password', edit_user_registration_path, class: 'form-submit-button signup-form-submit-button', style: 'margin-top: 8px;') +
+            button_to("Delete Account", registration_path(:user), method: :delete, data: { confirm: "Are you sure you want to delete your account? This action cannot be undone.", turbo_confirm: "Are you sure you want to delete your account? This action cannot be undone." }, class: "form-submit-button signup-form-submit-button delete-account-button") +
+            form.submit('Save Changes', class: 'form-submit-button signup-form-submit-button')
+          end
+        ])
+      end
+    end
+  end
+} %>
+
 </div>
