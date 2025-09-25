@@ -1,31 +1,37 @@
-<div class="section-container">
-    <div class="section-container-header">
-        <h2>Community Guidelines</h2>
-    </div>
-    
-    <div class="section-container-body" style="display: flex; flex-direction: column; gap: 1em;">
-        <h4>Welcome to Narratree!</h4>
-        
-        <p>To ensure a positive experience for all members, please adhere to the following guidelines:</p>
-        <ul style="list-style-type: disc; padding-left: 20px;">
-            <li>Be respectful and considerate to all members.</li>
-            <li>No hate speech, harassment, or discrimination.</li>
-            <li>Do not post illegal, explicit, or violent content.</li>
-            <li>Respect privacy — do not share personal information without consent.</li>
-            <li>Report any violations to the administrators.</li>
-            <li>Follow all applicable laws and platform rules.</li>
-            <li>
-                Absolutely NO political content or discussions.
-                <ul>
-                    <li><p>Though I (the owner) support political discourse, </p>
-                        <p>it must be kept off of this platform.</p></li>
-                    <li>Violations will be removed without warning.</li>
-                    <li>This is not 4chan.</li>
-                </ul>
-            </li>
-        </ul>
-
-        <p>Violations may result in content removal or account suspension.</p>
-        <p>Thank you for helping us build a safe and positive community!</p>
-    </div>
-</div>
+<%= render partial: "shared/section_container", locals: {
+    header: content_tag(:h2, "Community Guidelines"),
+    body: content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
+        content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
+            safe_join([
+                content_tag(:h4, "Welcome to Narratree!"),
+                content_tag(:p, "To ensure a positive experience for all members, please adhere to the following guidelines:"),
+                content_tag(:ul, style: "list-style-type: disc; padding-left: 20px;") do
+                    safe_join([
+                        content_tag(:li, "Be respectful and considerate to all members."),
+                        content_tag(:li, "No hate speech, harassment, or discrimination."),
+                        content_tag(:li, "Do not post illegal, explicit, or violent content."),
+                        content_tag(:li, "Respect privacy — do not share personal information without consent."),
+                        content_tag(:li, "Report any violations to the administrators."),
+                        content_tag(:li, "Follow all applicable laws and platform rules."),
+                        content_tag(:li) do
+                            safe_join([
+                                "Absolutely NO political content or discussions.",
+                                content_tag(:ul) do
+                                    safe_join([
+                                        content_tag(:li) do
+                                            safe_join([
+                                                content_tag(:p, "Though I (the owner) support political discourse, it must be kept off of this platform.")
+                                            ])
+                                        end
+                                    ])
+                                end
+                            ])
+                        end
+                    ])
+                end,
+                content_tag(:p, "<strong>Violations may result in content removal or account suspension.</strong>".html_safe),
+                content_tag(:p, "<strong>Thank you for helping us build a safe and positive community!</strong>".html_safe)
+            ])
+        end
+    end
+} %>
