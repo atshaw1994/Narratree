@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: ENV["GMAIL_USERNAME"]
+  default from: Rails.application.credentials.dig(:gmail, :username)
 
   def account_approved_email(user)
     @user = user

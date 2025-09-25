@@ -1,0 +1,14 @@
+<tr>
+  <td><%= article.id %></td>
+  <td><%= link_to article.title, article_path(article) %></td>
+  <td><%= link_to article.user.username, user_path(article.user) %></td>
+  <td><%= article.created_at %></td>
+  <td><%= article.updated_at %></td>
+  <td><%= article.comments.count %></td>
+  <td><%= article.photos.attached? ? article.photos.count : 0 %></td>
+  <td><%= article.article_likes.count %></td>
+  <td>
+    <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm btn-primary', style: 'margin-right: 0.5em;' %>
+    <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :saved_article_joins, class_name: "SavedArticle", dependent: :destroy
   has_many :saved_articles, through: :saved_article_joins, source: :article
   has_many :likes, dependent: :destroy
@@ -31,16 +32,16 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :accepted_guidelines, inclusion: { in: [ true ], message: "must be accepted" }
 
-  enum role: { user: 0, moderator: 1, admin: 2, owner: 3 }
+  enum :role, { user: 0, moderator: 1, admin: 2, owner: 3 }
 
   # Use Rails enum predicate methods: user?, moderator?, admin?, owner? (now user_role?)
   # If you need custom logic for admin or moderator, define as below:
   def admin_or_owner?
-    admin_user_role? || owner_user_role?
+    admin? || owner?
   end
 
   def moderator_or_higher?
-    moderator_user_role? || admin_user_role? || owner_user_role?
+    moderator? || admin? || owner?
   end
 
   # Follows another user

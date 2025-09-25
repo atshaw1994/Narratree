@@ -1,12 +1,14 @@
 # Narratree
 
+[Live Website (Hosted on Render)](https://narratree.onrender.com/)
+
 ![index_screenshot](screenshots/Index_Screenshot.png)
 
 ![article_screenshot](screenshots/Article_Screenshot.png)
 
 ## Description
 
-Narratree is a simple blogging platform built with Ruby on Rails. Users can create articles and leave comments. This project is part of The Odin Project curriculum.
+Narratree is a simple publishing platform built with Ruby on Rails. Users can create articles and leave comments. This project is part of The Odin Project curriculum.
 
 ## Branches
 

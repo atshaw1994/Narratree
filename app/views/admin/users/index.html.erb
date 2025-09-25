@@ -1,0 +1,40 @@
+<div class="mobile-dashboard">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+        <%= link_to admin_dashboard_path, class: "back-btn" do %>
+            <span class="material-symbols-rounded" aria-hidden="true" style="font-size: 48px;">arrow_circle_left</span>
+        <% end %>
+        <h1 style="margin: 0 auto 0 -48px;">Users</h1>
+    </div>
+    
+    <ul class="mobile-dashboard-user-list" data-controller="mobile-dashboard-card">
+        <% User.all.each do |user| %>
+            <li class="mobile-dashboard-card" data-url="<%= user_path(user) %>" data-mobile-dashboard-card-target="card">
+                <div class="mobile-dashboard-user-avatar">
+                    <% if user.respond_to?(:profile_picture) && user.profile_picture.respond_to?(:attached?) && user.profile_picture.attached? %>
+                        <img src="<%= url_for(user.profile_picture) %>" alt="<%= user.username %> profile picture" class="profile-picture-small" />
+                    <% else %>
+                        <span class="material-symbols-rounded default-profile-picture-small">account_circle</span>
+                    <% end %>
+                </div>
+                <div class="mobile-dashboard-user-info">
+                    <p class="user-name"><%= user.first_name %> <%= user.last_name %></p>
+                    <p class="user-username"><%= user.username %></p>
+                </div>
+                <div class="mobile-dashboard-article-actions">
+                    <% if user.approved? %>
+                        <%= link_to user_path(user), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, title: 'Delete' do %>
+                            <span class="material-symbols-rounded" aria-hidden="true">delete</span>
+                        <% end %>
+                    <% else %>
+                        <%= button_to reject_admin_user_path(user), class: 'admin-reject-button', method: :delete, data: { confirm: 'Reject and delete this user?' } do %>
+                            <span class="material-symbols-rounded">cancel</span>
+                        <% end %>
+                        <%= button_to approve_admin_user_path(user), class: 'admin-approve-button', method: :patch, data: { confirm: 'Approve this user?' } do %>
+                            <span class="material-symbols-rounded">check_circle</span>
+                        <% end %>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>

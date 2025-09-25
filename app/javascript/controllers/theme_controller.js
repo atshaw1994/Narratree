@@ -4,12 +4,12 @@ export default class extends Controller {
   // Define a static array of theme modes
   static get modes() {
     const now = new Date();
-    const year = now.getFullYear();
     let modes = ['system', 'light', 'dark'];
-    const start = new Date(year, 9, 1); // months are 0-indexed
-    const end = new Date(year, 10, 1);
-    if (now >= start && now < end) {
+    if (now.getMonth() === 10) {
       modes.push('spooky');
+    }
+    else if (now.getMonth() === 11) {
+      modes.push('santa');
     }
     return modes;
   }
@@ -51,22 +51,27 @@ export default class extends Controller {
     switch(mode) {
       case 'light':
         icon.textContent = 'brightness_7';
-        this.body.classList.remove('dark-mode', 'spooky-mode');
+        this.body.className = "";
         break;
       case 'dark':
         icon.textContent = 'brightness_4';
+        this.body.className = "";
         this.body.classList.add('dark-mode');
-        this.body.classList.remove('spooky-mode');
-        break;
-      case 'spooky':
-        icon.textContent = 'skull';
-        this.body.classList.add('spooky-mode');
-        this.body.classList.remove('dark-mode');
         break;
       case 'system':
         icon.textContent = 'brightness_auto';
+        this.body.className = "";
         this.handleSystemPreference();
-        this.body.classList.remove('spooky-mode');
+        break;
+      case 'spooky':
+        icon.textContent = 'skull';
+        this.body.className = "";
+        this.body.classList.add('spooky-mode');
+        break;
+      case 'santa':
+        icon.textContent = 'mode_cool';
+        this.body.className = "";
+        this.body.classList.add('santa-mode');
         break;
     }
     // Save the new mode

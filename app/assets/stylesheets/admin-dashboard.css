@@ -10,22 +10,28 @@
     border: 0 solid white;
 }
 .admin-tab-buttons {
+    background-color: none;
+    border: none;
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
     padding: 0.5em 1em;
+    margin-bottom: -1px;
 }
 .admin-tab-btn{
     background: none;
-    border: none;
-    outline: none;
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
     color: var(--body-color);
     background-color: transparent;
     padding: 0.5em 1em;
     cursor: pointer;
     font-size: 1rem;
-    border-bottom: 2px solid transparent;
 }
 .admin-tab-btn.active {
-    border-bottom: 2px solid white;
+    background-color: var(--btn-hover-background);
+    box-shadow: 2px 2px 4px var(--section-shadow-color);
     font-weight: bold;
+    border-bottom: 2px solid var(--section-border-color);
 }
 .admin-table th,
 .admin-table td {
@@ -33,6 +39,7 @@
   padding: 0.5em 0.75em;
   text-align: left;
 }
+
 .admin-table th {
     background-color: var(--section-header-gradient-start);
     color: var(--section-header-text-color);
@@ -45,4 +52,60 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+.admin-reject-button,
+.admin-delete-button {
+    background-color: #d32f2f;
+    border: 1px solid #921616;
+    color: #ffa0a0;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding-top: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+.admin-reject-button:hover,
+.admin-delete-button:hover {
+    background-color: #b71c1c;
+    color: #ffffff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1.0;
+}
+
+.admin-approve-button {
+    background-color: #388e3c;
+    border: 1px solid #1b5e20;
+    color: #a5d6a7;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0.25em 0.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+.admin-approve-button:hover {
+    background-color: #1b5e20;
+    color: #ffffff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1.0;
+}
+
+.admin-warn-button {
+    background-color: #fbc02d;
+    border: 1px solid #e7cd0e;
+    color: #fff176;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding-top: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+}
+.admin-warn-button:hover {
+    background-color: #f5db17;
+    color: #ffffff;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 1.0;
 }

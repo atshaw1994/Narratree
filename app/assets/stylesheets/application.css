@@ -53,6 +53,7 @@ body textarea {
   border-top: 1px solid var(--section-border-color);
   flex-shrink: 0;
   box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
 }
 
 .user-interaction-btn {
@@ -138,27 +139,6 @@ body textarea {
 .search-bar-container:focus-within {
   width: 70%;
   flex-grow: 1;
-}
-
-.search-input {
-  background-color: var(--input-background);
-  border: 1px solid var(--input-border);
-  color: var(--body-color);
-  font-size: 1.2em;
-  border-radius: 8px;
-  width: 100%;
-  transition: all 0.25s ease;
-  height: 32px;
-  box-sizing: border-box;
-  padding-left: 8px;
-  font-style: italic;
-  margin-left: 16px;
-}
-
-.search-input:focus {
-  background-color: var(--input-focus-background);
-  border-color: var(--input-focus-border);
-  outline: none;
 }
 
 .default-user-icon {
