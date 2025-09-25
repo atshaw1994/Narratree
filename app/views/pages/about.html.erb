@@ -1,20 +1,25 @@
 <% content_for(:title, "Narratree - About") %>
 
-<div class="section-container">
-    <div class="section-container-header">
-        <h1>About Narratree</h1>
-    </div>
-    <div class="section-container-body" style="display: flex; flex-direction: column;">
-    <p>This is a publishing site where you can post articles and browse other users' articles. This is the first version of the site so do understand there WILL be bugs. I'm still ironing out the issues.</p>
-        <p>On The Odin Project, a person can start with little to no background of programming and work their way up to getting hired as a Software Engineer!</p>
-    <p>This project was built using The Odin Project. In a little over a month, I went from knowing absolutely zero about web development to hosting a fully featured publishing site!</p>
-        <p>Also, please understand that until the site gets more stable and most of the bugs are fixed,</p>
-        <p>this site will be on the free tier of Render (the service that is hosting the site). This means access will be slow at times and certain things either will not work or take longer to fix.</p>
-        <p>As the site gets more traction, I will upgrade to one of the paid tiers.</p>
-        <p></p>
-        <p style="font-size: 0.8em;">Ruby version: ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-darwin25]</p>
-        <p style="font-size: 0.8em;">Rails version: Rails 7.2.2.2</p>
-        <p style="font-size: 0.8em;">Database: PostgreSQL 17.6</p>
-        <p style="font-size: 0.8em;">Hosted on: Render.com</p>
-    </div>
-</div>
+<%= render partial: "shared/section_container", locals: {
+    header: content_tag(:h1, "About Narratree"),
+    body: content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
+        content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
+            safe_join([
+                image_tag(asset_path('logo.png'), alt: 'Logo', style: 'display: block; margin-left: auto; margin-right: auto; width: 150px; height: auto;'),
+                image_tag(asset_path('logo-halloween.png'), alt: 'Halloween Logo', style: 'display:none; margin-left: auto; margin-right: auto; width: 150px; height: auto;'),
+                image_tag(asset_path('logo-christmas.png'), alt: 'Christmas Logo', style: 'display:none; margin-left: auto; margin-right: auto; width: 150px; height: auto;'),
+                content_tag(:p, "This is a publishing site where you can post articles and browse other users' articles. This is the first version of the site so do understand there WILL be bugs. I'm still ironing out the issues."),
+                content_tag(:p, "On The Odin Project, a person can start with little to no background of programming and work their way up to getting hired as a Software Engineer!"),
+                content_tag(:p, "This project was built using The Odin Project. In a little over a month, I went from knowing absolutely zero about web development to hosting a fully featured publishing site!"),
+                content_tag(:p, "Also, please understand that until the site gets more stable and most of the bugs are fixed,"),
+                content_tag(:p, "this site will be on the free tier of Render (the service that is hosting the site). This means access will be slow at times and certain things either will not work or take longer to fix."),
+                content_tag(:p, "As the site gets more traction, I will upgrade to one of the paid tiers."),
+                content_tag(:p, ""),
+                content_tag(:p, "Ruby version: #{RUBY_VERSION}", style: "font-size: 0.8em;"),
+                content_tag(:p, "Rails version: Rails #{Rails.version}", style: "font-size: 0.8em;"),
+                content_tag(:p, "Database: PostgreSQL #{ActiveRecord::Base.connection.select_value('SELECT version()').match(/PostgreSQL ([\d.]+)/)[1]}", style: "font-size: 0.8em;"),
+                content_tag(:p, "Hosted on: Render.com", style: "font-size: 0.8em;")
+            ])
+        end
+    end
+} %>
