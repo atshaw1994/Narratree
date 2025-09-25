@@ -1,0 +1,12 @@
+<div class="section-container">
+  <div class="section-container-header">
+    <%= header %>
+  </div>
+  <div class="section-container-body">
+    <% if local_assigns[:body] %>
+      <%= body %>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </div>
+</div>
