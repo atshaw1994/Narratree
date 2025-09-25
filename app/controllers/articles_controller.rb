@@ -61,7 +61,6 @@ class ArticlesController < ApplicationController
   end
 
   def like
-    Rails.logger.info "[DEBUG] ArticlesController#like called for article_id: #{@article.id}, user_id: #{current_user.id}"
     @article.article_likes.create(user: current_user)
     # Send notification email to the article author (unless the liker is the author)
     if @article.user != current_user

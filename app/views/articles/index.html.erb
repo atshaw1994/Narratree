@@ -1,98 +1,91 @@
+<div id="effects-animation-container" data-controller="effects"></div>
 <div class="homepage">
-    <% if current_user %>
-        <% if @saved_articles.present? %>
-            <div id="pinned-articles" class="section-container">
-                <div class="section-container-header">
-                    <h2>Pinned Articles</h2>
-                </div>
-                <div class="section-container-body">
-                    <ul>
-                        <% @saved_articles.each do |article| %>
-                            <li class="card">
-                                <div class="saved-article-card-grid">
-                                    <%= link_to article.title, article_path(article) %>
-                                    <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn", title: "Unpin Article" do %>
-                                        <span class="material-symbols-rounded filled">keep_off</span>
-                                    <% end %>
-                                </div>
-                            </li>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
-        <% end %>
-        <% followed_articles = current_user.following.flat_map(&:articles).sort_by { |a| a.created_at }.reverse %>
-        <% if followed_articles.any? %>
-            <div id="followed-articles" class="section-container">
-                <div class="section-container-header">
-                    <h2>Followed</h2>
-                </div>
-                <div class="section-container-body">
-                    <ul>
-                        <% followed_articles.each do |article| %>
-                            <li class="card">
-                                <div class="article-card-grid">
-                                    <%= link_to article_path(article), class: "article-card-link" do %>
-                                        <div class="article-card-main">
-                                            <h3 class="article-card-title"><%= article.title %></h3>
-                                            <div class="article-card-author">
-                                                by <em><%= article.user.username %></em>
-                                            </div>
-                                        </div>
-                                    <% end %>
-                                </div>
-                            </li>
-                        <% end %>
-                    </ul>
-                </div>
-            </div>
-        <% end %>
-    <% end %>
-    <div id="article-list" class="section-container" data-controller="article-search">
-        <div class="section-container-header">
-            <% if current_user %>
-                <%= link_to new_article_path, class: "new-article-button", title: "New Article" do %>
-                    <span class="material-symbols-rounded">edit_document</span>
-                <% end %>
-            <% end %>
-            <h2>Global Articles</h2>
-            <div class="search-bar-container">
-                <%= text_field_tag :query, params[:query],
-                    placeholder: "Search...",
-                    class: "search-input",
-                    data: { action: "input->article-search#filter", article_search_target: "input" }
-                %>
-            </div>
-        </div>
-        <div class="section-container-body" data-article-search-target="articlesContainer">
+    <% if current_user && @saved_articles.present? %>
+        <%= render "shared/section_container", header: "<h2>Pinned Articles</h2>".html_safe do %>
+            <%# Body %>
             <ul>
-                <li data-article-search-target="noArticles" style="display: none;">
-                    <p><em>No articles found.</em></p>
-                </li>
-                <% @articles.each do |article| %>
-                    <li class="article-card-list-item" data-title="<%= article.title.downcase %>">
-                        <div class="card article-card-grid">
-                            <%= link_to article_path(article), class: "article-card-link" do %>
-                                <div class="article-card-main">
-                                    <h3 class="article-card-title"><%= article.title %></h3>
-                                    <div class="article-card-author">
-                                        by <em><%= article.user.username %></em>
-                                    </div>
-                                </div>
-                            <% end %>
-                            <% if current_user == article.user %>
-                            <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
-                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
-                                <span class="material-symbols-rounded">delete</span>
-                            <% end %>
+                <% @saved_articles.each do |article| %>
+                    <li class="card">
+                        <div class="saved-article-card-grid">
+                            <%= link_to article.title, article_path(article) %>
+                            <%= button_to toggle_save_article_path(article), method: :post, class: "user-interaction-btn", title: "Unpin Article" do %>
+                                <span class="material-symbols-rounded filled">keep_off</span>
                             <% end %>
                         </div>
                     </li>
                 <% end %>
             </ul>
-            <div class="pagination-container">
-                <%= paginate @articles %>
+        <% end %>
+        <% followed_articles = current_user.following.flat_map(&:articles).sort_by { |a| a.created_at }.reverse %>
+        <% if followed_articles.any? %>
+            <%= render "shared/section_container", header: "<h2>Followed</h2>".html_safe do %>
+                <ul>
+                    <% followed_articles.each do |article| %>
+                        <li class="card">
+                            <div class="article-card-grid">
+                                <%= link_to article_path(article), class: "article-card-link" do %>
+                                    <div class="article-card-main">
+                                        <h3 class="article-card-title"><%= article.title %></h3>
+                                        <div class="article-card-author">
+                                            by <em><%= article.user.username %></em>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            <% end %>
+        <% end %>
+    <% end %>
+    <div id="article-list" data-controller="article-search">
+        <%= render "shared/section_container", header: (
+            capture do
+                if current_user
+                    concat(link_to(new_article_path, class: "new-article-button", title: "New Article") do
+                        content_tag(:span, nil, class: "material-symbols-rounded") { "edit_document" }
+                    end)
+                end
+                concat(content_tag(:h2, "Global Articles"))
+                concat(content_tag(:div, (
+                    text_field_tag(:query, params[:query],
+                        placeholder: "Search...",
+                        class: "search-input",
+                        data: { action: "input->article-search#filter", article_search_target: "input" }
+                    )
+                ), class: "search-bar-container"))
+            end
+        ) do %>
+            <div data-article-search-target="articlesContainer">
+                <ul>
+                    <li data-article-search-target="noArticles" style="display: none;">
+                        <p><em>No articles found.</em></p>
+                    </li>
+                    <% @articles.each do |article| %>
+                        <li class="article-card-list-item" data-title="<%= article.title.downcase %>">
+                            <div class="card article-card-grid">
+                                <%= link_to article_path(article), class: "article-card-link" do %>
+                                    <div class="article-card-main">
+                                        <h3 class="article-card-title"><%= article.title %></h3>
+                                        <div class="article-card-author">
+                                            by <em><%= article.user.username %></em>
+                                        </div>
+                                    </div>
+                                <% end %>
+                                <% if current_user == article.user %>
+                                    <%= link_to article_path(article), class: "user-interaction-btn delete-btn", title: "Delete Article",
+                                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                                        <span class="material-symbols-rounded">delete</span>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+                <div class="pagination-container">
+                    <%= paginate @articles %>
+                </div>
             </div>
-        </div>
+        <% end %>
     </div>
 </div>
