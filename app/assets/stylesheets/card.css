@@ -15,7 +15,7 @@
 .card:hover {
     background: linear-gradient(
         to bottom right, 
-        var(--card-gradient-end), 
+        var(--card-hover-background), 
         var(--card-gradient-end)
     );
 }

@@ -1,10 +1,15 @@
-.card.article-card-grid {
+.article-card-list-item {
+    width: 100%;
+    display: block;
+}
+.card .article-card-grid {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0 16px;
-    padding: 16px 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .article-card-main {
