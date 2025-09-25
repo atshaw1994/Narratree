@@ -11,17 +11,35 @@ export default class extends Controller {
                 this.createElements("leaf");
                 break;
             case "spooky":
-                let jackolanternElement = document.createElement("img");
-                let candleElement = document.createElement("div");
-                candleElement.className = "candle-light flicker";
+                // Add jack-o-lantern and candle
                 const footer = document.querySelector("footer");
-                const jackolanternSrc = footer.dataset.jackolanternSrc;
-                jackolanternElement.src = jackolanternSrc;
-                jackolanternElement.alt = "JackOLantern";
-                jackolanternElement.className = "jackolantern";
+                if (footer) {
+                    if (!footer.querySelector(".jackolantern")) {
+                        const jackolanternElement = document.createElement("img");
+                        jackolanternElement.src = footer.dataset.jackolanternSrc;
+                        jackolanternElement.alt = "JackOLantern";
+                        jackolanternElement.className = "jackolantern";
+                        footer.appendChild(jackolanternElement);
+                    }
+                    if (!footer.querySelector(".candle-light")) {
+                        const candleElement = document.createElement("div");
+                        candleElement.className = "candle-light flicker";
+                        footer.appendChild(candleElement);
+                    }
+                }
 
-                footer.appendChild(jackolanternElement);
-                footer.appendChild(candleElement);
+                this.decorateHeaders("spooky");
+
+                // Theme icon and body class
+                const themeBtnIcon = document.querySelector('.header-btn[data-controller~="theme"] .material-symbols-rounded');
+                if (themeBtnIcon) themeBtnIcon.textContent = 'skull';
+                document.body.classList.add("spooky-mode");
+                document.body.classList.remove("dark-mode");
+
+                // Falling elements
+                this.maxFallingElements = 30;
+                this.stopped = false;
+                this.createElements("falling-skull");
                 break;
             case "christmas":
                 this.maxFallingElements = 30;
@@ -54,6 +72,21 @@ export default class extends Controller {
         element.style.height = element.style.width; // Keep it square
         element.style.animationDuration = `${Math.random() * 8 + 5}s`;
         this.element.appendChild(element);
+    }
+
+    decorateHeaders(season) {
+        document.querySelectorAll(".section-container-header").forEach(header => {
+            if (!header.querySelector(".spiderweb")) {
+            const spiderwebDiv = document.createElement("div");
+            spiderwebDiv.className = "spiderweb";
+            header.appendChild(spiderwebDiv);
+            }
+            if (!header.querySelector(".witch-hat")) {
+            const witchHatDiv = document.createElement("div");
+            witchHatDiv.className = "witch-hat";
+            header.appendChild(witchHatDiv);
+            }
+        });
     }
 
     getSeason() {

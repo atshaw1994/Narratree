@@ -240,7 +240,7 @@ body.dark-mode {
 /* Halloween theme */
 body.spooky-mode {
     /* #region application.css */
-    --body-background: #1a0a0a;
+    --body-background: rgb(13, 5, 5);
     --body-color: #ff9800;
     --textarea-background: #2d1600;
     --textarea-border: #ff6f00;
@@ -292,8 +292,8 @@ body.spooky-mode {
     /* #endregion */
 
     /* #region card.css */
-    --card-gradient-end: #7c2e0b;
-    --card-gradient-start: #1a0a0a;
+    --card-gradient-end: rgba(42, 20, 20, 0.5);
+    --card-gradient-start: rgba(124, 46, 11, 0.5);
     --card-border-color: #ff9800;
     --card-shadow-color: #4e2600;
     --card-hover-background: #4e2600;
@@ -340,7 +340,7 @@ body.spooky-mode {
     /* #endregion */
 
     /* #region section-container.css */
-    --section-bg-color: #1a0a0a;
+    --section-bg-color: rgba(26, 10, 10, 0.2);
     --section-border-color: #ff6f00;
     --section-shadow-color: #4e2600;
     --section-header-gradient-start: #4e2600;

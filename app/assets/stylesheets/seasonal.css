@@ -29,6 +29,7 @@
   100% { transform: translateY(100vh) rotate(0deg); }
 }
 
+/* Seasonal elements */
 .leaf {
   background-image: url('leaf.png');
   z-index: -1000;
@@ -36,6 +37,40 @@
 .snowflake {
   background-image: url('/assets/snowflake.png');
   z-index: -1000;
+}
+.falling-skull {
+  background-image: url('falling_skull.png');
+  z-index: -1000;
+}
+.spiderweb {
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  background-image: url('spiderweb.png');
+  transform: scaleX(-1);
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  vertical-align: middle;
+  z-index: 0;
+}
+.witch-hat {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  left: -25px;
+  top: -20px;
+  background-image: url('witch_hat.png');
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  vertical-align: middle;
+  z-index: 0;
 }
 
 /* Jack-o-lantern candle light flicker effect */

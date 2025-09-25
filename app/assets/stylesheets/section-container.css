@@ -19,7 +19,8 @@
     box-shadow: 0 2px 4px var(--section-header-shadow);
     display: flex;
     align-items: center;
-    padding: 16px;
+    padding: 12px 16px;
+    z-index: 1;
 }
 
 .section-container-header h2 {
@@ -52,3 +53,6 @@
     margin-top: 10px;
 }
 
+body.spooky-mode .section-container {
+  margin-top: 24px;
+}
