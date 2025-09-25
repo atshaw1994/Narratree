@@ -356,3 +356,125 @@ body.spooky-mode {
     --signup-submit-btn-background: #7c2e0b;
     /* #endregion */
 }
+
+/* Santa theme */
+body.santa-mode {
+    /* Main Palette: Deep Blue, Icy Cyan, Snowy White, Cool Silver */
+    
+    /* #region application.css */
+    --body-background: #0b3552;    /* Deep Winter Sky Blue */
+    --body-color: #e0f7fa;         /* Icy Light Blue/Snowy White */
+    --textarea-background: #1a5276;/* Medium Cold Blue */
+    --textarea-border: #80deea;    /* Icy Cyan Highlight */
+
+    --btn-background: #455a64;     /* Cold Slate Gray */
+    --btn-border: #e0f7fa;         /* Snowy White */
+    --btn-shadow: rgba(128, 222, 234, 0.4); /* Icy Blue Glow */
+    --btn-icon-color: #e0f7fa;     /* Icy White */
+    --btn-hover-icon-color: #0b3552; /* Deep Blue */
+    --btn-hover-background: #80deea; /* Icy Cyan */
+    --btn-active-background: #0d2838; /* Very Dark Blue */
+    
+    --input-background: #1a5276;   /* Medium Cold Blue */
+    --input-border: #bdbdbd;       /* Silver */
+    --input-focus-background: #0b3552; /* Deep Blue */
+    --input-focus-border: #ffffff; /* Pure Snow White */
+
+    --flash-text-color: #80deea;   /* Icy Cyan (like a reflection) */
+    /* #endregion */
+
+    /* #region header.css (The Frozen Horizon) */
+    --header-background-start: #1a5276; /* Medium Cold Blue */
+    --header-background-end: #0b3552;   /* Deep Blue */
+    --header-border-color: #ffffff;     /* Snowdrift White */
+    --header-box-shadow: rgba(224, 247, 250, 0.4); /* Snowy Shadow */
+    --header-text-color: #e0f7fa;       /* Icy White */
+    --header-page-title: #80deea;       /* Icy Cyan */
+    --header-page-title-text-shadow: #0d2838; /* Dark Blue Shadow */
+    --header-btn-color: #bdbdbd;        /* Silver */
+    --header-btn-hover-color: #e0f7fa;  /* Icy White */
+    --favicon-background: #455a64;      /* Slate Gray */
+    --favicon-border: #e0f7fa;          /* Snowy White */
+    /* #endregion */
+
+    /* #region article-card.css */
+    --article-card-title-color: #ffffff; /* Pure White */
+    --article-card-author-color: #80deea; /* Icy Cyan */
+
+    /* #endregion */
+
+    /* #region article-list-section.css */
+    --new-article-btn-color: #455a64;       /* Slate Gray */
+    --new-article-btn-hover-color: #0b3552; /* Deep Blue */
+    /* #endregion */
+
+    /* #region article-page.css */
+    --article-page-author-color: #80deea;   /* Icy Cyan */
+    --article-page-delete-btn-color: #d32f2f; /* Standard danger red (kept for safety) */
+    /* #endregion */
+
+    /* #region card.css (A block of Ice) */
+    --card-gradient-end: rgba(11, 53, 82, 0.8);  /* Deep Blue Transparent */
+    --card-gradient-start: rgba(26, 82, 118, 0.8); /* Medium Blue Transparent */
+    --card-border-color: rgb(64, 111, 117);             /* Icy Cyan Edge */
+    --card-shadow-color: #d2c3c35e;             /* Silver Shadow */
+    --card-hover-background: #104261;         /* Slightly darker blue on hover */
+    --card-link-color: #e0f7fa;               /* Icy White link */
+    /* #endregion */
+
+    /* #region comment.css (A Smaller Block of Ice) */
+    --comment-form-background: #1a5276;    /* Medium Cold Blue */
+    --comment-form-border: #bdbdbd;        /* Silver */
+    --comment-form-shadow: #80deea;        /* Icy Cyan */
+    --comments-section-background: #0d2838; /* Very Dark Blue */
+    --comments-section-border: #e0f7fa;    /* Snowy White */
+    --comments-section-shadow: #455a64;    /* Slate Gray */
+    --comment-card-background: #104261;    /* Darker Cold Blue */
+    --comment-card-border: #80deea;        /* Icy Cyan Outline */
+    --comment-card-shadow: #bdbdbd;        /* Silver */
+    --comment-author-color: #80deea;       /* Icy Cyan */
+    --comment-body-color: #e0f7fa;         /* Icy White */
+    --delete-comment-btn-hover-color: #d32f2f; /* Standard danger red */
+    --like-count-color: #80deea;           /* Icy Cyan */
+    /* #endregion */
+
+    /* #region form.css */
+    --form-top-gradient-start: #1a5276;  /* Medium Cold Blue */
+    --form-top-gradient-end: #0b3552;    /* Deep Blue */
+    --form-input-background: #0d2838;    /* Very Dark Blue */
+    --form-input-border: #bdbdbd;        /* Silver */
+    --form-input-focus-background: #104261; /* Darker Cold Blue */
+    --form-input-focus-border: #ffffff;  /* Pure Snow White */
+    --login-btn-background: #455a64;     /* Slate Gray */
+    --login-btn-hover-background: #80deea; /* Icy Cyan */
+    --login-btn-border: #e0f7fa;         /* Icy White */
+    --login-btn-color: #0b3552;          /* Deep Blue Text */
+    --submit-btn-background: #80deea;    /* Icy Cyan */
+    --submit-btn-hover-background: #455a64; /* Slate Gray */
+    /* #endregion */
+
+    /* #region login-modal.css (Icy Fog Overlay) */
+    --modal-overlay-bg: rgba(224, 247, 250, 0.2); /* Light/Icy Transparent Overlay */
+    --modal-content-bg: #104261;           /* Darker Cold Blue */
+    --modal-content-border: #ffffff;       /* Pure Snow White */
+    --modal-close-color: #80deea;          /* Icy Cyan */
+    --modal-close-hover-color: #ffffff;    /* Pure Snow White */
+    /* #endregion */
+
+    /* #region section-container.css */
+    --section-bg-color: rgba(26, 82, 118, 0.4); /* Medium Blue Transparent */
+    --section-border-color: #bdbdbd;          /* Silver */
+    --section-shadow-color: #0d2838;          /* Very Dark Blue */
+    --section-header-gradient-start: #1a5276; /* Medium Cold Blue */
+    --section-header-gradient-end: #0b3552;   /* Deep Blue */
+    --section-header-border: #80deea;         /* Icy Cyan */
+    --section-header-shadow: rgba(69, 90, 100, 0.4);         /* Slate Gray */
+    --section-header-text-color: #ffffff;     /* Pure Snow White */
+    /* #endregion */
+
+    /* #region signup-form.css */
+    --signup-submit-btn-border: #ffffff;       /* Pure Snow White */
+    --signup-submit-btn-color: #e0f7fa;        /* Icy White */
+    --signup-submit-btn-background: #455a64;   /* Slate Gray */
+    /* #endregion */
+}

@@ -4,6 +4,9 @@ export default class extends Controller {
     connect() {
         this.maxFallingElements = 50;
         this.stopped = false;
+        const footer = document.querySelector("footer");
+        const themeBtnIcon = document.querySelector('.header-btn[data-controller~="theme"] .material-symbols-rounded');
+        
         switch (this.getSeason()) {
             case "fall":
                 this.maxFallingElements = 30;
@@ -12,12 +15,9 @@ export default class extends Controller {
                 break;
             case "spooky":
                 // Add jack-o-lantern and candle
-                const footer = document.querySelector("footer");
                 if (footer) {
                     if (!footer.querySelector(".jackolantern")) {
-                        const jackolanternElement = document.createElement("img");
-                        jackolanternElement.src = footer.dataset.jackolanternSrc;
-                        jackolanternElement.alt = "JackOLantern";
+                        const jackolanternElement = document.createElement("div");
                         jackolanternElement.className = "jackolantern";
                         footer.appendChild(jackolanternElement);
                     }
@@ -28,10 +28,10 @@ export default class extends Controller {
                     }
                 }
 
+                // Spiderwebs and witch hats on section headers
                 this.decorateHeaders("spooky");
 
                 // Theme icon and body class
-                const themeBtnIcon = document.querySelector('.header-btn[data-controller~="theme"] .material-symbols-rounded');
                 if (themeBtnIcon) themeBtnIcon.textContent = 'skull';
                 document.body.classList.add("spooky-mode");
                 document.body.classList.remove("dark-mode");
@@ -42,6 +42,24 @@ export default class extends Controller {
                 this.createElements("falling-skull");
                 break;
             case "christmas":
+                // Add christmas tree
+                if (footer) {
+                    if (!footer.querySelector(".christmas-tree")) {
+                        const christmasTreeElement = document.createElement("div");
+                        christmasTreeElement.className = "christmas-tree";
+                        footer.appendChild(christmasTreeElement);
+                    }
+                }
+
+                // Santa hats on section headers
+                this.decorateHeaders("christmas");
+
+                // Theme icon and body class
+                if (themeBtnIcon) themeBtnIcon.textContent = 'mode_cool';
+                document.body.classList.add("santa-mode");
+                document.body.classList.remove("dark-mode");
+                
+                // Falling elements
                 this.maxFallingElements = 30;
                 this.stopped = false;
                 this.createElements("snowflake");
@@ -75,23 +93,33 @@ export default class extends Controller {
     }
 
     decorateHeaders(season) {
-        document.querySelectorAll(".section-container-header").forEach(header => {
-            if (!header.querySelector(".spiderweb")) {
-            const spiderwebDiv = document.createElement("div");
-            spiderwebDiv.className = "spiderweb";
-            header.appendChild(spiderwebDiv);
-            }
-            if (!header.querySelector(".witch-hat")) {
-            const witchHatDiv = document.createElement("div");
-            witchHatDiv.className = "witch-hat";
-            header.appendChild(witchHatDiv);
-            }
-        });
+        if (season === "spooky") {
+            document.querySelectorAll(".section-container-header").forEach(header => {
+                if (!header.querySelector(".spiderweb")) {
+                    const spiderwebDiv = document.createElement("div");
+                    spiderwebDiv.className = "spiderweb";
+                    header.appendChild(spiderwebDiv);
+                }
+                if (!header.querySelector(".witch-hat")) {
+                    const witchHatDiv = document.createElement("div");
+                    witchHatDiv.className = "witch-hat";
+                    header.appendChild(witchHatDiv);
+                }
+            });
+        }
+        else if (season === "christmas") {
+            document.querySelectorAll(".section-container-header").forEach(header => {
+                if (!header.querySelector(".santa-hat")) {
+                    const santaHatDiv = document.createElement("div");
+                    santaHatDiv.className = "santa-hat";
+                    header.appendChild(santaHatDiv);
+                }
+            });
+        }
     }
 
     getSeason() {
         const month = new Date().getMonth();
-        const day = new Date().getDate();
         if (month === 8 || month === 10) {
             return "fall";
         } else if (month === 9) {

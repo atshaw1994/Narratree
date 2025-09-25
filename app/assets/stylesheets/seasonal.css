@@ -32,14 +32,17 @@
 /* Seasonal elements */
 .leaf {
   background-image: url('leaf.png');
+  opacity: 0.6;
   z-index: -1000;
 }
 .snowflake {
-  background-image: url('/assets/snowflake.png');
+  background-image: url('snowflake.png');
+  opacity: 0.6;
   z-index: -1000;
 }
 .falling-skull {
   background-image: url('falling_skull.png');
+  opacity: 0.6;
   z-index: -1000;
 }
 .spiderweb {
@@ -72,6 +75,21 @@
   vertical-align: middle;
   z-index: 0;
 }
+.santa-hat {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: absolute;
+  left: -28px;
+  top: -15px;
+  background-image: url('santa_hat.png');
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  vertical-align: middle;
+  z-index: -1;
+}
 
 /* Jack-o-lantern candle light flicker effect */
 .jackolantern {
@@ -80,6 +98,9 @@
   left: 16px;
   width: 64px;
   height: 64px;
+  background-image: url('jackolantern.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   z-index: -700;
 }
 .candle-light {
@@ -108,4 +129,17 @@
   80% { opacity: 0.7; filter: blur(2px); }
   90% { opacity: 1; filter: blur(1px); }
   100% { opacity: 0.8; filter: blur(2px); }
+}
+
+.christmas-tree {
+  position: absolute;
+  bottom: 100px;
+  right: 16px;
+  width: 80px;
+  height: 120px;
+  background-image: url('christmas_tree.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  z-index: -700;
 }
