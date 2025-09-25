@@ -4,21 +4,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0 16px;
     gap: 16px;
 }
 
-#pinned-articles {
-    width: 98%;
-}
-
-#article-list {
-    width: 98%;
-}
-
-#followed-articles {
-    width: 98%;
-}
 
 .new-article-button {
     color: var(--new-article-btn-color);
@@ -34,4 +22,14 @@
 
 .new-article-button:hover {
     color: var(--new-article-btn-hover-color);
+}
+
+[data-article-search-target="articlesContainer"] {
+    flex-grow: 1;
+}
+
+#article-list {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }

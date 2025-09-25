@@ -3,14 +3,15 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
-  width: 150px;
+  width: 300px;
   transition: all 0.25s ease;
 }
 
 .search-bar-container:hover,
 .search-bar-container:focus-within {
-  width: 100%;
+  width: 80%;
   flex-grow: 1;
+  background-color: var(--input-focus-background);
 }
 
 .search-input {
@@ -25,7 +26,6 @@
   box-sizing: border-box;
   padding-left: 8px;
   font-style: italic;
-  margin-left: 16px;
 }
 
 .search-input:focus {
