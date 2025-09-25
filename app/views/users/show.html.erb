@@ -1,61 +1,79 @@
 <div class="user-profile">
-    <div class="section-container">
-        <div class="section-container-header">
-            <% if current_user && current_user != @user %>
-                <% following = current_user.following.include?(@user) %>
-                    <a href="#"
-                            data-controller="follow"
-                            data-follow-user-id-value="<%= @user.id %>"
-                            data-follow-following-value="<%= following %>"
-                            data-follow-follow-url-value="<%= follow_user_path(@user) %>"
-                            data-follow-unfollow-url-value="<%= unfollow_user_path(@user) %>"
-                            data-action="click->follow#toggleFollow"
-                            class="new-article-button"
-                            style="margin-right: 1em;"
-                            title="<%= following ? 'Unfollow User' : 'Follow User' %>"
-                            data-follow-target="button">
-                        <span class="material-symbols-rounded" data-follow-target="icon"><%= following ? 'person_remove' : 'person_add' %></span>
-                    </a>
-            <% end %>
-            <h2><%= "#{@user.first_name} #{@user.last_name}" %></h2>
-        </div>
-        <div class="section-container-body profile-section-container-body">
-            <%= form_with model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true do |form| %>
-                <%= form.file_field :profile_picture, class: "hidden-file-input" %>
-                <div id="profile-pic-container">
-                    <% if @user.profile_picture.attached? %>
-                        <%= image_tag @user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-large", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture" %>
-                    <% else %>
-                        <span class="material-symbols-rounded default-user-icon" id="profile-pic-uploader">account_circle</span>
-                    <% end %>
-                </div>
-            <% end %>
-            <h4>Username:</h4>
-            <p><%= @user.username %></p>
-            <h4>Email:</h4>
-            <p><%= @user.email %></p>
-            <h4>Role:</h4>
-            <p>
-                <% case @user.role %>
-                <% when "owner" %>
-                    Owner, Admin, Moderator, User
-                <% when "admin" %>
-                    Admin, Moderator, User
-                <% when "moderator" %>
-                    Moderator, User
-                <% else %>
-                    User
-                <% end %>
-            </p>
-            <h4>Followers:</h4>
-            <p><%= @user.followers.count %></p>
-            <h4>Member Since:</h4>
-            <p><%= @user.created_at.strftime("%B %d, %Y") %></p>
-            <% if current_user == @user %>
-                <%= link_to 'Edit Profile', edit_user_path(@user), class: 'form-submit-button', style: 'margin: 0; text-decoration: none;' %>
-            <% end %>
-        </div>
-    </div>
+    <%= render partial: "shared/section_container", locals: {
+        width: "100%",
+        header: content_tag(:div) do
+            safe_join([
+                (if current_user && current_user != @user
+                    following = current_user.following.include?(@user)
+                    link_to("#",
+                        class: "new-article-button",
+                        style: "margin-right: 1em;",
+                        title: (following ? 'Unfollow User' : 'Follow User'),
+                        data: {
+                            controller: "follow",
+                            follow_user_id_value: @user.id,
+                            follow_following_value: following,
+                            follow_follow_url_value: follow_user_path(@user),
+                            follow_unfollow_url_value: unfollow_user_path(@user),
+                            action: "click->follow#toggleFollow"
+                        },
+                        "data-follow-target" => "button"
+                    ) do
+                        content_tag(:span, (following ? 'person_remove' : 'person_add'), class: "material-symbols-rounded", "data-follow-target" => "icon")
+                    end
+                end),
+                content_tag(:h2, "#{@user.first_name} #{@user.last_name}")
+            ].compact)
+        end,
+        body: content_tag(:div, class: "profile-section-container-body", style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
+            content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
+                safe_join([
+                    content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
+                        safe_join([
+                            form_with(model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true) do |form|
+                                form.file_field(:profile_picture, class: "hidden-file-input") +
+                                content_tag(:div, id: "profile-pic-container") do
+                                    if @user.profile_picture.attached?
+                                        image_tag(@user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-large", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture")
+                                    else
+                                        content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon", id: "profile-pic-uploader")
+                                    end
+                                end
+                            end
+                        ])
+                    end,
+                    content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; margin-top: 1.5em; width: 100%;") do
+                        safe_join([
+                            content_tag(:h4, "Username:"),
+                            content_tag(:p, @user.username),
+                            content_tag(:h4, "Email:"),
+                            content_tag(:p, @user.email),
+                            content_tag(:h4, "Role:"),
+                            content_tag(:p) do
+                                case @user.role
+                                when "owner"
+                                    "Owner, Admin, Moderator, User"
+                                when "admin"
+                                    "Admin, Moderator, User"
+                                when "moderator"
+                                    "Moderator, User"
+                                else
+                                    "User"
+                                end
+                            end,
+                            content_tag(:h4, "Followers:"),
+                            content_tag(:p, @user.followers.count),
+                            content_tag(:h4, "Member Since:"),
+                            content_tag(:p, @user.created_at.strftime("%B %d, %Y")),
+                            (if current_user == @user
+                                link_to('Edit Profile', edit_user_path(@user), class: 'form-submit-button', style: 'margin: 0; text-decoration: none;')
+                            end)
+                        ].compact)
+                    end
+                ].compact)
+            end
+        end
+    } %>
     <div class="section-container profile-article-list-container">
         <div class="section-container-header">
             <h2>Articles</h2>
