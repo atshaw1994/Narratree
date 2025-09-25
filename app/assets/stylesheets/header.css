@@ -3,6 +3,7 @@
 .logo-christmas { display: none; }
 body.spooky-mode .logo-default { display: none !important; }
 body.spooky-mode .logo-halloween { display: inline-block !important; }
+body.santa-mode .logo-default { display: none !important; }
 body.santa-mode .logo-christmas { display: inline-block !important; }
 
 /* #region Header Styles */
@@ -109,10 +110,6 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
   flex-direction: row;
   align-items: center;
   gap: 1em;
-}
-#article-list .search-bar-container {
-  flex: 1;
-  max-width: 300px;
 }
 
 /* Mobile Styles (max-width: 620px) */

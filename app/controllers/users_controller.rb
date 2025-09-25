@@ -69,6 +69,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, notice: "User was successfully deleted."
+  end
+
   private
 
   # Set the @user variable before each action that needs it

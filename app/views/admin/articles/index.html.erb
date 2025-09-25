@@ -1,0 +1,24 @@
+<div class="mobile-dashboard">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+        <%= link_to admin_dashboard_path, class: "back-btn" do %>
+            <span class="material-symbols-rounded" aria-hidden="true" style="font-size: 48px;">arrow_circle_left</span>
+        <% end %>
+        <h1 style="margin: 0 auto 0 -48px;">Articles</h1>
+    </div>
+    
+    <ul class="mobile-dashboard-article-list" data-controller="mobile-dashboard-card">
+        <% Article.all.each do |article| %>
+            <li class="mobile-dashboard-card" data-url="<%= article_path(article) %>" data-mobile-dashboard-card-target="card">
+                <div class="mobile-dashboard-article-info">
+                    <p class="article-title"><%= article.title %></p>
+                    <p class="article-author"><%= article.user.username %></p>
+                </div>
+                <div class="mobile-dashboard-article-actions">
+                    <%= link_to article_path(article), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, title: 'Delete' do %>
+                        <span class="material-symbols-rounded" aria-hidden="true">delete</span>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>

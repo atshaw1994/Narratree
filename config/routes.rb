@@ -1,25 +1,20 @@
 # config/routes.rb
 
 Rails.application.routes.draw do
-  # Devise routes must come first to ensure they are matched correctly.
   devise_for :users
-  resources :users, only: [ :show, :update, :edit ] do
+
+  resources :users, only: [ :show, :update, :edit, :destroy ] do
     member do
       post "follow", to: "users#follow"
       post "unfollow", to: "users#unfollow"
     end
   end
 
-  root "articles#index"
-
-  get "/about", to: "pages#about"
-  get "/guidelines", to: "pages#guidelines", as: :guidelines
+  resources :flags, only: [ :create ]
 
   concern :likeable do
     resources :likes, only: [ :create, :destroy ]
   end
-
-  resources :flags, only: [ :create ]
 
   resources :articles do
     resources :comments, concerns: :likeable do
@@ -37,15 +32,21 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "dashboard", to: "dashboard#index"
-    resources :users, only: [] do
+    resources :users, only: [ :index, :destroy ] do
+      patch :update_role, on: :member
       post :warn, on: :member
       member do
         patch :approve
         delete :reject
       end
     end
+    resources :articles, only: [ :index, :destroy ]
   end
 
+  get "sitemap.xml", to: "sitemap#index", defaults: { format: "xml" }
+  root "articles#index"
+  get "/about", to: "pages#about"
+  get "/guidelines", to: "pages#guidelines", as: :guidelines
   get "/settings", to: "users#settings", as: :settings
   patch "/settings", to: "users#update_settings"
 end

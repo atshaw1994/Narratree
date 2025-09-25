@@ -37,12 +37,12 @@
     background-color: var(--comments-section-background);
     border: 1px solid var(--comments-section-border);
     box-shadow: 4px 4px 6px var(--comments-section-shadow);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     width: 90%;
     margin: 16px auto 2rem auto;
     padding: 2rem;
-    border-radius: 8px;
 }
 
 .comment-card {
