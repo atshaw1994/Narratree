@@ -1,9 +1,6 @@
 <% content_for(:title, "Narratree - Edit Article") %>
-<div class="section-container", style="width: 80%;">
-    <div class="section-container-header">
-        <h2>Edit Article</h2>
-    </div>
-    <div class="section-container-body">
-        <%= render "form", article: @article %>
-    </div>
-</div>
+<%= render partial: "shared/section_container", locals: {
+    width: "80%",
+    header: content_tag(:h2, "Edit Article"),
+    body: render("form", article: @article)
+} %>
