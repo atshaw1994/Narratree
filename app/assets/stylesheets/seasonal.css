@@ -31,17 +31,17 @@
 
 /* Seasonal elements */
 .leaf {
-  background-image: url('leaf.png');
+  background-image: url('fall/leaf.png');
   opacity: 0.6;
   z-index: -1000;
 }
 .snowflake {
-  background-image: url('snowflake.png');
+  background-image: url('christmas/snowflake.png');
   opacity: 0.6;
   z-index: -1000;
 }
 .falling-skull {
-  background-image: url('falling_skull.png');
+  background-image: url('spooky/falling_skull.png');
   opacity: 0.6;
   z-index: -1000;
 }
@@ -51,7 +51,7 @@
   position: absolute;
   right: 1px;
   top: 1px;
-  background-image: url('spiderweb.png');
+  background-image: url('spooky/spiderweb.png');
   transform: scaleX(-1);
   pointer-events: none;
   background-size: contain;
@@ -67,7 +67,7 @@
   position: absolute;
   left: -25px;
   top: -20px;
-  background-image: url('witch_hat.png');
+  background-image: url('spooky/witch_hat.png');
   pointer-events: none;
   background-size: contain;
   background-repeat: no-repeat;
@@ -82,7 +82,7 @@
   position: absolute;
   left: -28px;
   top: -15px;
-  background-image: url('santa_hat.png');
+  background-image: url('christmas/santa_hat.png');
   pointer-events: none;
   background-size: contain;
   background-repeat: no-repeat;
@@ -98,7 +98,7 @@
   left: 16px;
   width: 64px;
   height: 64px;
-  background-image: url('jackolantern.png');
+  background-image: url('spooky/jackolantern.png');
   background-size: contain;
   background-repeat: no-repeat;
   z-index: -700;
@@ -137,7 +137,7 @@
   right: 16px;
   width: 80px;
   height: 120px;
-  background-image: url('christmas_tree.png');
+  background-image: url('christmas/christmas_tree.png');
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
