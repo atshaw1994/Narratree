@@ -8,10 +8,10 @@
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
   left: 0;
-  top: 0;
+  top: 65px;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  height: calc(100% - 65px); /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
   background-color: var(--modal-overlay-bg); /* Black w/ opacity */
 }
 
@@ -19,17 +19,22 @@
 .modal-content {
   background-color: var(--modal-content-bg);
   color: var(--body-color);
-  border: 1px solid var(--modal-content-border);
   border-radius: 8px;
-  margin: 15% auto; /* 15% from the top and centered */
-  width: 80%; /* Could be more or less, depending on screen size */
-  max-width: 500px;
-  position: relative;
+  margin: 4% auto auto auto;
+  width: fit-content;
 }
 
 .modal-content textarea {
   background-color: var(--textarea-background);
   color: var(--textarea-color);
+}
+
+.modal-content .section-container {
+  width: 400px;
+  max-width: 90vw;
+  margin: 0;
+  box-shadow: none;
+  background-color: transparent;
 }
 
 /* The Close Button */
