@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: [ :show, :update, :edit, :destroy ] do
+  resources :users, only: [ :show, :update, :destroy ] do
     member do
       post "follow", to: "users#follow"
       post "unfollow", to: "users#unfollow"

@@ -1,4 +1,5 @@
 <%= render partial: "shared/section_container", locals: {
+  style: "width: fit-content;",
   header: content_tag(:h2, "User Settings"),
   body: content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
     content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
@@ -10,8 +11,8 @@
               content_tag(:p, "Email when:"),
               safe_join(User::EMAIL_NOTIFICATION_OPTIONS.map do |key, label|
                 content_tag(:div) do
-                  check_box_tag("user[email_notification_preferences][#{key}]", true, @user.email_notification_enabled?(key), id: "user_email_notification_preferences_#{key}") +
-                  label_tag("user_email_notification_preferences_#{key}", label)
+                  check_box_tag(" user[email_notification_preferences][#{key}]", true, @user.email_notification_enabled?(key), id: "user_email_notification_preferences_#{key}") +
+                  label_tag(" user_email_notification_preferences_#{key}", label, style: "margin-left: 0.5em;")
                 end
               end)
             ])

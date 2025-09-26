@@ -14,6 +14,10 @@
   background-color: var(--input-focus-background);
 }
 
+.search-bar-container:hover .search-input {
+  background-color: var(--input-focus-background);
+}
+
 .search-input {
   background-color: var(--input-background);
   border: 1px solid var(--input-border);

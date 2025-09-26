@@ -1,11 +1,39 @@
 <div class="user-profile">
-  <div class="section-container">
-    <div class="section-container-header" style="justify-content: center;">
-      <h2>Change Email or Password</h2>
-    </div>
-    <div class="section-container-body profile-section-container-body">
+  <%= render "shared/section_container", header: content_tag(:h2, "Change Email or Password"), style: "width: fit-content;" do %>
+    <div class="profile-section-container-body">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "signup-form" }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="form-group signup-form-profile-picture-group">
+          <div id="profile-pic-edit-container" data-controller="profile-picture-overlay" data-action="mouseenter->profile-picture-overlay#showOverlay mouseleave->profile-picture-overlay#hideOverlay">
+            <% if resource.profile_picture.attached? %>
+              <%= image_tag(resource.profile_picture,
+                class: "profile-pic-large",
+                style: "cursor: pointer;",
+                data: {
+                  profile_picture_overlay_target: "edit",
+                  action: "click->profile-picture-overlay#triggerFileInput"
+                }) %>
+            <% else %>
+              <%= content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon profile-pic-large", data: { profile_picture_overlay_target: "edit", action: "click->profile-picture-overlay#triggerFileInput" }, style: "cursor: pointer;") %>
+            <% end %>
+            <%= content_tag(:div, content_tag(:span, "edit", class: "material-symbols-rounded"), class: "profile-pic-overlay", data: { profile_picture_overlay_target: "overlay" }) %>
+            <%= f.file_field(:profile_picture, class: "hidden-file-input", style: "display: none;", data: { profile_picture_overlay_target: "fileInput" }) %>
+          </div>
+        </div>
+        <div class="form-group signup-form-name-group">
+          <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autofocus: true %>
+          </div>
+          <div>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, autofocus: true %>
+          </div>
+        </div>
+        <div class="form-group signup-form-username-group">
+          <%= f.label :username %>
+          <%= f.text_field :username, autofocus: true %>
+        </div>
         <div class="form-group signup-form-email-group">
           <%= f.label :email %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -35,5 +63,5 @@
         </div>
       <% end %>
     </div>
-  </div>
+  <% end %>
 </div>

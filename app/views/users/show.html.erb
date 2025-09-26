@@ -1,6 +1,6 @@
 <div class="user-profile">
     <%= render partial: "shared/section_container", locals: {
-        width: "100%",
+        style: "width: fit-content;",
         header: content_tag(:div) do
             safe_join([
                 (if current_user && current_user != @user
@@ -25,10 +25,10 @@
                 content_tag(:h2, "#{@user.first_name} #{@user.last_name}")
             ].compact)
         end,
-        body: content_tag(:div, class: "profile-section-container-body", style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
-            content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
+        body: content_tag(:div, class: "profile-section-container-body", style: "display: flex; flex-direction: column; align-items: center;") do
+            content_tag(:div, style: "text-align: left;") do
                 safe_join([
-                    content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
+                    content_tag(:div, style: "display: flex; flex-direction: column; align-items: center;") do
                         safe_join([
                             form_with(model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true) do |form|
                                 form.file_field(:profile_picture, class: "hidden-file-input") +
@@ -42,7 +42,7 @@
                             end
                         ])
                     end,
-                    content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; margin-top: 1.5em; width: 100%;") do
+                    content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; margin-top: 1.5em;") do
                         safe_join([
                             content_tag(:h4, "Username:"),
                             content_tag(:p, @user.username),
@@ -66,7 +66,7 @@
                             content_tag(:h4, "Member Since:"),
                             content_tag(:p, @user.created_at.strftime("%B %d, %Y")),
                             (if current_user == @user
-                                link_to('Edit Profile', edit_user_path(@user), class: 'form-submit-button', style: 'margin: 0; text-decoration: none;')
+                                link_to('Edit Profile', edit_user_registration_path, class: 'form-submit-button', style: 'margin: 0; text-decoration: none;')
                             end)
                         ].compact)
                     end
