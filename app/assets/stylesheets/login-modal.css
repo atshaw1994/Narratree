@@ -19,7 +19,7 @@
 .modal-content {
   background-color: var(--modal-content-bg);
   color: var(--body-color);
-  border-radius: 8px;
+  border-radius: 9px;
   margin: 4% auto auto auto;
   width: fit-content;
 }
@@ -34,7 +34,6 @@
   max-width: 90vw;
   margin: 0;
   box-shadow: none;
-  background-color: transparent;
 }
 
 /* The Close Button */

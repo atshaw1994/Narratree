@@ -15,11 +15,12 @@
         var(--section-header-gradient-start), 
         var(--section-header-gradient-end)
     );
+    border-bottom: 1px solid var(--section-border-color);
     border-radius: 8px 8px 0 0;
     box-shadow: 0 2px 4px var(--section-header-shadow);
     display: flex;
     align-items: center;
-    padding: 12px 16px;
+    padding: 12px 32px;
     z-index: 1;
 }
 
