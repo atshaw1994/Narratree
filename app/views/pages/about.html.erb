@@ -1,7 +1,11 @@
+<% db_version_str = ActiveRecord::Base.connection.select_value('SELECT version()') %>
+<% db_version_match = db_version_str.match(/PostgreSQL ([\d.]+)/) %>
+<% db_version = db_version_match ? db_version_match[1] : db_version_str %>
 <% content_for(:title, "Narratree - About") %>
 
 <%= render partial: "shared/section_container", locals: {
-    header: content_tag(:h1, "About Narratree"),
+    style: "width: fit-content;",
+    header: content_tag(:h2, "About Narratree"),
     body: content_tag(:div, style: "display: flex; flex-direction: column; align-items: center; width: 100%;") do
         content_tag(:div, style: "max-width: 700px; width: 100%; text-align: left;") do
             safe_join([
@@ -15,10 +19,15 @@
                 content_tag(:p, "this site will be on the free tier of Render (the service that is hosting the site). This means access will be slow at times and certain things either will not work or take longer to fix."),
                 content_tag(:p, "As the site gets more traction, I will upgrade to one of the paid tiers."),
                 content_tag(:p, ""),
-                content_tag(:p, "Ruby version: #{RUBY_VERSION}", style: "font-size: 0.8em;"),
-                content_tag(:p, "Rails version: Rails #{Rails.version}", style: "font-size: 0.8em;"),
-                content_tag(:p, "Database: PostgreSQL #{ActiveRecord::Base.connection.select_value('SELECT version()').match(/PostgreSQL ([\d.]+)/)[1]}", style: "font-size: 0.8em;"),
-                content_tag(:p, "Hosted on: Render.com", style: "font-size: 0.8em;")
+                tag.hr,
+                content_tag(:div, style: "display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; font-size: 0.9em;") do
+                    safe_join([
+                        content_tag(:div, "Ruby version: #{RUBY_VERSION}", style: "font-size: 0.8em;"),
+                        content_tag(:div, "Database: PostgreSQL #{db_version}", style: "font-size: 0.8em;"),
+                        content_tag(:div, "Rails version: Rails #{Rails.version}", style: "font-size: 0.8em;"),
+                        content_tag(:div, "Hosted on: Render.com", style: "font-size: 0.8em;")
+                    ])
+                end
             ])
         end
     end
