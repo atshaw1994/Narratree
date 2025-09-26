@@ -35,15 +35,13 @@
     </footer>
     <div id="login-modal" class="modal" data-login-modal-target="modal">
       <div class="modal-content">
-          <div class="section-container">
-              <div class="section-container-header">
-                  <h2>Log In</h2>
-                  <span class="close-button" data-action="click->login-modal#hide">&times;</span>
-              </div>
-              <div class="section-container-body">
-                  <%= render 'shared/login_form' %>
-              </div>
-          </div>
+        <%= render partial: 'shared/section_container', locals: {
+          header: (
+            '<h2>Log In</h2>' \
+            '<span class="close-button" data-action="click->login-modal#hide">&times;</span>'
+          ).html_safe,
+          body: render('devise/sessions/login_form', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user])
+        } %>
       </div>
     </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
