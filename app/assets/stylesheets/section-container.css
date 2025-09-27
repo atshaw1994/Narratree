@@ -9,6 +9,11 @@
     margin-right: auto;
 }
 
+.body-content > .section-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .section-container-header {
     background: linear-gradient(
         to top left, 

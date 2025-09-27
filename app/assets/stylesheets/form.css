@@ -46,6 +46,28 @@
   outline: none;
 }
 
+.form-input-field {
+  background-color: var(--input-background);
+  border: 1px solid var(--input-border);
+  font-size: 1.2em;
+  border-radius: 8px;
+  width: 100%;
+  height: 32px;
+  box-sizing: border-box;
+  padding-left: 8px;
+}
+
+.form-input-field:focus {
+  background-color: var(--input-focus-background);
+  border-color: var(--input-focus-border);
+  outline: none;
+}
+
+.form-input-field-label {
+  font-size: 1.4em;
+  margin-left: 4px;
+}
+
 .btn-login {
   color: var(--login-btn-color);
   background-color: var(--login-btn-background);

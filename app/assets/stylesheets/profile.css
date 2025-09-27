@@ -40,6 +40,10 @@
   margin: 0 8px;
 }
 
+.default-user-icon {
+  font-size: 48px;
+}
+
 .profile-article-list-container {
   width: 100%;
   margin: 0;

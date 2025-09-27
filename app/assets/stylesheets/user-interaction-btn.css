@@ -1,0 +1,40 @@
+.user-interaction-btn {
+    background: var(--btn-background);
+    border: 1px solid var(--btn-border);
+    box-shadow: 2px 2px 4px var(--btn-shadow);
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 6px;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    transition: background 0.1s;
+}
+
+.user-interaction-btn .material-symbols-rounded {
+    color: var(--btn-icon-color);
+    font-size: 1.4rem;
+    transition: color 0.1s;
+}
+
+.user-interaction-btn:hover .material-symbols-rounded {
+    color: var(--btn-hover-icon-color);
+}
+
+.user-interaction-btn:hover {
+    background: var(--btn-hover-background);
+}
+
+.user-interaction-btn:active {
+  background-color: var(--btn-active-background);
+}
+
+.user-interaction-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

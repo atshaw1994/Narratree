@@ -25,7 +25,7 @@ body.santa-mode .logo-christmas { display: inline-block !important; }
 .header {
   display: grid;
   position: fixed;
-  z-index: 9999;
+  z-index: 1500;
   width: 100vw;
   top: 0;
   left: 0;
