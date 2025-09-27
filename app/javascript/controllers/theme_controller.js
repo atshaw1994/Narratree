@@ -1,7 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
 
-console.log("Month: ", new Date().getMonth());
-
 export default class extends Controller {
   // Define a static array of theme modes
   static get modes() {
@@ -21,7 +19,6 @@ export default class extends Controller {
   }
   
   connect() {
-    console.log("ThemeController Modes: ", this.constructor.modes);
     this.body = document.body;
     this.prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     this.currentModeIndex = 0;
