@@ -17,8 +17,8 @@
 
   <body data-controller="login-modal" style="min-height: 100vh; display: flex; flex-direction: column;">
     <div class="flash-messages">
-      <p><%= notice %></p>
-      <p><%= alert %></p>
+      <p class="flash-msg-notice"><%= notice %></p>
+      <p class="flash-msg-alert"><%= alert %></p>
     </div>
     <div id="site-header-area" data-controller="mobile-menu">
       <%= render 'layouts/mobile_sidebar' %>

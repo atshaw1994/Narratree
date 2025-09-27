@@ -34,16 +34,25 @@ body textarea {
   background-color: var(--section-bg-color);
   border: 1px solid var(--section-border-color);
   box-shadow: 0 4px 12px 2px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(12px);
-  color: var(--flash-text-color);
+  backdrop-filter: blur(8px);
   padding: 2px 20px;
   z-index: 2000;
   width: fit-content;
   text-align: center;
   border-radius: 5px;
   position: fixed;
-  top: 1px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  /* animation: fadeOut 6s forwards; */
+  animation: fadeOut 6s forwards;
+}
+
+.flash-messages .flash-msg-notice {
+  color: var(--flash-text-color);
+  margin-top: 16px;
+}
+.flash-messages .flash-msg-alert {
+  color: rgb(230, 0, 0);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 }

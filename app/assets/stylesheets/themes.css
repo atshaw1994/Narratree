@@ -19,7 +19,7 @@
     --input-focus-background: white;
     --input-focus-border: #007bff;
 
-    --flash-text-color: white;
+    --flash-text-color: rgba(0, 0, 0, 0.6);
     /* #endregion */
 
     /* #region header.css */
@@ -139,7 +139,7 @@ body.dark-mode {
     --input-focus-background: #1e1e1e;
     --input-focus-border: #90caf9;
 
-    --flash-text-color: #111;
+    --flash-text-color: rgba(255, 255, 255, 0.6);
     /* #endregion */
 
     /* #region header.css */
