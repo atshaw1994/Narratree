@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_follows, source: :followed
   has_many :followers, through: :passive_follows, source: :follower
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
+  include DeviseLoginWithEmailOrUsername
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :saved_article_joins, class_name: "SavedArticle", dependent: :destroy

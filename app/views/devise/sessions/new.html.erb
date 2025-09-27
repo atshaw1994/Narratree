@@ -4,9 +4,10 @@
   </div>
   <div class="section-container-body">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false } }) do |f| %>
+
       <div class="field form-group">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.label :login, 'Email or Username' %><br />
+        <%= f.text_field :login, autofocus: true, autocomplete: "username" %>
       </div>
 
       <div class="field form-group">
