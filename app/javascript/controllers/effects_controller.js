@@ -51,6 +51,11 @@ export default class extends Controller {
                     christmasTreeElement.className = "christmas-tree";
                     footer.appendChild(christmasTreeElement);
                 }
+                if (!footer.querySelector(".snowman")) {
+                    const snowmanElement = document.createElement("div");
+                    snowmanElement.className = "snowman";
+                    footer.appendChild(snowmanElement);
+                }
             }
             this.decorateHeaders("christmas");
             this.maxFallingElements = 30;
@@ -120,6 +125,11 @@ export default class extends Controller {
                     const santaHatDiv = document.createElement("div");
                     santaHatDiv.className = "santa-hat";
                     header.appendChild(santaHatDiv);
+                }
+                if (!header.querySelector(".lights")) {
+                    const lightsDiv = document.createElement("div");
+                    lightsDiv.className = "lights";
+                    header.appendChild(lightsDiv);
                 }
             });
         }

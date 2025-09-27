@@ -120,3 +120,28 @@
   border: none;
   z-index: -700;
 }
+
+.snowman {
+  position: absolute;
+  bottom: 108px;
+  left: 16px;
+  width: 80px;
+  height: 120px;
+  background-image: url('christmas/snowman.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  z-index: -700;
+}
+
+
+.lights {
+  flex: 1 1 auto;
+  height: 32px;
+  background-image: url('christmas/tile_christmas_lights.png');
+  pointer-events: none;
+  background-size: auto 32px;
+  background-repeat: repeat-x, no-repeat;
+  margin-left: 8px;
+  animation: twinkle-lights 2.5s infinite linear;
+}

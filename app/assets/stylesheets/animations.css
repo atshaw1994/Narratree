@@ -32,3 +32,18 @@
   90% { opacity: 1; filter: blur(1px); }
   100% { opacity: 0.8; filter: blur(2px); }
 }
+
+/* Keyframes for the twinkling lights effect */
+@keyframes twinkle-lights {
+  0% { filter: brightness(1); }
+  10% { filter: brightness(1.2); }
+  20% { filter: brightness(0.8); }
+  30% { filter: brightness(1.1); }
+  40% { filter: brightness(0.9); }
+  50% { filter: brightness(1.2); }
+  60% { filter: brightness(0.85); }
+  70% { filter: brightness(1.15); }
+  80% { filter: brightness(0.95); }
+  90% { filter: brightness(1.05); }
+  100% { filter: brightness(1); }
+}
