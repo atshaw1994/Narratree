@@ -14,7 +14,7 @@
           <span class="material-symbols-rounded">settings</span>
           Settings
         <% end %>
-  <% if current_user.admin? || current_user.owner? %>
+        <% if current_user.admin? || current_user.owner? %>
           <%= link_to admin_dashboard_path, class: "sidebar-link" do %>
             <span class="material-symbols-rounded">dashboard</span>
             <span>Admin Dashboard</span>
@@ -37,9 +37,5 @@
         <span>Log In</span>
       <% end %>
     <% end %>
-    <a href="#" role="button" tabindex="0" class="sidebar-link close-sidebar-link" data-action="click->mobile-menu#toggle" aria-label="Close menu" onclick="event.preventDefault();">
-      <span class="material-symbols-rounded">right_panel_close</span>
-      Close Menu
-    </a>
   </div>
 </div>

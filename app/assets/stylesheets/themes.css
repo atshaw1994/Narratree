@@ -100,7 +100,7 @@
     /* #endregion */
 
     /* #region section-container.css */
-     --section-bg-color: rgba(31, 146, 253, 0.2);
+    --section-bg-color: rgba(31, 146, 253, 0.2);
     --section-border-color: rgba(0, 0, 0, 0.5);
     --section-shadow-color: rgba(0, 0, 0, 0.2);
     --section-header-gradient-start: rgb(65, 151, 255);
@@ -245,8 +245,8 @@ body.fall-mode {
     --textarea-background: #7c5e3c;/* Medium Brown */
     --textarea-border: #c97a3a;    /* Pumpkin Orange */
 
-    --btn-background: #a0522d;     /* Sienna Brown */
-    --btn-border: #f5e6c8;         /* Wheat/Light Tan */
+    --btn-background: #a0512d7b;     /* Sienna Brown */
+    --btn-border: #f5e6c87b;         /* Wheat/Light Tan */
     --btn-shadow: rgba(201, 122, 58, 0.3); /* Pumpkin Glow */
     --btn-icon-color: #f5e6c8;     /* Wheat/Light Tan */
     --btn-hover-icon-color: #4e2e0e; /* Deep Brown */
@@ -342,8 +342,8 @@ body.fall-mode {
     --section-bg-color: rgba(124, 94, 60, 0.4); /* Medium Brown Transparent */
     --section-border-color: #bfa76a;          /* Muted Gold */
     --section-shadow-color: #3b210a;          /* Very Dark Brown */
-    --section-header-gradient-start: #7c5e3c; /* Medium Brown */
-    --section-header-gradient-end: #4e2e0e;   /* Deep Brown */
+    --section-header-gradient-start: #4e2e0e; /* Medium Brown */
+    --section-header-gradient-end: #7c5e3c;   /* Deep Brown */
     --section-header-border: #c97a3a;         /* Pumpkin Orange */
     --section-header-shadow: rgba(160, 82, 45, 0.4);         /* Sienna Shadow */
     --section-header-text-color: #fffbe6;     /* Pale Gold */

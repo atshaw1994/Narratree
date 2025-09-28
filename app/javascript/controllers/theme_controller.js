@@ -52,34 +52,32 @@ export default class extends Controller {
   setTheme(mode) {
     // Update the icon and set the desired theme
     const icon = this.element.querySelector('.material-symbols-rounded');
+    // Remove any class ending with '-mode' from body
+    this.body.classList.forEach(cls => {
+      if (cls.endsWith('-mode')) this.body.classList.remove(cls);
+    });
     switch(mode) {
       case 'light':
         icon.textContent = 'brightness_7';
-        this.body.className = "";
         break;
       case 'dark':
         icon.textContent = 'brightness_4';
-        this.body.className = "";
         this.body.classList.add('dark-mode');
         break;
       case 'system':
         icon.textContent = 'brightness_auto';
-        this.body.className = "";
         this.handleSystemPreference();
         break;
       case 'fall':
         icon.textContent = 'temp_preferences_eco';
-        this.body.className = "";
         this.body.classList.add('fall-mode');
         break;
       case 'spooky':
         icon.textContent = 'skull';
-        this.body.className = "";
         this.body.classList.add('spooky-mode');
         break;
       case 'santa':
         icon.textContent = 'mode_cool';
-        this.body.className = "";
         this.body.classList.add('santa-mode');
         break;
     }
