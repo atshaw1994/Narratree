@@ -8,6 +8,7 @@ one:
   last_name: "Doe"
   accepted_guidelines: true
   approved: true
+  confirmed_at: <%= Time.now %>
 
 two:
   email: user2@example.com
@@ -17,3 +18,4 @@ two:
   last_name: "Smith"
   accepted_guidelines: true
   approved: true
+  confirmed_at: <%= Time.now %>
