@@ -10,14 +10,21 @@
                 class: "profile-pic-large",
                 style: "cursor: pointer;",
                 data: {
-                  profile_picture_overlay_target: "edit",
-                  action: "click->profile-picture-overlay#triggerFileInput"
-                }) %>
+                  profile_picture_overlay_target: (resource.approved? ? "edit" : "no_accounts"),
+                  action: (resource.approved? ? "click->profile-picture-overlay#triggerFileInput" : nil)
+                },
+                title: (resource.approved? ? nil : "You can change your profile picture after account approval")
+              ) %>
             <% else %>
-              <%= content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon profile-pic-large", data: { profile_picture_overlay_target: "edit", action: "click->profile-picture-overlay#triggerFileInput" }, style: "cursor: pointer;") %>
+              <%= content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon-large profile-pic-large", data: { profile_picture_overlay_target: "edit", action: (resource.approved? ? "click->profile-picture-overlay#triggerFileInput" : nil) }, style: "cursor: pointer;", title: (resource.approved? ? nil : "You can change your profile picture after account approval")) %>
             <% end %>
-            <%= content_tag(:div, content_tag(:span, "edit", class: "material-symbols-rounded"), class: "profile-pic-overlay", data: { profile_picture_overlay_target: "overlay" }) %>
-            <%= f.file_field(:profile_picture, class: "hidden-file-input", style: "display: none;", data: { profile_picture_overlay_target: "fileInput" }) %>
+            <%= content_tag(:div, 
+              content_tag(:span, (resource.approved? ? "edit" : "no_accounts"), class: "material-symbols-rounded"), 
+              class: "profile-pic-overlay", 
+              data: { profile_picture_overlay_target: "overlay" }, 
+              title: (resource.approved? ? "Change profile picture" : "Account approval required to change profile picture")
+            ) %>
+            <%= f.file_field(:profile_picture, class: "hidden-file-input", style: "display: none;", data: { profile_picture_overlay_target: "fileInput" }, disabled: !resource.approved?) %>
           </div>
         </div>
         <div class="form-group signup-form-name-group">

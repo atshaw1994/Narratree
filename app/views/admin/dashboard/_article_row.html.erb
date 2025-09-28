@@ -8,7 +8,13 @@
   <td><%= article.photos.attached? ? article.photos.count : 0 %></td>
   <td><%= article.article_likes.count %></td>
   <td>
-    <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm btn-primary', style: 'margin-right: 0.5em;' %>
-    <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+    <div style="display: flex; gap: 0.5em; align-items: center;">
+      <%= button_to edit_article_path(article), class: 'admin-edit-button' do %>
+        <span class="material-symbols-rounded" style="font-size: 20px; color: #fff;">edit</span>
+      <% end %>
+      <%= button_to article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'admin-delete-button' do %>
+        <span class="material-symbols-rounded" style="font-size: 20px; color: #fff;">delete</span>
+      <% end %>
+    </div>
   </td>
 </tr>

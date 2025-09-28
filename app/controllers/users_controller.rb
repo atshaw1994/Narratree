@@ -1,7 +1,6 @@
-# app/controllers/users_controller.rb
-
 class UsersController < ApplicationController
   before_action :set_user, only: [ :show, :update, :edit ]
+
   def edit
     # @user is set by before_action
   end
@@ -83,6 +82,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :profile_picture)
+    permitted = [ :first_name, :last_name, :username, :email, :password, :password_confirmation ]
+    permitted << :profile_picture if current_user&.approved?
+    params.require(:user).permit(permitted)
   end
 end

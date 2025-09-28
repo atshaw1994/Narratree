@@ -1,6 +1,6 @@
-# app/controllers/comments_controller.rb
 class CommentsController < ApplicationController
   before_action :set_article, only: [ :create, :reply_form ]
+  before_action :require_approved_user!, only: [ :create ]
 
   def create
     @comment = @article.comments.new(comment_params)
@@ -42,13 +42,17 @@ class CommentsController < ApplicationController
     current_user.admin? || current_user.owner? || comment.user == current_user
   end
 
-  private
-
   def set_article
     @article = Article.find(params[:article_id])
   end
 
   def comment_params
     params.require(:comment).permit(:body, :parent_id)
+  end
+
+  def require_approved_user!
+    unless current_user&.approved?
+      redirect_to @article, alert: "Your account must be approved before you can post comments."
+    end
   end
 end

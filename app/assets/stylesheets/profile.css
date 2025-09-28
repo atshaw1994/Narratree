@@ -44,6 +44,10 @@
   font-size: 48px;
 }
 
+.default-user-icon-large {
+  font-size: 120px;
+}
+
 .profile-article-list-container {
   width: 100%;
   margin: 0;
@@ -78,7 +82,7 @@
 
 .profile-pic-overlay .material-symbols-rounded {
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 4rem;
   background: rgba(0,0,0,0.2);
   border-radius: 50%;
   padding: 8px;

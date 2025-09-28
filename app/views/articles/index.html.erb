@@ -41,7 +41,7 @@
     <div id="article-list" data-controller="article-search">
         <%= render "shared/section_container", header: (
             capture do
-                if current_user
+                if current_user&.approved?
                     concat(link_to(new_article_path, class: "new-article-button", title: "New Article") do
                         content_tag(:span, nil, class: "material-symbols-rounded") { "edit_document" }
                     end)

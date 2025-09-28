@@ -8,7 +8,12 @@ class ArticlesController < ApplicationController
     :update,
     :destroy
   ]
-
+  before_action :require_approved_user!, only: [
+    :create,
+    :edit,
+    :update,
+    :destroy
+  ]
   before_action :set_article, only: [
     :show,
     :edit,
@@ -118,13 +123,17 @@ class ArticlesController < ApplicationController
     current_user.admin? || current_user.owner? || article.user == current_user
   end
 
-  private
-
   def set_article
     @article = Article.find(params[:id])
   end
 
   def article_params
     params.require(:article).permit(:title, :body, photos: [])
+  end
+
+  def require_approved_user!
+    unless current_user&.approved?
+      redirect_to root_path, alert: "Your account must be approved before you can post or edit articles."
+    end
   end
 end

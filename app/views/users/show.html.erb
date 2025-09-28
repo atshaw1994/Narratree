@@ -30,13 +30,33 @@
                 safe_join([
                     content_tag(:div, style: "display: flex; flex-direction: column; align-items: center;") do
                         safe_join([
-                            form_with(model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true) do |form|
-                                form.file_field(:profile_picture, class: "hidden-file-input") +
+                            if @user == current_user
+                                if @user.approved?
+                                    form_with(model: @user, url: user_path(@user), method: :patch, id: "profile-pic-form", multipart: true) do |form|
+                                        form.file_field(:profile_picture, class: "hidden-file-input") +
+                                        content_tag(:div, id: "profile-pic-container") do
+                                            if @user.profile_picture.attached?
+                                                image_tag(@user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-large", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture")
+                                            else
+                                                content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon-large", id: "profile-pic-uploader")
+                                            end
+                                        end
+                                    end
+                                else
+                                    content_tag(:div, id: "profile-pic-container") do
+                                        if @user.profile_picture.attached?
+                                            image_tag(@user.profile_picture, class: "profile-pic-large", style: "margin-left: 0;")
+                                        else
+                                            content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon-large")
+                                        end
+                                    end
+                                end
+                            else
                                 content_tag(:div, id: "profile-pic-container") do
                                     if @user.profile_picture.attached?
-                                        image_tag(@user.profile_picture, id: "profile-pic-uploader", class: "profile-pic-large", style: "margin-left: 0; cursor: pointer;", title: "Change Profile Picture")
+                                        image_tag(@user.profile_picture, class: "profile-pic-large", style: "margin-left: 0;")
                                     else
-                                        content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon", id: "profile-pic-uploader")
+                                        content_tag(:span, "account_circle", class: "material-symbols-rounded default-user-icon-large")
                                     end
                                 end
                             end

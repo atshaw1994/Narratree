@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_follows, source: :followed
   has_many :followers, through: :passive_follows, source: :follower
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable
+       :recoverable, :rememberable, :validatable,
+       :confirmable, :lockable
   include DeviseLoginWithEmailOrUsername
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -74,15 +75,6 @@ class User < ApplicationRecord
     prefs = (email_notification_preferences || {}).dup
     prefs[key.to_s] = value
     update(email_notification_preferences: prefs)
-  end
-
-  # Only allow login if approved
-  def active_for_authentication?
-    super && approved?
-  end
-
-  def inactive_message
-    approved? ? super : :not_approved
   end
 
   private
