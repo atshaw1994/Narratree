@@ -8,6 +8,27 @@
   }
 }
 
+@keyframes flash-message-fly-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) scaleY(0);
+  }
+}
+
+/* Ensure the flash message expands from the top */
+.flash-messages {
+  transform-origin: top;
+}
+
 /* Keyframes for the falling animations */
 @keyframes fall {
   0% { transform: translateY(-10vh) rotate(0deg); }

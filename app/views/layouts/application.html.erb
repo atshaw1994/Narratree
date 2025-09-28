@@ -15,11 +15,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-controller="login-modal" style="min-height: 100vh; display: flex; flex-direction: column;">
-    <div class="flash-messages">
-      <p class="flash-msg-notice"><%= notice %></p>
-      <p class="flash-msg-alert"><%= alert %></p>
-    </div>
+  <body data-controller="login-modal">
+    <% if notice.present? || alert.present? %>
+      <div class="flash-messages">
+        <% if notice.present? %>
+          <p class="flash-msg-notice"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="flash-msg-alert"><%= alert %></p>
+        <% end %>
+      </div>
+    <% end %>
     <div id="site-header-area" data-controller="mobile-menu">
       <%= render 'layouts/mobile_sidebar' %>
       <%= render 'layouts/header' %>
