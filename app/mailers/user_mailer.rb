@@ -11,6 +11,7 @@ class UserMailer < ApplicationMailer
   def new_user_waiting_approval(user)
     @user = user
     @approve_url = url_for(controller: "admin/users", action: "approve", id: @user.id, only_path: false)
+    @reject_url = url_for(controller: "admin/users", action: "reject", id: @user.id, only_path: false)
     owner = User.find_by(role: :owner)
     mail(to: owner.email, subject: "New user awaiting approval: #{@user.username}")
   end

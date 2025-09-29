@@ -31,11 +31,12 @@ class Admin::UsersController < ApplicationController
   def approve
     @user = User.find(params[:id])
     if @user.update(approved: true)
+      @user.send_confirmation_instructions unless @user.confirmed?
       UserMailer.account_approved_email(@user).deliver_later
       if params[:desktop]
-        redirect_to admin_dashboard_path, notice: "User approved."
+        redirect_to admin_dashboard_path, notice: "User approved. Confirmation email sent."
       else
-        redirect_to admin_users_path, notice: "User approved."
+        redirect_to admin_users_path, notice: "User approved. Confirmation email sent."
       end
     else
       if params[:desktop]

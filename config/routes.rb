@@ -1,7 +1,7 @@
 # config/routes.rb
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :users, only: [ :show, :update, :destroy ] do
     member do
@@ -36,7 +36,9 @@ Rails.application.routes.draw do
       patch :update_role, on: :member
       post :warn, on: :member
       member do
+        get :approve
         patch :approve
+        get :reject
         delete :reject
       end
     end
