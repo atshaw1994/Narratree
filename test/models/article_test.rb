@@ -45,7 +45,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test "can have savers through saved_articles" do
-    user = User.create!(email: "test@example.com", username: "testuser", first_name: "Test", last_name: "User", password: "password", accepted_guidelines: true)
+    user = User.create!(email: "test@example.com", username: "testuser", first_name: "Test", last_name: "User", password: "password", accepted_guidelines: true, approved: true)
     article = Article.create!(title: "Test", body: "This is a valid article body.", user: user)
     SavedArticle.create!(user: user, article: article)
     article.reload
