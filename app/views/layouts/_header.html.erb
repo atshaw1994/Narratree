@@ -6,8 +6,8 @@
     <h1 class="page-title">Narratree</h1>
   </div>
   <div class="header-btns">
-    <button class="hamburger-btn" data-action="click->mobile-menu#toggle" aria-label="Open menu">
-      <span class="material-symbols-rounded">menu</span>
+    <button class="hamburger-btn" data-controller="hamburger" data-action="click->mobile-menu#toggle click->hamburger#animate" aria-label="Open menu">
+      <span class="material-symbols-rounded" data-hamburger-target="icon">menu</span>
     </button>
     <div class="header-btns-menu">
       <%= link_to root_path, class: "header-btn" do %>

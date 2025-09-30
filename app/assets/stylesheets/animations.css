@@ -1,4 +1,4 @@
-@keyframes fadeOut {
+@keyframes fade-out {
   from {
     opacity: 1;
   }
@@ -7,7 +7,6 @@
     visibility: hidden;
   }
 }
-
 @keyframes flash-message-fly-in {
   0% {
     opacity: 0;
@@ -24,17 +23,12 @@
   }
 }
 
-/* Ensure the flash message expands from the top */
-.flash-messages {
-  transform-origin: top;
-}
-
 /* Keyframes for the falling animations */
 @keyframes fall {
   0% { transform: translateY(-10vh) rotate(0deg); }
   100% { transform: translateY(100vh) rotate(360deg); }
 }
-@keyframes fallreverse {
+@keyframes fall-mirrored {
   0% { transform: translateY(-10vh) rotate(360deg); }
   100% { transform: translateY(100vh) rotate(0deg); }
 }
@@ -67,4 +61,17 @@
   80% { filter: brightness(0.95); }
   90% { filter: brightness(1.05); }
   100% { filter: brightness(1); }
+}
+
+/* Keyframes for hamburger button animation */
+@keyframes hamburger-scale-down-up {
+  0% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
 }

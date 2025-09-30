@@ -94,7 +94,7 @@ export default class extends Controller {
 
     spawnElement(className) {
         const element = document.createElement("div");
-        const animationName = Math.random() < 0.5 ? "fall" : "fallreverse";
+        const animationName = Math.random() < 0.5 ? "fall" : "fall-mirrored";
         element.style.animation = `${animationName} linear infinite`;
         element.className = `falling-element ${className}`;
         element.style.left = `${(Math.random() * 100)}vw`;

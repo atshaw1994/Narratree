@@ -27,8 +27,8 @@ body.sidebar-open .hamburger-btn  {
   background-color: var(--btn-active-background);
 }
 
-body.sidebar-open .hamburger-btn span {
-  transform: scale(1);
+.animate-hamburger {
+  animation: hamburger-scale-down-up 0.4s cubic-bezier(.4,0,.2,1);
 }
 
 .header-btns-menu {
