@@ -1,6 +1,29 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [ :show, :update, :edit ]
 
+  # GET /users/search?query=...
+  def search
+    query = params[:query].to_s.strip.downcase
+    if query.blank?
+      render json: [] and return
+    end
+
+    users = User.where(
+      "LOWER(username) LIKE :q OR LOWER(first_name) LIKE :q OR LOWER(last_name) LIKE :q",
+      q: "%#{query}%"
+    ).limit(10)
+
+    render json: users.map { |user|
+      {
+        id: user.id,
+        username: user.username,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        profile_picture_url: user.profile_picture.attached? ? url_for(user.profile_picture) : nil
+      }
+    }
+  end
+
   def edit
     # @user is set by before_action
   end
@@ -78,7 +101,11 @@ class UsersController < ApplicationController
 
   # Set the @user variable before each action that needs it
   def set_user
-    @user = User.find(params[:id])
+    if params[:username]
+      @user = User.find_by!(username: params[:username])
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def user_params

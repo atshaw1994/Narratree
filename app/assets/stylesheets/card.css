@@ -39,3 +39,26 @@
     justify-self: end;
     align-self: center;
 }
+
+.user-card-list-item {
+    background: linear-gradient(
+        to bottom right, 
+        var(--card-gradient-start), 
+        var(--card-gradient-end)
+    );
+    border: 1px solid var(--card-border-color);
+    box-shadow: 2px 2px 4px var(--card-shadow-color);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.15s, border 0.15s;
+    margin-bottom: 16px;
+}
+
+.user-card-list-item:hover {
+    background: linear-gradient(
+        to bottom right, 
+        var(--card-hover-background), 
+        var(--card-gradient-end)
+    );
+}

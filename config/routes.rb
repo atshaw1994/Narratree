@@ -3,12 +3,17 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  resources :users, only: [ :show, :update, :destroy ] do
+  resources :users, only: [ :update, :destroy ] do
+    collection do
+      get "search", to: "users#search"
+    end
     member do
       post "follow", to: "users#follow"
       post "unfollow", to: "users#unfollow"
     end
   end
+
+  get "/users/:username", to: "users#show", as: :user_profile
 
   resources :flags, only: [ :create ]
 
