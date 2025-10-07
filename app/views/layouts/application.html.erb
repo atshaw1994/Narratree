@@ -29,6 +29,11 @@
     <div id="site-header-area" data-controller="mobile-menu">
       <%= render 'layouts/mobile_sidebar' %>
       <%= render 'layouts/header' %>
+      <div class="ticker-bar">
+        <div class="ticker-message">
+          Spooky mode is now live! Switch to it using the theme button in the header!
+        </div>
+      </div>
     </div>
     <div class="body-content" style="flex: 1 0 auto; margin-top: 72px;">
       <%= yield %>
