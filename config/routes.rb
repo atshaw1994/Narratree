@@ -1,7 +1,7 @@
 # config/routes.rb
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: "users/registrations", confirmations: "users/confirmations" }
 
   resources :users, only: [ :update, :destroy ] do
     collection do
