@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "8.0.3"
+gem "rails", "8.1.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -45,7 +45,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Use AWS SDK for S3 (for Active Storage). Required for Cloudflare R2
-gem "aws-sdk-s3", "1.199.1"
+gem "aws-sdk-s3", "1.200.0"
 
 # Core AWS SDK, required by aws-sdk-s3
 gem "aws-sdk-core", "3.235.0"
