@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { startFireworks } from "fireworks";
 
 export default class extends Controller {
     connect() {
@@ -61,6 +62,26 @@ export default class extends Controller {
             this.maxFallingElements = 30;
             this.stopped = false;
             this.createElements("snowflake", currentSession);
+        } else if (body.classList.contains('newyears-mode')) {
+            startFireworks();
+            if (footer) {
+                if (!footer.querySelector(".newyears-badge")) {
+                    const newyearsBadgeElementRight = document.createElement("div");
+                    const newyearsBadgeElementLeft = document.createElement("div");
+                    newyearsBadgeElementRight.className = "newyears-badge";
+                    newyearsBadgeElementRight.style.width = "8rem";
+                    newyearsBadgeElementRight.style.right = "2rem";
+                    newyearsBadgeElementRight.style.top = "2rem";
+                    newyearsBadgeElementLeft.className = "newyears-badge";
+                    newyearsBadgeElementLeft.style.width = "8rem";
+                    newyearsBadgeElementLeft.style.left = "2rem";
+                    newyearsBadgeElementLeft.style.right = "auto";
+                    newyearsBadgeElementLeft.style.top = "2rem";
+                    footer.appendChild(newyearsBadgeElementRight);
+                    footer.appendChild(newyearsBadgeElementLeft);
+                }
+            }
+            this.decorateHeaders("newyears");
         }
         // No effects for other themes
     }
@@ -130,6 +151,15 @@ export default class extends Controller {
                     const lightsDiv = document.createElement("div");
                     lightsDiv.className = "lights";
                     header.appendChild(lightsDiv);
+                }
+            });
+        }
+        else if (season === "newyears") {
+            document.querySelectorAll(".section-container-header").forEach(header => {
+                if (!header.querySelector(".newyears-badge")) {
+                    const confettiDiv = document.createElement("div");
+                    confettiDiv.className = "newyears-badge";
+                    header.appendChild(confettiDiv);
                 }
             });
         }
