@@ -13,7 +13,12 @@ export default class extends Controller {
       modes.push('spooky');
     }
     else if (month === 11) {
-      modes.push('santa');
+      if (now.getDay() < 26) {
+        modes.push('santa');
+      }
+      else {
+        modes.push('newyears'); // After Christmas, push newyears mode
+      }
     }
     return modes;
   }
@@ -79,6 +84,10 @@ export default class extends Controller {
       case 'santa':
         icon.textContent = 'mode_cool';
         this.body.classList.add('santa-mode');
+        break;
+      case 'newyears':
+        icon.textContent = 'celebration';
+        this.body.classList.add('newyears-mode');
         break;
     }
     // Save the new mode

@@ -134,7 +134,6 @@
   z-index: -700;
 }
 
-
 .lights {
   flex: 1 1 auto;
   height: 32px;
@@ -144,4 +143,21 @@
   background-repeat: repeat-x, no-repeat;
   margin-left: 8px;
   animation: twinkle-lights 2.5s infinite linear;
+}
+
+.newyears-badge {
+  width: 6rem;
+  height: 52px;
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  opacity: 0.6;
+  background-image: url('newyears/2026.png');
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  vertical-align: middle;
+  z-index: 0;
+  animation: gold-glow 0.5s infinite;
 }
