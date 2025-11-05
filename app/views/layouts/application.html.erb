@@ -29,11 +29,15 @@
     <div id="site-header-area" data-controller="mobile-menu">
       <%= render 'layouts/mobile_sidebar' %>
       <%= render 'layouts/header' %>
-      <div class="ticker-bar" style="display: none;">
-        <div class="ticker-message">
-          
+      <% if @ticker_messages.present? %>
+        <div class="ticker-bar">
+            <div class="ticker-messages">
+              <% @ticker_messages.each do |msg| %>
+                <span class="ticker-message"><%= msg.message %></span>
+              <% end %>
+            </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <div class="body-content" style="flex: 1 0 auto; margin-top: 72px;">
       <%= yield %>

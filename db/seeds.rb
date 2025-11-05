@@ -17,3 +17,13 @@ end
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Seed ticker messages
+[
+  "Welcome to Narratree!",
+  "Check out the latest articles and updates.",
+  "Follow us on social media for more news.",
+  "Contact support if you have any questions."
+].each do |msg|
+  TickerMessage.find_or_create_by!(message: msg)
+end

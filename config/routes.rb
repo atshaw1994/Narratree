@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get "tickers/index"
     get "dashboard", to: "dashboard#index"
     resources :users, only: [ :index, :destroy ] do
       patch :update_role, on: :member
@@ -48,7 +49,10 @@ Rails.application.routes.draw do
       end
     end
     resources :articles, only: [ :index, :destroy ]
+    resources :tickers
   end
+
+  resources :ticker_messages, only: [ :create, :destroy ]
 
   get "sitemap.xml", to: "sitemap#index", defaults: { format: "xml" }
   root "articles#index"

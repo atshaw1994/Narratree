@@ -7,6 +7,7 @@
                 <div class="admin-tab-buttons" style="display: flex; gap: 0.5em;">
                     <button type="button" class="admin-tab-btn active" data-admin-tabs-target="tabBtn" data-tab="users" data-action="click->admin-tabs#switch">Users</button>
                     <button type="button" class="admin-tab-btn" data-admin-tabs-target="tabBtn" data-tab="articles" data-action="click->admin-tabs#switch">Articles</button>
+                    <button type="button" class="admin-tab-btn" data-admin-tabs-target="tabBtn" data-tab="tickerbar" data-action="click->admin-tabs#switch">TickerBar</button>
                 </div>
             </div>
             <div class="search-bar-container" style="flex-grow: 1;">
@@ -64,6 +65,35 @@
                         <% Article.all.each do |article| %>
                             <%= render partial: 'article_row', locals: { article: article } %>
                         <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="admin-tab-content" id="tickerbar-tab" data-admin-tabs-target="tabContent" style="display: none;">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="ticker-id"><span>Ticker Id</span><span class="sort-arrow" data-admin-tabs-target="tickerIdArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="message"><span>Message</span><span class="sort-arrow" data-admin-tabs-target="messageArrow"></span></th>
+                            <th data-action="click->admin-tabs#sort" data-admin-tabs-column="created-at"><span>Created At</span><span class="sort-arrow" data-admin-tabs-target="createdAtArrow"></span></th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% TickerMessage.all.each do |ticker_message| %>
+                            <%= render partial: 'ticker_message_row', locals: { ticker_message: ticker_message } %>
+                        <% end %>
+                        <tr>
+                            <td colspan="4">
+                                <%= form_with model: TickerMessage.new, url: ticker_messages_path, local: true, html: { data: { controller: "ticker-message-form" } } do |form| %>
+                                    <div style="display: flex; gap: 0.5em; align-items: center;">
+                                        <%= form.text_field :message, placeholder: "New ticker message", required: true, style: "flex-grow: 1;", class: "search-input", data: { ticker_message_form_target: "input", action: "input->ticker-message-form#inputChanged" } %>
+                                        <%= form.button type: "submit", class: "admin-add-button", data: { ticker_message_form_target: "button" } do %>
+                                            <span class="material-symbols-rounded" style="font-size: 20px; color: #fff;">check</span>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

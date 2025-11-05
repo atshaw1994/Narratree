@@ -1,0 +1,35 @@
+<div class="mobile-dashboard">
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+        <%= link_to admin_dashboard_path, class: "back-btn" do %>
+            <span class="material-symbols-rounded" aria-hidden="true" style="font-size: 48px;">arrow_circle_left</span>
+        <% end %>
+        <h1 style="margin: 0 auto 0 -48px;">Tickers</h1>
+    </div>
+    
+    <ul class="mobile-dashboard-article-list" data-controller="mobile-dashboard-card">
+        <li class="mobile-dashboard-card" data-mobile-dashboard-card-target="card">
+            <div class="mobile-dashboard-ticker-info" style="width: 100%;">
+                <%= form_with model: TickerMessage.new, url: ticker_messages_path, local: true, html: { data: { controller: "ticker-message-form" } } do |form| %>
+                    <div style="display: flex; gap: 0.5em; align-items: center;">
+                        <%= form.text_field :message, placeholder: "New ticker message", required: true, style: "flex-grow: 1;", class: "search-input", data: { ticker_message_form_target: "input", action: "input->ticker-message-form#inputChanged" } %>
+                        <%= form.button type: "submit", class: "admin-add-button", data: { ticker_message_form_target: "button" } do %>
+                            <span class="material-symbols-rounded" style="font-size: 20px; color: #fff;">check</span>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </li>
+        <% TickerMessage.all.each do |ticker| %>
+            <li class="mobile-dashboard-card" data-mobile-dashboard-card-target="card">
+                <div class="mobile-dashboard-article-info">
+                    <p class="article-title"><%= ticker.message %></p>
+                </div>
+                <div class="mobile-dashboard-article-actions">
+                    <%= link_to ticker_message_path(ticker), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, title: 'Delete' do %>
+                        <span class="material-symbols-rounded" aria-hidden="true">delete</span>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>
