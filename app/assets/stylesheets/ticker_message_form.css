@@ -1,0 +1,7 @@
+/* Ensure input is italic only when empty (placeholder shown), normal when typing */
+.search-input:placeholder-shown {
+  font-style: italic;
+}
+.search-input:not(:placeholder-shown) {
+  font-style: normal;
+}

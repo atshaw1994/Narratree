@@ -79,7 +79,18 @@ export default class extends Controller {
   }
 
   connect() {
-    this.showTab("users")
+    // Check for ?tab=... in the URL
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab") || "users";
+    this.showTab(tab);
+    // Set active class on the correct tab button
+    this.tabBtnTargets.forEach(btn => {
+      if (btn.dataset.tab === tab) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
   }
 
   switch(event) {
