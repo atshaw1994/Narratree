@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_05_222736) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_07_010000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,21 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_05_222736) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admin_votes", force: :cascade do |t|
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.bigint "initiator_id", null: false
+    t.text "reason"
+    t.boolean "result"
+    t.integer "status", default: 0, null: false
+    t.bigint "target_user_id"
+    t.datetime "updated_at", null: false
+    t.integer "vote_type", null: false
+    t.jsonb "votes", default: {}
+    t.index ["initiator_id"], name: "index_admin_votes_on_initiator_id"
+    t.index ["target_user_id"], name: "index_admin_votes_on_target_user_id"
   end
 
   create_table "article_likes", force: :cascade do |t|
@@ -151,6 +166,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_05_222736) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "admin_votes", "users", column: "initiator_id"
+  add_foreign_key "admin_votes", "users", column: "target_user_id", on_delete: :nullify
   add_foreign_key "article_likes", "articles"
   add_foreign_key "article_likes", "users"
   add_foreign_key "articles", "users"

@@ -1,0 +1,6 @@
+<h1>Admin Vote Completed</h1>
+<p>The admin vote initiated by <%= @admin_vote.initiator.email %> has completed.</p>
+<p>Reason: <%= @admin_vote.reason %></p>
+<p>Vote type: <%= @admin_vote.vote_type.humanize %></p>
+<p>Result: <%= @admin_vote.result ? 'Passed' : 'Failed' %></p>
+<p><%= link_to 'Review and Decide', admin_vote_url(@admin_vote) %></p>
