@@ -50,6 +50,13 @@ Rails.application.routes.draw do
     end
     resources :articles, only: [ :index, :destroy ]
     resources :tickers
+      resources :admin_votes, only: [ :index, :show, :create ] do
+        member do
+          post :vote
+          get :results
+          patch :owner_decide
+        end
+      end
   end
 
   resources :ticker_messages, only: [ :create, :destroy ]

@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Scope for admin users
+  scope :admins, -> { where(role: :admin) }
+  # Scope for owner user(s)
+  scope :owners, -> { where(role: :owner) }
   # Counter for admin warnings
   validates :warnings_count, numericality: { greater_than_or_equal_to: 0 }
   # User following associations
