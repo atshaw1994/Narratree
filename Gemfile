@@ -45,7 +45,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Use AWS SDK for S3 (for Active Storage). Required for Cloudflare R2
-gem "aws-sdk-s3", "1.206.0"
+gem "aws-sdk-s3", "1.207.0"
 
 # Core AWS SDK, required by aws-sdk-s3
 gem "aws-sdk-core", "3.239.2"
