@@ -48,7 +48,7 @@ gem "image_processing", "~> 1.2"
 gem "aws-sdk-s3", "1.206.0"
 
 # Core AWS SDK, required by aws-sdk-s3
-gem "aws-sdk-core", "3.239.2"
+gem "aws-sdk-core", "3.241.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
