@@ -7,7 +7,7 @@ gem "propshaft"
 # Use sqlite3 as the database for Active Record
 # gem "sqlite3", ">= 2.1"
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.2"
+gem "pg", "~> 1.6"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -45,10 +45,10 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Use AWS SDK for S3 (for Active Storage). Required for Cloudflare R2
-gem "aws-sdk-s3", "1.206.0"
+gem "aws-sdk-s3", "1.209.0"
 
 # Core AWS SDK, required by aws-sdk-s3
-gem "aws-sdk-core", "3.239.2"
+gem "aws-sdk-core", "3.241.3"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
